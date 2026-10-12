@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161514" media="(prefers-color-scheme: dark)">
+<title>BUCCARI BC-05 — 使用说明书</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+/* Layout: reading column with a sticky contents list beside it on wide screens, stacked above on phones — same paper, ink and hairlines as the BUCCARI site */
+:root{
+  --paper:#F4F2EF; --card:#FBFAF8; --ink:#141414; --muted:#6B6862; --rule:#D8D3CA; --line:#8E8981; --accent:#8A6A4A;
+  --f-body:'Jost','Noto Sans SC','Noto Sans Arabic',system-ui,sans-serif;
+  --logo-filter:none; color-scheme:light;
+}
+:root[data-mode="dark"]{--paper:#161514; --card:#1E1D1B; --ink:#EEEAE4; --muted:#A39E96; --rule:#34312D; --line:#6E6961; --accent:#C9A27C; --logo-filter:invert(1); color-scheme:dark}
+html[lang="ar"]{--f-body:'Noto Sans Arabic','Jost',system-ui,sans-serif}
+html[lang="zh"]{--f-body:'Noto Sans SC','Jost',system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.65; padding-top:env(safe-area-inset-top,0px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.top{position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule)}
+.bar{max-width:1120px; margin:0 auto; padding-inline:24px; min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-block:8px}
+.brand img{width:130px; height:auto; display:block; filter:var(--logo-filter)}
+.tools{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.langs{display:flex; gap:2px; flex-wrap:wrap}
+.langs a{font-size:13px; padding:6px 9px; min-height:36px; display:inline-flex; align-items:center; text-decoration:none; color:var(--muted); border:1px solid transparent; border-radius:2px}
+.langs a[aria-current="page"]{color:var(--ink); border-color:var(--line)}
+.mode{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background:transparent; color:var(--ink); border:1px solid var(--rule); border-radius:50%; cursor:pointer}
+.mode .sun{display:none}
+:root[data-mode="dark"] .mode .sun{display:block}
+:root[data-mode="dark"] .mode .moon{display:none}
+.doc{max-width:1120px; margin:0 auto; padding-inline:24px; padding-block:40px 64px}
+.back{display:inline-block; font-size:14px; color:var(--muted); text-decoration:none; margin-bottom:28px}
+.back::before{content:"← "}
+html[dir="rtl"] .back::before{content:"→ "}
+.eyebrow{font-weight:500; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
+html[lang="ar"] .eyebrow,html[lang="zh"] .eyebrow{letter-spacing:0; font-size:13px}
+.layout{display:grid; grid-template-columns:220px minmax(0,1fr); gap:56px; margin-top:16px}
+.toc{position:sticky; top:96px; align-self:start; max-height:calc(100vh - 120px); overflow:auto}
+.toc ol{list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column}
+.toc a{display:block; padding:7px 0; font-size:14px; line-height:1.35; color:var(--muted); text-decoration:none; border-top:1px solid var(--rule)}
+.toc a:hover{color:var(--ink)}
+.toc summary{list-style:none; cursor:default}
+.toc summary::-webkit-details-marker{display:none}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr; gap:24px}
+  .toc{position:static; max-height:none; border:1px solid var(--rule); border-radius:2px; background:var(--card)}
+  .toc summary{cursor:pointer; padding:14px 16px; min-height:48px; display:flex; align-items:center; justify-content:space-between}
+  .toc summary::after{content:"+"; font-size:18px; letter-spacing:0; color:var(--ink)}
+  .toc details[open] summary::after{content:"–"}
+  .toc ol{margin:0; padding:0 16px 8px}
+}
+.bar,.doc{padding-left:max(24px,env(safe-area-inset-left)); padding-right:max(24px,env(safe-area-inset-right))}
+@media (max-width:520px){.bar,.doc{padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right))} body{font-size:16px}}
+
+article{max-width:70ch; min-width:0}
+article h1{font-weight:300; font-size:clamp(28px,4vw,40px); line-height:1.15; margin:0 0 12px; text-wrap:balance}
+article h2{font-weight:400; font-size:24px; line-height:1.25; margin:48px 0 12px; padding-top:20px; border-top:1px solid var(--rule)}
+article h3{font-weight:500; font-size:18px; margin:28px 0 8px}
+article p{margin:0 0 12px}
+article ol,article ul{padding-inline-start:1.4em; margin:0 0 16px}
+article li{margin-bottom:6px}
+article li > p{margin:0 0 8px}
+article strong{font-weight:500}
+.tbl{overflow-x:auto; margin:8px 0 20px; border-top:1px solid var(--rule)}
+.tbl table{width:100%; border-collapse:collapse; font-size:15px; font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{text-align:start; vertical-align:top; padding:10px 12px 10px 0; border-bottom:1px solid var(--rule)}
+html[dir="rtl"] .tbl th,html[dir="rtl"] .tbl td{padding:10px 0 10px 12px}
+.tbl th{font-weight:500; color:var(--muted)}
+footer{border-top:1px solid var(--rule); padding-block:36px; display:flex; justify-content:center}
+footer img{width:110px; height:auto; filter:var(--logo-filter)}
+
+</style>
+<script>
+/* Theme by the visitor's local time: light 07:00-18:59, dark otherwise. A manual switch lasts for the visit. */
+(function(){
+  var DAY_START=7, NIGHT_START=19;
+  function auto(){var h=new Date().getHours(); return (h>=DAY_START && h<NIGHT_START)?'light':'dark';}
+  function manual(){try{return sessionStorage.getItem('buccari-mode');}catch(e){return null;}}
+  window.__setMode=function(m){document.documentElement.setAttribute('data-mode',m); if(window.__onMode) window.__onMode(m);};
+  window.__setMode(manual()||auto());
+  setInterval(function(){ if(!manual()) window.__setMode(auto()); },5*60*1000);
+})();
+</script>
+
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt="BUCCARI"></a>
+    <div class="tools">
+      <nav class="langs" aria-label="Language"><a href="manual-en.html" hreflang="en">English</a><a href="manual-ru.html" hreflang="ru">Русский</a><a href="manual-ar.html" hreflang="ar">العربية</a><a href="manual-zh.html" aria-current="page" hreflang="zh">中文</a></nav>
+      <button type="button" class="mode" id="modeBtn" aria-label="深色模式" data-dark="深色模式" data-light="浅色模式"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+</header>
+<main class="doc">
+  <a class="back" href="index.html#bc-05">返回 BUCCARI</a>
+  <div class="eyebrow">BC-05 · 使用说明书</div>
+  <div class="layout">
+    <nav class="toc" aria-label="目录"><details id="tocBox" open><summary class="eyebrow">目录</summary><ol><li><a href="#s1">1. 简介</a></li><li><a href="#s2">2. 安全须知</a></li><li><a href="#s3">3. 产品说明</a></li><li><a href="#s4">4. 安装与调试</a></li><li><a href="#s5">5. 饮品制作</a></li><li><a href="#s6">6. 设置</a></li><li><a href="#s7">7. 清洁与保养</a></li><li><a href="#s8">8. 运输与处置</a></li><li><a href="#s9">9. 故障排除</a></li><li><a href="#s10">10. 责任与保修</a></li></ol></details></nav>
+    <article>
+<h1>BUCCARI BC-05 全自动咖啡机使用说明书</h1>
+<p>使用本产品前，请仔细阅读本说明书并妥善保管。</p>
+<h2 id="s1">1. 简介</h2>
+<ol>
+<li>感谢您选用 BUCCARI BC-05 全自动咖啡机。本机是我们最新一代全自动咖啡机，其设计充分体现了我们的核心技术。</li>
+<li>本说明书介绍咖啡机的使用和清洁方法。如未按照本说明书的相关说明使用咖啡机，由此造成的任何损失，制造商概不负责。</li>
+<li>咖啡机的性能与正确的使用和保养密切相关。首次使用前请仔细阅读本说明书，并妥善保管以便随时查阅。祝您享受美好的咖啡时光！</li>
+<li>所有咖啡机出厂前均经过全面测试，因此机内残留少量咖啡粉属于正常现象。我们保证本机为全新产品。</li>
+</ol>
+<h2 id="s2">2. 安全须知</h2>
+<p>安全性是 BC-05 最重要的产品特性之一。只有遵守以下各节中关于避免伤害和健康危害的说明，才能保证安全装置的有效性。</p>
+<h3 id="s2-1">2.1 对使用者的危险</h3>
+<p><strong>注意：</strong> 不当使用咖啡机可能导致轻微伤害。请严格遵守以下规定：</p>
+<ol>
+<li>使用前请仔细阅读本说明书。</li>
+<li>咖啡机出现故障或损坏时，请勿继续使用。</li>
+<li>禁止改动内置安全装置。</li>
+<li>请勿触摸机器的高温部件。</li>
+<li>8 岁及以上儿童，以及身体、感官或智力能力欠缺或缺乏相关经验者，只有在有人监护的情况下，或在负责人员给予安全操作指导并充分了解潜在危险后，方可使用本机。</li>
+<li>请勿让儿童玩耍本机或在其周围玩耍。15 岁以下儿童须在监护下方可使用。</li>
+<li>请让 8 岁以下儿童远离本机及其电源线。</li>
+<li>请将咖啡机安装在便于定期检查和维护的位置。</li>
+<li>豆仓内只能放入咖啡豆，严禁放入咖啡粉。</li>
+</ol>
+<p><strong>触电危险：</strong> 不当使用咖啡机可能导致严重伤害。请务必遵守以下事项：</p>
+<ol>
+<li>遵守相关低电压指令以及国家和地方安全法规。</li>
+<li>连接电源时必须可靠接地，以防触电。</li>
+<li>电源电压必须与设备铭牌上标示的电压一致。</li>
+<li>请勿触摸带电部件。</li>
+<li>进行任何维护工作前，请关闭主开关并断开电源。</li>
+<li>电源线只能由专业维修人员更换。</li>
+</ol>
+<p><strong>烫伤危险：</strong> 不当使用咖啡机可能导致轻微伤害。</p>
+<ol>
+<li>饮品、热水和蒸汽制作区域存在烫伤风险。操作或清洁时，请勿将手放在咖啡出口下方。</li>
+<li>咖啡出口和冲泡器温度很高，请只握持专门设计的把手。请待机器完全冷却后再清洁冲泡器。</li>
+</ol>
+<h3 id="s2-2">2.2 对设备的危险</h3>
+<p><strong>注意：</strong> 不遵守本警告可能因触电导致危及生命的伤害。请务必遵守以下事项：</p>
+<ol>
+<li>水箱无水时请勿启动机器。</li>
+<li>长时间停用（如假期）后再次使用前，请先彻底清洁咖啡机。</li>
+<li>防止咖啡豆受霜冻、潮湿等恶劣环境影响。</li>
+<li>故障排除只能由专业技术人员进行。</li>
+<li>只能使用本公司提供的原装配件。</li>
+<li>如出现明显外部损坏或液体泄漏，请立即联系客服进行维修或更换。</li>
+<li>请勿用流水冲洗机器，也不要使用蒸汽清洁器清洁。</li>
+<li>请勿将机器放置在易受水溅影响的表面上。</li>
+<li>豆仓内只能放入咖啡豆，严禁放入咖啡粉。</li>
+<li>如咖啡机及其配件在低于 10 ℃ 的环境下运输，接通电源并开机前，请在室温下放置 3 小时。</li>
+</ol>
+<h3 id="s2-3">2.3 卫生规定：用水</h3>
+<p><strong>注意：</strong> 用水不当可能危害健康。请务必遵守以下事项：</p>
+<ol>
+<li>只使用洁净、无污染的水。</li>
+<li>请勿向咖啡机内加入腐蚀性水。</li>
+<li>碳酸盐硬度不得超过 5–6 °dKH 或 8.9–10.7 °fKH。</li>
+<li>氯含量最高：100 mg/L。</li>
+<li>pH 值：6.5–7（中性）。</li>
+</ol>
+<h2 id="s3">3. 产品说明</h2>
+<h3 id="s3-1">3.1 产品结构</h3>
+<p>豆仓盖 · 水箱盖 · 左侧板 · 右侧板 · TFT 触摸显示屏 · 侧门 · 奶泡器 · 出口装饰盖 · 咖啡出口 · 奶罐（选配）· 废水箱浮标 · 接水盘 · 废水箱装饰件。</p>
+<p>背面：水箱 · 电源开关 · 电源插座。</p>
+<h3 id="s3-2">3.2 技术参数</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>型号</td>
+<td>BC-05</td>
+</tr>
+<tr>
+<td>额定电压 / 频率</td>
+<td>AC 220–240 V，50/60 Hz</td>
+</tr>
+<tr>
+<td>功率</td>
+<td>1350 W</td>
+</tr>
+<tr>
+<td>水箱容量</td>
+<td>1.2 L</td>
+</tr>
+<tr>
+<td>豆仓容量</td>
+<td>250 g</td>
+</tr>
+<tr>
+<td>渣盒容量</td>
+<td>10 份</td>
+</tr>
+<tr>
+<td>尺寸（长 × 宽 × 高）</td>
+<td>425 × 181 × 377 mm</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="s3-3">3.3 随机配件</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>配件</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电源线</td>
+<td>1</td>
+</tr>
+<tr>
+<td>使用说明书</td>
+<td>1</td>
+</tr>
+<tr>
+<td>清洁刷</td>
+<td>1</td>
+</tr>
+<tr>
+<td>清洁针</td>
+<td>1</td>
+</tr>
+<tr>
+<td>蒸汽管清洁刷</td>
+<td>1</td>
+</tr>
+<tr>
+<td>奶罐（选配）</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s4">4. 安装与调试</h2>
+<h3 id="s4-1">4.1 放置要求</h3>
+<p><strong>放置位置：</strong> 如不满足以下条件，机器可能损坏。请务必遵守：</p>
+<ol>
+<li>机器上方须留出足够空间，便于添加咖啡豆和水。</li>
+<li>机器背面与墙壁之间至少保持 8 cm 距离（保证空气流通）。</li>
+</ol>
+<p><strong>环境条件：</strong> 如不满足以下条件，机器可能损坏。</p>
+<ol>
+<li>环境温度：+10 ℃ 至 +40 ℃。</li>
+<li>最大相对湿度：80%。</li>
+<li>本咖啡机仅限室内使用，请勿在户外使用，并防止雨、雪、霜冻。</li>
+</ol>
+<p><strong>供电条件：</strong> 电气连接必须符合使用所在国家的相关规定。安装地点的电压必须与铭牌标示电压一致。</p>
+<p><strong>危险警示！</strong> 请务必遵守以下事项：</p>
+<ol>
+<li>电源线损坏时请勿运行机器。损坏的电源线须立即由专业技术服务人员更换。</li>
+<li>建议不要使用延长线。如必须使用，延长线导体截面积不得小于 1 mm²。</li>
+<li>铺设电源线时，确保不会绊倒他人。电源线不得穿过尖锐边缘、悬空或被夹住，不得放在高温物体上，并应避免接触油污和腐蚀性清洁剂。</li>
+<li>请勿通过电源线提起或拖拉机器。拔插头时请勿拉扯电源线。请勿用湿手触摸电源线或插头，请勿将潮湿的插头插入插座。</li>
+</ol>
+<h3 id="s4-2">4.2 连接电源</h3>
+<p>将电源线一端插入咖啡机背面的插座，另一端插入电源插座。</p>
+<h3 id="s4-3">4.3 加水和加咖啡豆</h3>
+<p><strong>水箱加水：</strong> 先掀起水箱盖，取出水箱，加水（注意不要超过 MAX 线），然后将水箱装回。</p>
+<p><strong>添加咖啡豆：</strong> 打开豆仓盖，加入咖啡豆，然后盖好盖子。</p>
+<h3 id="s4-4">4.4 首次开机</h3>
+<ol>
+<li>按下机器背面的电源开关开机。机器进入开机界面，并自动依次执行：开机自检 → 加热 → 清洗 → 复位。</li>
+<li>开机自检时，机器会自动检测水箱水位、冲泡器是否到位、侧门是否关闭以及废水箱是否到位。如发现异常，将弹出相应的警告提示，请按屏幕提示处理。</li>
+</ol>
+<h2 id="s5">5. 饮品制作</h2>
+<p>本机共有两页饮品菜单，可点击 ‹ 或 › 切换页面。</p>
+<h3 id="s5-1">5.1 黑咖啡（意式浓缩、意式大杯、美式咖啡）</h3>
+<ol>
+<li>在主界面选择所需饮品，点击进入参数设置页面。以意式浓缩为例，可调节咖啡浓度、萃取温度、预浸泡时间和咖啡容量。调整后点击“开始制作”，设置的参数将自动保存。</li>
+<li>机器进入制作界面并开始制作饮品，制作进度以百分比显示。达到 100% 时弹出“请享用”窗口，表示饮品已制作完成。制作过程中可点击取消图标停止当前流程。</li>
+</ol>
+<h3 id="s5-2">5.2 奶咖（卡布奇诺、拿铁咖啡、拿铁玛琪雅朵、玛琪雅朵、馥芮白）</h3>
+<ol>
+<li>将牛奶倒入奶罐（也可不使用奶罐，直接将吸奶管插入奶盒底部）。确保奶管接头与奶泡器连接良好。建议使用 4–8 ℃ 的冷藏牛奶。同时确认奶泡器旋钮位于 “Froth milk” 档（“Froth milk” 为热奶泡，“Warm milk” 为热牛奶）。</li>
+<li>在主界面选择所需饮品，点击进入参数设置页面。以拿铁咖啡为例，可调节咖啡浓度、萃取温度、预浸泡时间、咖啡容量和打奶时间。调整后点击“开始制作”，设置的参数将自动保存。</li>
+<li>机器进入制作界面并开始制作，进度以百分比显示。达到 100% 时弹出完成提示。可随时点击取消图标停止制作。</li>
+<li>奶咖制作完成后，会弹出是否进行奶泡器深度清洗的提示。如需立即制作另一杯含奶饮品，请点击“取消”关闭提示；如短时间内不再制作奶饮，请点击“清洗”开始奶泡器深度清洗。详细步骤请参阅第 7.1.3 节“奶泡器深度清洗”。</li>
+</ol>
+<h3 id="s5-3">5.3 热牛奶 / 热奶泡</h3>
+<ol>
+<li>将牛奶倒入奶罐（也可直接将吸奶管插入奶盒底部），确保奶管接头与奶泡器连接良好。建议使用 4–8 ℃ 的冷藏牛奶。确认奶泡调节旋钮位于 “Froth milk”（热奶泡）或 “Warm milk”（热牛奶）档。</li>
+<li>在主界面点击牛奶饮品图标进入参数设置页面，调节热牛奶或热奶泡的制作时间。调整后点击“开始制作”，所有参数将自动保存。</li>
+<li>机器进入制作进度界面，进度条显示完成百分比。达到 100% 时弹出饮品已完成的提示。操作过程中可随时点击取消图标停止制作。</li>
+<li>制作完成后，会弹出是否进行奶泡器深度清洗的提示，操作方法与奶咖制作后的深度清洗相同。</li>
+</ol>
+<h3 id="s5-4">5.4 热水</h3>
+<ol>
+<li>在主界面点击热水图标进入参数设置页面，可调节热水温度和出水量。设置后点击“开始”，修改的参数将自动保存。</li>
+<li>机器切换到工作界面并开始出热水，进度条实时显示完成百分比。达到 100% 时弹出完成提示。可随时点击取消图标终止当前操作。</li>
+</ol>
+<h3 id="s5-5">5.5 用户偏好模式</h3>
+<p>点击左上角头像图标，可选择用户 1、用户 2、用户 3 或用户 4。可根据个人喜好设置独立的饮品参数，每位用户的参数分别保存。</p>
+<h3 id="s5-6">5.6 研磨粗细调节</h3>
+<p>咖啡研磨细度出厂前已调至最佳档位，无需调节即可直接制作咖啡。如制作的咖啡口味偏淡、油脂（克丽玛）不足，或连续制作几杯后咖啡流速极慢、呈滴状流出，请按以下步骤调节：</p>
+<ol>
+<li>打开豆仓盖。</li>
+<li>开始制作咖啡，听到磨豆声时，将研磨调节旋钮转到合适位置（1 档最细，5 档最粗）。</li>
+<li>观察咖啡流出速度。如流速过慢或不出咖啡，请将旋钮向 5 档方向调节；如需制作油脂丰富浓厚的咖啡，请将旋钮向 1 档方向调一格。建议每次只调节一档，以免损坏设备。</li>
+</ol>
+<p><strong>注意：</strong> 调整后的研磨粗细至少需要制作两杯咖啡后才能生效。如调整后仍未达到理想效果，可再调一档。必要时也可查看渣盒中咖啡渣的状态辅助调节。</p>
+<h2 id="s6">6. 设置</h2>
+<p>点击屏幕底部的设置图标进入设置界面。</p>
+<p><strong>语言设置：</strong> 本机支持多种语言，可根据需要选择。</p>
+<p><strong>饮品设置：</strong> 点击相应选项进入饮品设置界面。可在此修改当前用户的所有饮品参数，调整后将自动保存到当前用户档案。</p>
+<p><strong>定时关机：</strong> 可设置自动关机时间。待机状态下到达预设时间后，机器自动关机并关闭屏幕，触摸屏幕即可重新唤醒。</p>
+<p><strong>待机背光设置：</strong> 调节机器显示屏亮度，共三档：全亮、半亮、关闭。</p>
+<p><strong>制作中实时调参：</strong> 开启后，用户可在制作过程中调节饮品参数（萃取温度不可调）。关闭后，制作过程中所有咖啡参数栏将变灰，无法修改。</p>
+<p><strong>声音设置：</strong> 可自由开启或关闭设备声音。</p>
+<p><strong>除垢等级：</strong> 共分 5 级；设为 OFF 时，除垢提醒功能关闭。当累计用水量达到预设值时，将弹出除垢提醒窗口。各级预设水量：1 级 80 L，2 级 60 L，3 级 40 L，4 级 20 L，5 级 10 L。</p>
+<p><strong>工程师设置：</strong> 本功能仅供制造商售后维护使用。</p>
+<p><strong>恢复出厂设置：</strong> 点击恢复出厂设置图标，可将所有设置恢复为出厂默认值，包括咖啡参数、语言选择、饮品设置、定时关机、亮度调节、制作中实时调参、声音设置和除垢等级。</p>
+<p><strong>饮品杯数统计：</strong> 记录所有已制作饮品的总数，进入该页面可分别查看每种饮品的制作数量。</p>
+<p><strong>除垢次数：</strong> 显示已完成除垢操作的累计次数。</p>
+<h2 id="s7">7. 清洁与保养</h2>
+<h3 id="s7-1">7.1 自动清洗</h3>
+<p><strong>7.1.1 冲泡器简易清洗：</strong> 启动此功能后，锅炉加热，水泵送水，对冲泡器进行快速清洗。清洗过程中废水从咖啡出口流出。</p>
+<p><strong>7.1.2 奶泡器简易清洗：</strong> 启动此功能后，锅炉加热，水泵送水，对奶泡器进行简易清洗。整个过程中废水从咖啡出口排出。</p>
+<p><strong>7.1.3 奶泡器深度清洗：</strong> 选择后，按屏幕提示彻底清洁奶罐并加入清水，然后点击清洗图标。机器将自动对奶泡器进行深度清洗，清洗时间可调。所有废水从咖啡出口流出。</p>
+<p><strong>7.1.4 机器维护：</strong> 机器维护功能包括冲泡器深度清洁（加药片）、奶泡管路深度清洁（加药片）和除垢。</p>
+<ol>
+<li><strong>冲泡器深度清洁（加药片）：</strong> 启动清洁程序后，按屏幕提示将专用冲泡器清洁片放入冲泡器，然后点击“下一步”。机器将开始对冲泡器进行深度清洁，过程中废水从咖啡出口排出。</li>
+<li><strong>奶泡管路深度清洁（加药片）：</strong> 启动清洁功能，按提示向奶罐中加入专用奶路清洁片和清水，然后点击“下一步”开始管路深度清洁。废水从咖啡出口流出。完成后，彻底清洗奶罐，重新加入清水，再次启动清洗，以冲净系统内残留的清洁剂。</li>
+<li><strong>除垢：</strong> 点击“立即除垢”。按提示向水箱中加入咖啡机专用除垢剂和清水至 MAX 刻度。在咖啡出口下方放置大容器收集废水，然后点击“下一步”开始除垢。操作过程中请注意观察容器，防止溢水。除垢完成后，彻底清洗水箱，按提示重新加入清水并运行冲洗程序，以冲净机内残留的除垢液。</li>
+</ol>
+<h3 id="s7-2">7.2 手动清洁</h3>
+<p>以下配件需定期清洁：</p>
+<ol>
+<li><strong>渣盒：</strong> 每次倒掉咖啡渣后清洗。</li>
+<li><strong>废水盘组件（废水盒、装饰盖、接水盘）：</strong> 浮标升起提示水满时，倒空并清洗所有部件。</li>
+<li><strong>水箱：</strong> 定期用软布和中性清洁剂清洗（建议每月一次）。</li>
+<li><strong>咖啡出口：</strong> 定期用海绵或布擦拭，必要时用牙签疏通堵塞。</li>
+<li><strong>豆仓：</strong> 定期用干布擦拭（建议每月一次）。</li>
+<li>
+<p><strong>落粉通道清洁</strong>（建议每月一次或堵塞时）。</p>
+<p><strong>注意：</strong> 请在关机并断开电源后再进行此操作。</p>
+<p>① 打开侧门。② 用清洁刷清理落粉通道。③ 清除机内可见的咖啡粉，必要时使用吸尘器。④ 清除废水盘内的咖啡粉和污物。</p>
+</li>
+<li>
+<p><strong>奶泡器手动清洁</strong>（建议每月一次）。</p>
+<p>① 关闭电源开关。② 先从奶泡器上拔下吸奶管。③ 向内按压左右卡扣并向下拉，取下整个奶泡器组件。④ 按顺序拆开奶泡器所有部件，用流水冲洗；必要时先在奶垢清洁剂中浸泡十分钟再清洗。</p>
+<p><strong>注意：</strong> 清洁时请彻底清洗进气调节旋钮上的进气槽，切勿损坏该槽，否则会影响打奶泡功能。</p>
+<p>⑤ 清洁后按顺序重新组装所有部件，并检查进气调节旋钮是否安装正确。旋钮设有 5 个调节档位：细档用于制作细腻绵密的奶泡，粗档用于制作较大的奶泡。可根据所需奶泡质地进行微调。</p>
+</li>
+<li>
+<p><strong>冲泡器手动清洁</strong>（建议每两周一次）。</p>
+<p>① 在关机状态下打开侧门。② 沿 PUSH 方向按压冲泡器两侧的两个橙色按钮，然后取出冲泡器。③ 将冲泡器在清水中浸泡 5 分钟，再用自来水冲洗。请勿放入洗碗机清洗，也不要使用任何洗涤剂。④ 侧门打开时，用清洁刷清除机内可见的咖啡渣。⑤ 手持清洁好的冲泡器，将冲泡头完全按到底，然后将冲泡器装回原位。沿 PUSH 标记推入，直到听到“咔嗒”声，表示安装到位。</p>
+<p><strong>注意：</strong> 安装后请确保两个橙色按钮均弹回原位，否则可能损坏机器。</p>
+</li>
+</ol>
+<h3 id="s7-3">7.3 磨刀的拆卸、安装与清洁</h3>
+<p>如出现不出粉、落粉通道堵塞、异物卡住磨刀或磨盘安装不当等故障，请按以下步骤拆装：</p>
+<ol>
+<li>关机，并取出豆仓内的所有咖啡豆。</li>
+<li>逆时针旋转磨豆盖，直至解锁标记对准豆仓的定位筋，然后向上取下磨豆盖。</li>
+<li>将研磨调节旋钮转到 5 档，向上提起，再顺时针旋转至解锁位置，松开磨盘。</li>
+<li>向上提起磨盘提手，取出磨刀组件。</li>
+<li>清除研磨腔内所有咖啡粉和残留咖啡豆。建议使用吸尘器和小号一字螺丝刀清洁。必须彻底清洁，否则磨盘无法正确安装到位。</li>
+<li>清洁后将磨盘组件装回原位。逆时针将研磨调节旋钮转到 5 档，向上提起旋钮，继续逆时针转到 3 档或其他合适档位，然后再次提拉磨盘提手。如磨盘套无法取出，说明锁定正确；如可取出，说明未锁紧：请将旋钮顺时针转回解锁位置，重新压紧磨盘，再逆时针转到 3 档或其他合适档位。</li>
+<li>最后装上磨豆盖，顺时针旋转直至锁定标记对准豆仓定位筋，完成安装。</li>
+</ol>
+<h2 id="s8">8. 运输与处置</h2>
+<h3 id="s8-1">8.1 运输</h3>
+<ol>
+<li>请妥善保存原包装，以备日后运输使用。</li>
+<li>运输前请将咖啡机内残留的水全部排净，以免损坏产品。</li>
+<li>倒空水箱和废水盘，然后彻底擦拭机器内外。</li>
+</ol>
+<h3 id="s8-2">8.2 废弃物处理</h3>
+<p>冲泡产生的废弃物均为有机物，可作为普通生活垃圾处理。</p>
+<h3 id="s8-3">8.3 废水处理</h3>
+<p>冲泡和清洁产生的废水符合生活污水标准，可通过普通家用下水道排放。</p>
+<h3 id="s8-4">8.4 机器报废处理</h3>
+<ol>
+<li>本机采用优质可回收材料制成。</li>
+<li>请勿将本机作为生活垃圾丢弃。请遵守当地有关废弃物处理的法律法规。</li>
+</ol>
+<h2 id="s9">9. 故障排除</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>故障</th>
+<th>原因</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>咖啡机无法启动</td>
+<td>电源未接通或主开关处于 OFF</td>
+<td>接好电源线，将开关拨到 ON</td>
+</tr>
+<tr>
+<td>显示故障代码或按键无反应</td>
+<td>内部软件或硬件故障</td>
+<td>关机并拔下电源线，30 秒后重新开机。如问题仍未解决，请联系制造商或经销商</td>
+</tr>
+<tr>
+<td>研磨时有异常噪音</td>
+<td>磨豆机内有异物</td>
+<td>联系制造商或经销商</td>
+</tr>
+<tr>
+<td>咖啡流出缓慢或不出咖啡</td>
+<td>研磨过细</td>
+<td>将研磨旋钮调粗（每次一档）。至少制作两杯咖啡后调节才生效</td>
+</tr>
+<tr>
+<td>咖啡流出缓慢或不出咖啡</td>
+<td>水路未注满水</td>
+<td>长按电源键运行自动关机清洗，然后重新制作咖啡</td>
+</tr>
+<tr>
+<td>咖啡流出缓慢或不出咖啡</td>
+<td>冲泡器脏污</td>
+<td>彻底清洁冲泡器</td>
+</tr>
+<tr>
+<td>咖啡流速过快、口感差</td>
+<td>研磨过粗</td>
+<td>将研磨旋钮调细（每次一档）。至少制作两杯咖啡后调节才生效</td>
+</tr>
+<tr>
+<td>无法取出冲泡器</td>
+<td>冲泡器未处于复位位置</td>
+<td>重启机器并清除所有报警提示，冲泡器将自动复位</td>
+</tr>
+<tr>
+<td>出清水而不出咖啡</td>
+<td>咖啡豆无法正常研磨；咖啡豆受潮</td>
+<td>先调粗研磨；如无效，请寻求专业支持</td>
+</tr>
+<tr>
+<td>冲泡器装好后仍提示未安装</td>
+<td>冲泡器未锁定到位</td>
+<td>安装冲泡器，沿 PUSH 标记按压直到听到“咔嗒”声</td>
+</tr>
+<tr>
+<td>咖啡出量不足</td>
+<td>内部管路漏水</td>
+<td>联系制造商或经销商</td>
+</tr>
+<tr>
+<td>咖啡出量不足</td>
+<td>水路被水垢堵塞</td>
+<td>运行完整的除垢程序</td>
+</tr>
+<tr>
+<td>无法吸奶</td>
+<td>奶泡器漏气；进气量过大；吸奶管路堵塞</td>
+<td>检查并正确重装奶泡器所有部件；调低进气调节旋钮档位；疏通吸奶管和接头</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s10">10. 责任与保修</h2>
+<p>因下列情况造成的人身伤害或财产损失，本公司不承担保修责任或赔偿：</p>
+<ol>
+<li>未按规定不当使用本机。</li>
+<li>安装、调试、操作、清洁和保养不正确。</li>
+<li>未遵守使用说明书中规定的操作说明。</li>
+<li>在非正常工作条件下使用本机。</li>
+<li>使用非原装备件。</li>
+<li>因异物、意外事故、人为故意损坏及不可抗力造成的损坏。</li>
+</ol>
+    </article>
+  </div>
+</main>
+<footer><img src="img/logo.png" alt="BUCCARI"></footer>
+<script>
+(function(){
+  var mb=document.getElementById('modeBtn');
+  function upd(){var d=document.documentElement.getAttribute('data-mode')==='dark'; mb.setAttribute('aria-label', d?mb.dataset.light:mb.dataset.dark); mb.title=mb.getAttribute('aria-label');}
+  window.__onMode=upd;
+  mb.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-mode')==='dark'?'light':'dark'; try{sessionStorage.setItem('buccari-mode',n);}catch(e){} window.__setMode(n);});
+  upd();
+  var tb=document.getElementById('tocBox'), mq=matchMedia('(max-width:860px)');
+  function tocMode(){ if(mq.matches) tb.removeAttribute('open'); else tb.setAttribute('open',''); }
+  tocMode(); if(mq.addEventListener) mq.addEventListener('change',tocMode);
+  tb.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches) tb.removeAttribute('open'); }); });
+})();
+</script>
+</body>
+</html>

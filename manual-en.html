@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161514" media="(prefers-color-scheme: dark)">
+<title>BUCCARI BC-05 — User manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+/* Layout: reading column with a sticky contents list beside it on wide screens, stacked above on phones — same paper, ink and hairlines as the BUCCARI site */
+:root{
+  --paper:#F4F2EF; --card:#FBFAF8; --ink:#141414; --muted:#6B6862; --rule:#D8D3CA; --line:#8E8981; --accent:#8A6A4A;
+  --f-body:'Jost','Noto Sans SC','Noto Sans Arabic',system-ui,sans-serif;
+  --logo-filter:none; color-scheme:light;
+}
+:root[data-mode="dark"]{--paper:#161514; --card:#1E1D1B; --ink:#EEEAE4; --muted:#A39E96; --rule:#34312D; --line:#6E6961; --accent:#C9A27C; --logo-filter:invert(1); color-scheme:dark}
+html[lang="ar"]{--f-body:'Noto Sans Arabic','Jost',system-ui,sans-serif}
+html[lang="zh"]{--f-body:'Noto Sans SC','Jost',system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.65; padding-top:env(safe-area-inset-top,0px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.top{position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule)}
+.bar{max-width:1120px; margin:0 auto; padding-inline:24px; min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-block:8px}
+.brand img{width:130px; height:auto; display:block; filter:var(--logo-filter)}
+.tools{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.langs{display:flex; gap:2px; flex-wrap:wrap}
+.langs a{font-size:13px; padding:6px 9px; min-height:36px; display:inline-flex; align-items:center; text-decoration:none; color:var(--muted); border:1px solid transparent; border-radius:2px}
+.langs a[aria-current="page"]{color:var(--ink); border-color:var(--line)}
+.mode{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background:transparent; color:var(--ink); border:1px solid var(--rule); border-radius:50%; cursor:pointer}
+.mode .sun{display:none}
+:root[data-mode="dark"] .mode .sun{display:block}
+:root[data-mode="dark"] .mode .moon{display:none}
+.doc{max-width:1120px; margin:0 auto; padding-inline:24px; padding-block:40px 64px}
+.back{display:inline-block; font-size:14px; color:var(--muted); text-decoration:none; margin-bottom:28px}
+.back::before{content:"← "}
+html[dir="rtl"] .back::before{content:"→ "}
+.eyebrow{font-weight:500; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
+html[lang="ar"] .eyebrow,html[lang="zh"] .eyebrow{letter-spacing:0; font-size:13px}
+.layout{display:grid; grid-template-columns:220px minmax(0,1fr); gap:56px; margin-top:16px}
+.toc{position:sticky; top:96px; align-self:start; max-height:calc(100vh - 120px); overflow:auto}
+.toc ol{list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column}
+.toc a{display:block; padding:7px 0; font-size:14px; line-height:1.35; color:var(--muted); text-decoration:none; border-top:1px solid var(--rule)}
+.toc a:hover{color:var(--ink)}
+.toc summary{list-style:none; cursor:default}
+.toc summary::-webkit-details-marker{display:none}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr; gap:24px}
+  .toc{position:static; max-height:none; border:1px solid var(--rule); border-radius:2px; background:var(--card)}
+  .toc summary{cursor:pointer; padding:14px 16px; min-height:48px; display:flex; align-items:center; justify-content:space-between}
+  .toc summary::after{content:"+"; font-size:18px; letter-spacing:0; color:var(--ink)}
+  .toc details[open] summary::after{content:"–"}
+  .toc ol{margin:0; padding:0 16px 8px}
+}
+.bar,.doc{padding-left:max(24px,env(safe-area-inset-left)); padding-right:max(24px,env(safe-area-inset-right))}
+@media (max-width:520px){.bar,.doc{padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right))} body{font-size:16px}}
+
+article{max-width:70ch; min-width:0}
+article h1{font-weight:300; font-size:clamp(28px,4vw,40px); line-height:1.15; margin:0 0 12px; text-wrap:balance}
+article h2{font-weight:400; font-size:24px; line-height:1.25; margin:48px 0 12px; padding-top:20px; border-top:1px solid var(--rule)}
+article h3{font-weight:500; font-size:18px; margin:28px 0 8px}
+article p{margin:0 0 12px}
+article ol,article ul{padding-inline-start:1.4em; margin:0 0 16px}
+article li{margin-bottom:6px}
+article li > p{margin:0 0 8px}
+article strong{font-weight:500}
+.tbl{overflow-x:auto; margin:8px 0 20px; border-top:1px solid var(--rule)}
+.tbl table{width:100%; border-collapse:collapse; font-size:15px; font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{text-align:start; vertical-align:top; padding:10px 12px 10px 0; border-bottom:1px solid var(--rule)}
+html[dir="rtl"] .tbl th,html[dir="rtl"] .tbl td{padding:10px 0 10px 12px}
+.tbl th{font-weight:500; color:var(--muted)}
+footer{border-top:1px solid var(--rule); padding-block:36px; display:flex; justify-content:center}
+footer img{width:110px; height:auto; filter:var(--logo-filter)}
+
+</style>
+<script>
+/* Theme by the visitor's local time: light 07:00-18:59, dark otherwise. A manual switch lasts for the visit. */
+(function(){
+  var DAY_START=7, NIGHT_START=19;
+  function auto(){var h=new Date().getHours(); return (h>=DAY_START && h<NIGHT_START)?'light':'dark';}
+  function manual(){try{return sessionStorage.getItem('buccari-mode');}catch(e){return null;}}
+  window.__setMode=function(m){document.documentElement.setAttribute('data-mode',m); if(window.__onMode) window.__onMode(m);};
+  window.__setMode(manual()||auto());
+  setInterval(function(){ if(!manual()) window.__setMode(auto()); },5*60*1000);
+})();
+</script>
+
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="img/logo.png" alt="BUCCARI"></a>
+    <div class="tools">
+      <nav class="langs" aria-label="Language"><a href="manual-en.html" aria-current="page" hreflang="en">English</a><a href="manual-ru.html" hreflang="ru">Русский</a><a href="manual-ar.html" hreflang="ar">العربية</a><a href="manual-zh.html" hreflang="zh">中文</a></nav>
+      <button type="button" class="mode" id="modeBtn" aria-label="Dark mode" data-dark="Dark mode" data-light="Light mode"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+</header>
+<main class="doc">
+  <a class="back" href="index.html#bc-05">Back to BUCCARI</a>
+  <div class="eyebrow">BC-05 · User manual</div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contents"><details id="tocBox" open><summary class="eyebrow">Contents</summary><ol><li><a href="#s1">1. Introduction</a></li><li><a href="#s2">2. Safety instructions</a></li><li><a href="#s3">3. Product description</a></li><li><a href="#s4">4. Installation and first use</a></li><li><a href="#s5">5. Making drinks</a></li><li><a href="#s6">6. Settings</a></li><li><a href="#s7">7. Cleaning and care</a></li><li><a href="#s8">8. Transport and disposal</a></li><li><a href="#s9">9. Troubleshooting</a></li><li><a href="#s10">10. Liability and warranty</a></li></ol></details></nav>
+    <article>
+<h1>BUCCARI BC-05 Automatic Coffee Machine. User Manual</h1>
+<p>Please read this manual carefully before use and keep it for future reference.</p>
+<h2 id="s1">1. Introduction</h2>
+<ol>
+<li>Thank you for choosing the BUCCARI BC-05, the latest generation of our fully automatic coffee machines, built on the brand's core technologies.</li>
+<li>This manual explains how to use and clean the coffee machine. The manufacturer is not liable for any damage caused by using the machine in ways that do not follow this manual.</li>
+<li>Reliable operation depends on correct use and maintenance. Read this manual carefully before first use and keep it within reach. Enjoy your coffee!</li>
+<li>Every machine is fully tested at the factory, so a small amount of ground coffee inside the machine is normal. We guarantee that the appliance is new.</li>
+</ol>
+<h2 id="s2">2. Safety instructions</h2>
+<p>Safety is one of the most important features of the BC-05. The safety devices are only effective if you follow the instructions below on preventing injury and health hazards.</p>
+<h3 id="s2-1">2.1 Risks to the user</h3>
+<p><strong>Caution.</strong> Incorrect use of the coffee machine may cause minor injury. Strictly follow these rules:</p>
+<ol>
+<li>Read this manual carefully before use.</li>
+<li>Do not use the coffee machine if it is faulty or damaged.</li>
+<li>Do not modify the built-in safety devices.</li>
+<li>Do not touch the hot parts of the machine.</li>
+<li>Children aged 8 and over, and people with reduced physical, sensory or mental capabilities or lack of experience, may use this appliance only under supervision, or after being instructed in its safe use by a responsible person and fully understanding the hazards involved.</li>
+<li>Do not let children play with or near the appliance. Children under 15 may use it only under adult supervision.</li>
+<li>Keep the appliance and its power cord out of reach of children under 8.</li>
+<li>Install the coffee machine where it is easy to inspect and maintain regularly.</li>
+<li>Put only coffee beans into the bean container. Never use ground coffee.</li>
+</ol>
+<p><strong>Risk of electric shock.</strong> Incorrect use of the coffee machine may cause serious injury. Always observe the following:</p>
+<ol>
+<li>Comply with the low-voltage directives and national and local safety regulations.</li>
+<li>Make sure the machine is properly earthed when connected.</li>
+<li>The mains voltage must match the voltage on the appliance's rating plate.</li>
+<li>Do not touch live parts.</li>
+<li>Switch off the main switch and unplug the appliance before any maintenance.</li>
+<li>The power cord may only be replaced by qualified service personnel.</li>
+</ol>
+<p><strong>Risk of burns.</strong> Incorrect use of the coffee machine may cause minor injury.</p>
+<ol>
+<li>There is a risk of burns where drinks, hot water and steam are dispensed. Keep your hands away from the coffee spout during operation and cleaning.</li>
+<li>The coffee spout and the brewing unit get very hot. Hold only the handles provided for this. Clean the brewing unit only after the machine has fully cooled down.</li>
+</ol>
+<h3 id="s2-2">2.2 Risks to the appliance</h3>
+<p><strong>Caution.</strong> Ignoring these warnings may lead to a life-threatening electric shock. Always observe the following:</p>
+<ol>
+<li>Do not switch the machine on with an empty water tank.</li>
+<li>After a long period without use (for example, a holiday), clean the coffee machine thoroughly before using it again.</li>
+<li>Protect coffee beans from adverse conditions, including frost and humidity.</li>
+<li>Faults must only be repaired by qualified technicians.</li>
+<li>Use only original accessories from the manufacturer.</li>
+<li>If there is visible external damage or a liquid leak, contact customer service immediately for repair or replacement.</li>
+<li>Do not rinse the appliance under running water or clean it with a steam cleaner.</li>
+<li>Do not place the appliance on surfaces that are sensitive to water splashes.</li>
+<li>Put only coffee beans into the bean container. Never use ground coffee.</li>
+<li>If the coffee machine and accessories were transported below 10 °C, leave them at room temperature for 3 hours before connecting and switching on.</li>
+</ol>
+<h3 id="s2-3">2.3 Hygiene: water</h3>
+<p><strong>Caution.</strong> Using unsuitable water can harm your health. Always observe the following:</p>
+<ol>
+<li>Use only clean, uncontaminated water.</li>
+<li>Do not fill the coffee machine with corrosive water.</li>
+<li>Carbonate hardness must not exceed 5–6 °dKH or 8.9–10.7 °fKH.</li>
+<li>Chlorine content: maximum 100 mg/L.</li>
+<li>pH value: 6.5–7 (neutral).</li>
+</ol>
+<h2 id="s3">3. Product description</h2>
+<h3 id="s3-1">3.1 Machine overview</h3>
+<p>Bean container lid · Water tank lid · Left side panel · Right side panel · TFT touch screen · Side door · Milk frother · Spout cover · Coffee spout · Milk container (optional) · Waste water tray float · Drip tray · Waste water tray cover.</p>
+<p>Rear: water tank · power switch · power socket.</p>
+<h3 id="s3-2">3.2 Technical specifications</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>BC-05</td>
+</tr>
+<tr>
+<td>Rated voltage / frequency</td>
+<td>220–240 V, 50/60 Hz</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1350 W</td>
+</tr>
+<tr>
+<td>Water tank capacity</td>
+<td>1.2 L</td>
+</tr>
+<tr>
+<td>Bean container capacity</td>
+<td>250 g</td>
+</tr>
+<tr>
+<td>Grounds container capacity</td>
+<td>10 servings</td>
+</tr>
+<tr>
+<td>Dimensions (L × W × H)</td>
+<td>425 × 181 × 377 mm</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="s3-3">3.3 In the box</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Accessory</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power cord</td>
+<td>1</td>
+</tr>
+<tr>
+<td>User manual</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cleaning brush</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cleaning needle</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Steam pipe cleaning brush</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Milk container (optional)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s4">4. Installation and first use</h2>
+<h3 id="s4-1">4.1 Placement</h3>
+<p><strong>Location.</strong> The machine may be damaged if these conditions are not met:</p>
+<ol>
+<li>Leave enough space above the machine to add beans and water.</li>
+<li>Keep at least 8 cm between the back of the machine and the wall for ventilation.</li>
+</ol>
+<p><strong>Climate.</strong> The machine may be damaged if these conditions are not met:</p>
+<ol>
+<li>Ambient temperature from +10 °C to +40 °C.</li>
+<li>Relative humidity no higher than 80%.</li>
+<li>The coffee machine is for indoor use only. Do not use it outdoors; protect it from rain, snow and frost.</li>
+</ol>
+<p><strong>Power supply.</strong> The electrical connection must comply with the regulations of the country of use. The mains voltage must match the voltage on the rating plate.</p>
+<p><strong>Danger!</strong> Always observe the following:</p>
+<ol>
+<li>Do not operate the machine with a damaged power cord. A damaged cord must be replaced immediately by qualified service personnel.</li>
+<li>Extension cords are not recommended. If one is unavoidable, its conductor cross-section must be at least 1 mm².</li>
+<li>Route the cord so nobody can trip over it. It must not run over sharp edges, hang loose, be pinched or lie on hot objects; keep it away from oil and aggressive cleaning agents.</li>
+<li>Do not lift or pull the appliance by the cord. Do not unplug by pulling the cord. Do not touch the cord or plug with wet hands, and do not insert a wet plug into a socket.</li>
+</ol>
+<h3 id="s4-2">4.2 Connecting to power</h3>
+<p>Plug one end of the power cord into the socket on the back of the machine and the other end into a wall outlet.</p>
+<h3 id="s4-3">4.3 Adding water and beans</h3>
+<p><strong>Filling the water tank.</strong> Lift the tank lid, take out the tank, fill it with water (not above the MAX mark) and put it back.</p>
+<p><strong>Adding beans.</strong> Open the bean container lid, add coffee beans and close the lid.</p>
+<h3 id="s4-4">4.4 First start</h3>
+<ol>
+<li>Switch the machine on with the power switch on the back. The start screen appears and the machine automatically runs: self-check → heating → rinsing → reset.</li>
+<li>During the self-check the machine checks the water level, the brewing unit, the side door and the waste water tray. If it finds a problem, a warning appears; follow the instructions on the screen.</li>
+</ol>
+<h2 id="s5">5. Making drinks</h2>
+<p>The drink menu has two pages. Switch between them with the ‹ and › arrows.</p>
+<h3 id="s5-1">5.1 Black coffee (Espresso, Lungo, Americano)</h3>
+<ol>
+<li>On the home screen, tap a drink to open its settings. For espresso, for example, you can set strength, extraction temperature, pre-infusion time and volume. Tap "Start brewing"; the settings are saved automatically.</li>
+<li>The machine brews the drink and shows the progress in percent. At 100% the "Enjoy your coffee" window appears and the drink is ready. To stop brewing, tap the cancel icon.</li>
+</ol>
+<h3 id="s5-2">5.2 Coffee with milk (Cappuccino, Latte, Latte Macchiato, Macchiato, Flat White)</h3>
+<ol>
+<li>Pour milk into the milk container (or put the milk tube directly into the bottom of a milk carton). Make sure the tube is firmly connected to the milk frother. Chilled milk at 4–8 °C is recommended. Check the frother knob: "Froth milk" gives hot milk foam, "Warm milk" gives hot milk.</li>
+<li>On the home screen, tap a drink to open its settings. For latte, for example, you can set strength, extraction temperature, pre-infusion time, coffee volume and milk frothing time. Tap "Start brewing"; the settings are saved automatically.</li>
+<li>The progress is shown in percent. At 100% a message confirms the drink is ready. You can stop at any time with the cancel icon.</li>
+<li>After a milk drink, the machine asks whether to deep-clean the milk frother. If you are making another milk drink straight away, tap "Cancel". Otherwise tap "Clean". See 7.1.3 "Deep cleaning the milk frother".</li>
+</ol>
+<h3 id="s5-3">5.3 Hot milk and milk foam</h3>
+<ol>
+<li>Pour milk into the container (or put the tube into the bottom of a milk carton) and connect the tube to the frother. Chilled milk at 4–8 °C is recommended. Set the frother knob to "Froth milk" (hot foam) or "Warm milk" (hot milk).</li>
+<li>Tap the milk drink icon on the home screen and set the time. Tap "Start brewing"; the settings are saved automatically.</li>
+<li>The progress is shown in percent; at 100% a message confirms the drink is ready. You can stop at any time with the cancel icon.</li>
+<li>Afterwards the machine asks about deep-cleaning the milk frother; proceed as after a coffee with milk.</li>
+</ol>
+<h3 id="s5-4">5.4 Hot water</h3>
+<ol>
+<li>Tap the hot water icon on the home screen and set the temperature and volume. Tap "Start"; the settings are saved automatically.</li>
+<li>The machine dispenses hot water and shows the progress in percent. At 100% a message confirms it is done. You can stop at any time with the cancel icon.</li>
+</ol>
+<h3 id="s5-5">5.5 User profiles</h3>
+<p>Tap the avatar icon in the top left corner and choose user 1, 2, 3 or 4. Each user can set and save their own drink settings.</p>
+<h3 id="s5-6">5.6 Adjusting the grind</h3>
+<p>The grind is set to the optimal level at the factory, so you can make coffee straight away. If the coffee tastes weak with little crema, or after a few cups it runs very slowly, drop by drop, adjust the grind:</p>
+<ol>
+<li>Open the bean container lid.</li>
+<li>Start making a coffee. When you hear the grinder, turn the grind adjustment knob to the position you need (1 is the finest, 5 is the coarsest).</li>
+<li>Watch how fast the coffee flows. If it flows too slowly or not at all, turn the knob towards 5. For a rich coffee with thick crema, turn it one step towards 1. Change only one step at a time to avoid damaging the machine.</li>
+</ol>
+<p><strong>Caution.</strong> A new grind setting takes effect only after at least two cups. If the result is still not right, turn the knob one more step. The texture of the used coffee grounds in the grounds container can also guide you.</p>
+<h2 id="s6">6. Settings</h2>
+<p>Tap the settings icon at the bottom of the screen to open the settings menu.</p>
+<p><strong>Language.</strong> The machine supports several interface languages; choose the one you need.</p>
+<p><strong>Drink settings.</strong> Change all drink settings for the current user here; changes are saved to their profile automatically.</p>
+<p><strong>Auto power-off.</strong> Sets the time for automatic switch-off. After this time in standby, the machine and screen switch off; touch the screen to wake it.</p>
+<p><strong>Standby backlight.</strong> Screen brightness in standby: full, half or off.</p>
+<p><strong>Adjust while brewing.</strong> When on, drink settings can be changed during brewing (except extraction temperature). When off, settings are locked during brewing.</p>
+<p><strong>Sound.</strong> Turns sound signals on or off.</p>
+<p><strong>Descaling level.</strong> Five levels; at OFF the reminder is disabled. When total water use reaches the set volume, a descaling reminder appears. Volume per level: 1 — 80 L, 2 — 60 L, 3 — 40 L, 4 — 20 L, 5 — 10 L.</p>
+<p><strong>Engineer settings.</strong> For manufacturer service only.</p>
+<p><strong>Factory reset.</strong> Restores all settings to factory values: coffee settings, language, drinks, auto power-off, brightness, adjust while brewing, sound and descaling level.</p>
+<p><strong>Drink counter.</strong> Total number of drinks made, and the number for each drink.</p>
+<p><strong>Descaling count.</strong> How many times descaling has been completed.</p>
+<h2 id="s7">7. Cleaning and care</h2>
+<h3 id="s7-1">7.1 Automatic cleaning</h3>
+<p><strong>7.1.1 Quick rinse of the brewing unit.</strong> The boiler heats up and the pump flushes water through the brewing unit. Waste water runs out of the coffee spout during rinsing.</p>
+<p><strong>7.1.2 Quick rinse of the milk frother.</strong> The boiler heats up and the pump flushes the milk frother. Waste water runs out of the coffee spout.</p>
+<p><strong>7.1.3 Deep cleaning the milk frother.</strong> Following the on-screen prompts, wash the milk container thoroughly, fill it with clean water and tap the clean icon. The machine deep-cleans the frother automatically; the cleaning time is adjustable. Waste water runs out of the coffee spout.</p>
+<p><strong>7.1.4 Machine maintenance.</strong> Includes deep cleaning of the brewing unit (with a tablet), deep cleaning of the milk system (with a tablet) and descaling.</p>
+<ol>
+<li><strong>Deep cleaning the brewing unit (tablet).</strong> Start the program, place a brewing unit cleaning tablet in the brewing unit when prompted and tap "Next". Waste water runs out of the coffee spout during cleaning.</li>
+<li><strong>Deep cleaning the milk system (tablet).</strong> Start the program, put a milk system cleaning tablet and clean water into the milk container when prompted, then tap "Next". Waste water runs out of the coffee spout. Afterwards, wash the container, refill it with clean water and run the cleaning again to remove any cleaner residue.</li>
+<li><strong>Descaling.</strong> Tap "Start descaling". When prompted, pour coffee machine descaler and clean water into the water tank up to MAX. Place a large container under the coffee spout and tap "Next". Watch the container so it does not overflow. Afterwards, wash the tank, refill it with clean water and run a rinse to remove any descaler residue.</li>
+</ol>
+<h3 id="s7-2">7.2 Manual cleaning</h3>
+<p>Clean these parts regularly:</p>
+<ol>
+<li><strong>Grounds container</strong> — after every emptying.</li>
+<li><strong>Waste water tray assembly</strong> (tray, cover, drip tray) — empty and wash all parts when the float rises.</li>
+<li><strong>Water tank</strong> — wash regularly with a soft cloth and a mild detergent (once a month recommended).</li>
+<li><strong>Coffee spout</strong> — wipe regularly with a sponge or cloth; clear blockages with a toothpick.</li>
+<li><strong>Bean container</strong> — wipe with a dry cloth from time to time (once a month recommended).</li>
+<li>
+<p><strong>Ground coffee chute</strong> (once a month or when blocked).</p>
+<p><strong>Note.</strong> Do this only with the machine switched off and unplugged.</p>
+<p>① Open the side door. ② Clean the chute with the brush. ③ Remove visible coffee grounds inside the machine, using a vacuum cleaner if needed. ④ Remove grounds and dirt from the waste water tray.</p>
+</li>
+<li>
+<p><strong>Manual cleaning of the milk frother</strong> (once a month recommended).</p>
+<p>① Switch the machine off. ② Disconnect the milk tube from the frother. ③ Press the left and right clips inwards and pull down to remove the whole frother. ④ Take the frother apart and rinse all parts under running water; if needed, soak them for 10 minutes in milk system cleaner first.</p>
+<p><strong>Note.</strong> Rinse the air slot on the air adjustment knob thoroughly and do not damage it, or milk frothing will not work properly.</p>
+<p>⑤ Reassemble all parts in reverse order and check that the air adjustment knob is fitted correctly. It has 5 positions: fine for dense, silky foam, coarse for bigger bubbles. Adjust it to the foam you like.</p>
+</li>
+<li>
+<p><strong>Manual cleaning of the brewing unit</strong> (every two weeks recommended).</p>
+<p>① Switch the machine off and open the side door. ② Press the two orange buttons on the sides of the brewing unit in the PUSH direction and pull the unit out. ③ Soak the unit in clean water for 5 minutes, then rinse under the tap. Do not put it in a dishwasher or use any detergent. ④ With the door open, brush away visible coffee grounds inside the machine. ⑤ Press the brewing head of the clean unit all the way down, slide the unit back in and press on the PUSH mark until it clicks into place.</p>
+<p><strong>Note.</strong> Make sure both orange buttons have returned to their original position, or the machine may be damaged.</p>
+</li>
+</ol>
+<h3 id="s7-3">7.3 Removing, refitting and cleaning the burrs</h3>
+<p>If no ground coffee comes out, the chute is blocked, a foreign object is stuck in the grinder or the burrs are fitted wrongly:</p>
+<ol>
+<li>Switch the machine off and remove all beans from the bean container.</li>
+<li>Turn the grinder cover anticlockwise until the unlock mark lines up with the rib in the bean container, then lift off the cover.</li>
+<li>Turn the grind adjustment knob to 5, lift it and turn it clockwise to the unlock position to release the burrs.</li>
+<li>Pull the burr handle up to remove the burr assembly.</li>
+<li>Remove all ground coffee and bean residue from the grinding chamber; a vacuum cleaner and a small flat screwdriver help. Clean thoroughly, or the burrs will not sit correctly.</li>
+<li>Refit the burr assembly. Turn the grind adjustment knob anticlockwise to 5, lift it and keep turning anticlockwise to 3 or another suitable level, then pull the burr handle again. If the burr sleeve does not come out, it is locked correctly. If it comes out, it is not fully locked: turn the knob clockwise to unlock, press the burr firmly into place and turn the knob anticlockwise to 3 or another suitable level.</li>
+<li>Refit the grinder cover and turn it clockwise until the lock mark lines up with the rib in the bean container.</li>
+</ol>
+<h2 id="s8">8. Transport and disposal</h2>
+<h3 id="s8-1">8.1 Transport</h3>
+<ol>
+<li>Keep the original packaging for future transport.</li>
+<li>Drain all remaining water from the coffee machine before transport to avoid damage.</li>
+<li>Empty the water tank and the waste water tray, and wipe the machine inside and out.</li>
+</ol>
+<h3 id="s8-2">8.2 Coffee waste</h3>
+<p>Coffee waste is fully organic and can be disposed of with household waste.</p>
+<h3 id="s8-3">8.3 Waste water</h3>
+<p>Waste water from brewing and cleaning meets the standards for household waste water and can go into a normal drain.</p>
+<h3 id="s8-4">8.4 Disposal of the appliance</h3>
+<ol>
+<li>The appliance is made of high-quality, recyclable materials.</li>
+<li>Do not dispose of the appliance with household waste. Follow local regulations for waste disposal.</li>
+</ol>
+<h2 id="s9">9. Troubleshooting</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The machine does not switch on</td>
+<td>No power, or the main switch is OFF</td>
+<td>Connect the power cord and set the switch to ON</td>
+</tr>
+<tr>
+<td>Error code on screen or buttons do not respond</td>
+<td>Software or electronics fault</td>
+<td>Switch off, unplug, wait 30 seconds and switch on again. If the problem persists, contact the manufacturer or seller</td>
+</tr>
+<tr>
+<td>Unusual noise while grinding</td>
+<td>Foreign object in the grinder</td>
+<td>Contact the manufacturer or seller</td>
+</tr>
+<tr>
+<td>Coffee runs slowly or not at all</td>
+<td>Grind too fine</td>
+<td>Turn the grind knob coarser (one step at a time). The change takes effect after at least two cups</td>
+</tr>
+<tr>
+<td>Coffee runs slowly or not at all</td>
+<td>Water circuit not filled</td>
+<td>Press and hold the power button to run the automatic rinse at switch-off, then make coffee again</td>
+</tr>
+<tr>
+<td>Coffee runs slowly or not at all</td>
+<td>Brewing unit dirty</td>
+<td>Clean the brewing unit thoroughly</td>
+</tr>
+<tr>
+<td>Coffee runs too fast and tastes weak</td>
+<td>Grind too coarse</td>
+<td>Turn the grind knob finer (one step at a time). The change takes effect after at least two cups</td>
+</tr>
+<tr>
+<td>The brewing unit cannot be removed</td>
+<td>Brewing unit not in its home position</td>
+<td>Restart the machine and clear all warnings; the unit returns home automatically</td>
+</tr>
+<tr>
+<td>Clear water comes out instead of coffee</td>
+<td>Beans are not ground; beans are damp</td>
+<td>Set a coarser grind first; if that does not help, contact service</td>
+</tr>
+<tr>
+<td>"Brewing unit not installed" after fitting it</td>
+<td>Brewing unit not locked</td>
+<td>Fit the unit and press on the PUSH mark until it clicks</td>
+</tr>
+<tr>
+<td>Too little coffee</td>
+<td>Leak in the internal tubes</td>
+<td>Contact the manufacturer or seller</td>
+</tr>
+<tr>
+<td>Too little coffee</td>
+<td>Water circuit blocked by scale</td>
+<td>Run the full descaling program</td>
+</tr>
+<tr>
+<td>Milk is not drawn in</td>
+<td>Air leak in the frother; too much air; milk tube blocked</td>
+<td>Check and refit all frother parts; lower the air adjustment setting; clean the milk tube and connectors</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s10">10. Liability and warranty</h2>
+<p>The manufacturer accepts no warranty claims or liability for injury or damage to property in the following cases:</p>
+<ol>
+<li>Use of the appliance other than as intended or in breach of the rules.</li>
+<li>Incorrect installation, commissioning, operation, cleaning or maintenance.</li>
+<li>Failure to follow the instructions in this manual.</li>
+<li>Operation of the coffee machine in abnormal conditions.</li>
+<li>Use of non-original spare parts.</li>
+<li>Damage caused by foreign objects, accidents, deliberate acts or force majeure.</li>
+</ol>
+    </article>
+  </div>
+</main>
+<footer><img src="img/logo.png" alt="BUCCARI"></footer>
+<script>
+(function(){
+  var mb=document.getElementById('modeBtn');
+  function upd(){var d=document.documentElement.getAttribute('data-mode')==='dark'; mb.setAttribute('aria-label', d?mb.dataset.light:mb.dataset.dark); mb.title=mb.getAttribute('aria-label');}
+  window.__onMode=upd;
+  mb.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-mode')==='dark'?'light':'dark'; try{sessionStorage.setItem('buccari-mode',n);}catch(e){} window.__setMode(n);});
+  upd();
+  var tb=document.getElementById('tocBox'), mq=matchMedia('(max-width:860px)');
+  function tocMode(){ if(mq.matches) tb.removeAttribute('open'); else tb.setAttribute('open',''); }
+  tocMode(); if(mq.addEventListener) mq.addEventListener('change',tocMode);
+  tb.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches) tb.removeAttribute('open'); }); });
+})();
+</script>
+</body>
+</html>
