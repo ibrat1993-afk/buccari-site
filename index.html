@@ -236,6 +236,24 @@ html[lang="ar"] .btn,html[lang="zh"] .btn{letter-spacing:0; font-size:15px}
 .pv-hero .btn{border-color:#fff; color:#fff}
 .pv-hero .btn.solid{background:#fff; color:#141414}
 @media (max-width:640px){.pv-hero{padding:24px; min-height:440px}}
+.tile.white .pic{background:#fff}
+.air-hero{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center; background:var(--card); border:1px solid var(--rule); border-radius:var(--r); padding:32px}
+.air-hero .plate,.air-feat .plate{background:#fff; border-radius:12px; overflow:hidden; aspect-ratio:1; max-width:100%}
+.air-hero .plate img,.air-feat .plate img{width:100%; height:100%; object-fit:contain; display:block}
+.air-hero .txt{display:flex; flex-direction:column; gap:10px; min-width:0}
+.air-hero h1{font-weight:300; font-size:clamp(34px,5vw,58px); line-height:1.05}
+.air-hero .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:18px}
+.air-hero .stat{border-top:1px solid var(--rule); padding-top:12px; display:flex; flex-direction:column; gap:2px; min-width:0}
+.air-hero .stat b{font-weight:300; font-size:clamp(22px,2.6vw,30px); font-variant-numeric:tabular-nums; white-space:nowrap}
+.air-hero .stat b small{font-size:13px; color:var(--muted); font-weight:400}
+.air-hero .stat span{font-size:13px; color:var(--muted)}
+.air-hero .cta{justify-content:flex-start; margin-top:18px}
+.air-feat{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:32px; align-items:start}
+.air-ticks{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; background:var(--card); border:1px solid var(--rule); border-radius:var(--r); padding-inline:24px}
+.air-ticks li{display:flex; gap:12px; align-items:flex-start; padding-block:14px; border-top:1px solid var(--rule)}
+.air-ticks li:first-child{border-top:0}
+.air-ticks svg{flex-shrink:0; color:var(--accent); margin-top:2px}
+@media (max-width:760px){.air-hero{grid-template-columns:minmax(0,1fr); gap:24px; padding:20px}.air-feat{grid-template-columns:minmax(0,1fr)}.air-hero .stats{gap:10px}}
 .pv-sec{padding-top:72px}
 .pv-sec .head{display:flex; flex-direction:column; gap:10px; margin-bottom:28px}
 .pv-sec h2{font-weight:300; font-size:clamp(26px,3.4vw,38px); line-height:1.15}
@@ -661,6 +679,91 @@ var PAGES = {
   }
 };
 
+/* ===== BUCCARI air purifiers (BA series). Values as published by the factory; empty = not stated, row hidden. ===== */
+var AIR = [
+  {n:"BA-01", cadr:15,   area:5,   w:"5 W",  v:"5 V DC",  db:50, size:"73 × 73 × 202 mm",   kg:"235 g",  filt:2200, timer:"",                modes:["mid","high","auto"],               f:["aq","uv","anion","aroma"]},
+  {n:"BA-02", cadr:95,   area:12,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 404 mm", kg:"2.12 kg", filt:0,   timer:"",                modes:[],                                  f:["speeds3","dust","aq","anion","ball","filterrem"]},
+  {n:"BA-03", cadr:105,  area:13,  w:"23 W", v:"24 V DC", db:55, size:"225 × 225 × 459 mm", kg:"2.5 kg", filt:2200, timer:"2 / 4 / 8 h",     modes:[],                                  f:["stepless","aq","faces","ball","wifi"]},
+  {n:"BA-04", cadr:120,  area:15,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 431 mm", kg:"2.3 kg", filt:0,    timer:"",                modes:[],                                  f:["stepless","dust","aq","faces","ball","wifi","filterrem"]},
+  {n:"BA-05", cadr:200,  area:25,  w:"23 W", v:"24 V DC", db:0,  size:"195 × 195 × 388 mm", kg:"2.06 kg", filt:2200, timer:"2 / 4 / 8 h",    modes:["high","mid","sleep"],              f:["dust","wifi","remote","uv","anion","childlock","lightctl"]},
+  {n:"BA-06", cadr:290,  area:35,  w:"45 W", v:"24 V DC", db:60, size:"244 × 244 × 544 mm", kg:"3.7 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","faces","ball","wifi","anion"]},
+  {n:"BA-07", cadr:300,  area:36,  w:"45 W", v:"24 V DC", db:0,  size:"316 × 159 × 396 mm", kg:"",       filt:2200, timer:"",                modes:["auto","high","mid","low","sleep"], f:["dust","wifi","childlock","timerf"]},
+  {n:"BA-08", cadr:300,  area:36,  w:"",     v:"24 V DC", db:0,  size:"260 × 260 × 475 mm", kg:"",       filt:2200, timer:"2 / 4 / 8 h",     modes:["auto","high","mid","sleep"],       f:["dust","aq","wifi","uv","anion","childlock"]},
+  {n:"BA-09", cadr:305,  area:38,  w:"45 W", v:"24 V DC", db:59, size:"",                   kg:"3.5 kg", filt:2200, timer:"2 / 4 / 6 / 8 h", modes:["auto","sleep","mid","high"],       f:["laser","pm25","aq","touch"]},
+  {n:"BA-10", cadr:350,  area:42,  w:"25 W", v:"24 V DC", db:61, size:"205 × 200 × 585 mm", kg:"5.3 kg", filt:0,    timer:"2 / 4 / 8 h",     modes:["high","mid","auto"],               f:["nocons","touch","night","childlock"]},
+  {n:"BA-11", cadr:375,  area:45,  w:"45 W", v:"24 V DC", db:61, size:"270 × 270 × 580 mm", kg:"4.5 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","anion","wifi"]},
+  {n:"BA-12", cadr:600,  area:72,  w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 790 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","aq","childlock"]},
+  {n:"BA-13", cadr:600,  area:72,  w:"60 W", v:"100–240 V ~ 50/60 Hz", db:55, size:"318 × 318 × 700 mm", kg:"8.3 kg", filt:2200, timer:"", tank:"5.5 L", humid:true, modes:["sleep","mid","high","auto"], f:["humid","laser","pm25","oled","aq","uv","anion"]},
+  {n:"BA-14", cadr:1000, area:120, w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 960 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","hd","aq","childlock"]}
+];
+PRODUCTS.climate = AIR.map(function(a){
+  var s=a.n.toLowerCase();
+  return {slug:s, name:a.n, img:"img/air/"+s+".webp", img2:"img/air/"+s+"-2.webp", listed:true, page:"air", fit:"contain", air:a};
+});
+
+var AT = {
+en:{kind:"Air purifier", kindH:"Air purifier and humidifier",
+  leadS:"A compact purifier for a bedroom, a study or your desk.", leadM:"For living rooms and bedrooms up to {a} m².", leadL:"For large rooms, open-plan spaces and offices up to {a} m².",
+  upTo:"up to {a} m²", sCadr:"CADR", sArea:"room size", sNoise:"noise",
+  featEyebrow:"Features", featTitle:"What it does", specEyebrow:"Specifications", specTitle:"{n} in numbers", ask:"Ask a question",
+  r:{model:"Model",cadr:"Clean air delivery rate (CADR)",area:"Room size",power:"Power",supply:"Power supply",noise:"Noise",modes:"Modes",timer:"Timer",filt:"Filter change reminder",tank:"Water tank",size:"Dimensions",weight:"Weight"},
+  after:"after {h} h",
+  m:{auto:"Auto",sleep:"Sleep",high:"High",mid:"Medium",low:"Low"},
+  f:{wifi:"Wi-Fi and app control",uv:"UV lamp",anion:"Ionizer",childlock:"Child lock",night:"Night light",aq:"Air quality light",pm25:"PM2.5 readout on the display",dust:"Dust sensor",ir:"Infrared air quality sensor",laser:"Laser particle sensor",tvoc:"TVOC sensor for volatile organic compounds",th:"Temperature and humidity on the display",stepless:"Stepless fan speed",speeds3:"3 fan speeds",speeds7:"7 fan speeds",ball:"Rotating control ball",faces:"Shows the air quality with emoji faces",touch:"Touch controls",remote:"Remote control",aroma:"Aroma diffuser",nocons:"No filters to replace: electrostatic cleaning",humid:"Built-in humidifier",oled:"OLED display",hd:"HD touch display with automatic brightness",lightctl:"Light control",filterrem:"Filter change reminder",timerf:"Timer"}},
+ru:{kind:"Очиститель воздуха", kindH:"Очиститель и увлажнитель воздуха",
+  leadS:"Компактный очиститель для спальни, кабинета или рабочего стола.", leadM:"Для гостиной и спальни площадью до {a} m².", leadL:"Для больших комнат, студий и офисов площадью до {a} m².",
+  upTo:"до {a} m²", sCadr:"CADR", sArea:"площадь", sNoise:"шум",
+  featEyebrow:"Возможности", featTitle:"Что он умеет", specEyebrow:"Характеристики", specTitle:"{n} в цифрах", ask:"Задать вопрос",
+  r:{model:"Модель",cadr:"Производительность (CADR)",area:"Площадь помещения",power:"Мощность",supply:"Питание",noise:"Уровень шума",modes:"Режимы",timer:"Таймер",filt:"Напоминание о замене фильтра",tank:"Резервуар для воды",size:"Габариты",weight:"Вес"},
+  after:"через {h} h",
+  m:{auto:"Авто",sleep:"Сон",high:"Высокий",mid:"Средний",low:"Низкий"},
+  f:{wifi:"Wi-Fi и управление из приложения",uv:"УФ-лампа",anion:"Ионизатор",childlock:"Блокировка от детей",night:"Ночник",aq:"Цветовой индикатор качества воздуха",pm25:"Показания PM2.5 на дисплее",dust:"Датчик пыли",ir:"Инфракрасный датчик качества воздуха",laser:"Лазерный датчик частиц",tvoc:"Датчик летучих органических веществ (TVOC)",th:"Температура и влажность на дисплее",stepless:"Плавная регулировка скорости",speeds3:"3 скорости",speeds7:"7 скоростей",ball:"Поворотный шар-регулятор",faces:"Показывает качество воздуха смайликами",touch:"Сенсорное управление",remote:"Пульт ДУ",aroma:"Ароматизация",nocons:"Без сменных фильтров: электростатическая очистка",humid:"Встроенный увлажнитель",oled:"OLED-дисплей",hd:"Сенсорный HD-дисплей с автояркостью",lightctl:"Управление подсветкой",filterrem:"Напоминание о замене фильтра",timerf:"Таймер"}},
+ar:{kind:"منقّي هواء", kindH:"منقّي ومرطّب هواء",
+  leadS:"منقٍّ صغير لغرفة النوم أو المكتب أو سطح العمل.", leadM:"لغرف المعيشة والنوم حتى \u2066{a} m²\u2069.", leadL:"للغرف الكبيرة والمساحات المفتوحة والمكاتب حتى \u2066{a} m²\u2069.",
+  upTo:"حتى \u2066{a} m²\u2069", sCadr:"CADR", sArea:"المساحة", sNoise:"الضوضاء",
+  featEyebrow:"المزايا", featTitle:"ما الذي يقدّمه", specEyebrow:"المواصفات", specTitle:"{n} بالأرقام", ask:"اطرح سؤالًا",
+  r:{model:"الطراز",cadr:"معدل توصيل الهواء النقي (CADR)",area:"مساحة الغرفة",power:"القدرة",supply:"مصدر الطاقة",noise:"مستوى الضوضاء",modes:"الأوضاع",timer:"المؤقت",filt:"تذكير بتغيير الفلتر",tank:"خزان الماء",size:"الأبعاد",weight:"الوزن"},
+  after:"بعد \u2066{h} h\u2069",
+  m:{auto:"تلقائي",sleep:"النوم",high:"مرتفع",mid:"متوسط",low:"منخفض"},
+  f:{wifi:"Wi-Fi والتحكم عبر التطبيق",uv:"مصباح الأشعة فوق البنفسجية",anion:"مؤيّن",childlock:"قفل الأطفال",night:"إضاءة ليلية",aq:"مؤشر ضوئي لجودة الهواء",pm25:"عرض قيمة PM2.5 على الشاشة",dust:"مستشعر الغبار",ir:"مستشعر جودة الهواء بالأشعة تحت الحمراء",laser:"مستشعر جسيمات بالليزر",tvoc:"مستشعر المركبات العضوية المتطايرة (TVOC)",th:"عرض درجة الحرارة والرطوبة",stepless:"سرعة مروحة قابلة للضبط بسلاسة",speeds3:"3 سرعات",speeds7:"7 سرعات",ball:"كرة تحكم دوّارة",faces:"يعرض جودة الهواء بوجوه تعبيرية",touch:"تحكم باللمس",remote:"جهاز تحكم عن بُعد",aroma:"ناشر للعطور",nocons:"بدون فلاتر للاستبدال: تنقية كهروستاتيكية",humid:"مرطّب مدمج",oled:"شاشة OLED",hd:"شاشة لمس عالية الدقة بسطوع تلقائي",lightctl:"التحكم في الإضاءة",filterrem:"تذكير بتغيير الفلتر",timerf:"مؤقت"}},
+zh:{kind:"空气净化器", kindH:"空气净化加湿器",
+  leadS:"小巧净化器，适合卧室、书房或桌面。", leadM:"适用于 {a} m² 以内的客厅和卧室。", leadL:"适用于 {a} m² 以内的大房间、开放式空间和办公室。",
+  upTo:"≤ {a} m²", sCadr:"CADR", sArea:"适用面积", sNoise:"噪音",
+  featEyebrow:"功能", featTitle:"产品功能", specEyebrow:"技术参数", specTitle:"{n} 参数一览", ask:"咨询我们",
+  r:{model:"型号",cadr:"洁净空气输出量 (CADR)",area:"适用面积",power:"功率",supply:"电源",noise:"噪音",modes:"模式",timer:"定时",filt:"滤网更换提醒",tank:"水箱",size:"尺寸",weight:"重量"},
+  after:"{h} h 后",
+  m:{auto:"自动",sleep:"睡眠",high:"高速",mid:"中速",low:"低速"},
+  f:{wifi:"Wi-Fi 与 App 控制",uv:"紫外线灯",anion:"负离子",childlock:"童锁",night:"夜灯",aq:"空气质量指示灯",pm25:"屏幕显示 PM2.5 数值",dust:"粉尘传感器",ir:"红外空气质量传感器",laser:"激光颗粒物传感器",tvoc:"TVOC 挥发性有机物传感器",th:"温湿度显示",stepless:"无级风速调节",speeds3:"3 档风速",speeds7:"7 档风速",ball:"旋转控制球",faces:"以表情显示空气质量",touch:"触控操作",remote:"遥控器",aroma:"香薰功能",nocons:"无需更换滤网：静电吸附净化",humid:"内置加湿器",oled:"OLED 显示屏",hd:"高清触控屏，亮度自动调节",lightctl:"灯光控制",filterrem:"滤网更换提醒",timerf:"定时"}}
+};
+function airTag(a,lang){ var x=AT[lang]||AT.en; return 'CADR '+a.cadr+' m³/h · '+x.upTo.replace('{a}',a.area); }
+var TICK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+PAGES.air=function(p,t,lang){
+  var a=p.air, x=AT[lang]||AT.en, h='', name='BUCCARI '+p.name;
+  var lead=a.area<=15?x.leadS:(a.area<=45?x.leadM:x.leadL);
+  var stats=[[a.cadr,'m³/h',x.sCadr],[a.area,'m²',x.sArea]]; if(a.db) stats.push(['≤ '+a.db,'dB',x.sNoise]);
+  h+='<header class="air-hero"><div class="plate"><img src="'+p.img+'" alt="'+esc(name)+'" width="800" height="800"></div><div class="txt">'+
+     '<div class="eyebrow">'+esc(a.humid?x.kindH:x.kind)+'</div><h1><bdi dir="ltr">'+esc(name)+'</bdi></h1><p class="lead">'+esc(lead.replace('{a}',a.area))+'</p>'+
+     '<div class="stats">'+stats.map(function(s){return '<div class="stat"><b dir="ltr">'+s[0]+'<small> '+s[1]+'</small></b><span>'+esc(s[2])+'</span></div>';}).join('')+'</div>'+
+     '<div class="cta"><a class="btn" href="#support">'+esc(x.ask)+'</a></div></div></header>';
+  h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(x.featEyebrow)+'</div><h2>'+esc(x.featTitle)+'</h2></div><div class="air-feat"><ul class="air-ticks">'+
+     a.f.map(function(k){return '<li>'+TICK+'<span>'+esc(x.f[k])+'</span></li>';}).join('')+'</ul><div class="plate"><img src="'+p.img2+'" alt="" loading="lazy" width="800" height="800"></div></div></section>';
+  var rows=[[x.r.model,p.name],[x.r.cadr,a.cadr+' m³/h'],[x.r.area,x.upTo.replace('{a}',a.area),1]];
+  if(a.w) rows.push([x.r.power,a.w]);
+  if(a.v) rows.push([x.r.supply,a.v]);
+  if(a.db) rows.push([x.r.noise,'≤ '+a.db+' dB(A)']);
+  if(a.modes.length) rows.push([x.r.modes,a.modes.map(function(m){return x.m[m];}).join(' · '),1]);
+  if(a.timer) rows.push([x.r.timer,a.timer]);
+  if(a.filt) rows.push([x.r.filt,x.after.replace('{h}',a.filt),1]);
+  if(a.tank) rows.push([x.r.tank,a.tank]);
+  if(a.size) rows.push([x.r.size,a.size]);
+  if(a.kg) rows.push([x.r.weight,a.kg]);
+  h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(x.specEyebrow)+'</div><h2>'+esc(x.specTitle.replace('{n}',p.name))+'</h2></div><table class="specs"><tbody>';
+  rows.forEach(function(r){ h+='<tr><th scope="row">'+esc(r[0])+'</th><td'+(r[2]?'':' dir="ltr"'+(lang==='ar'?' style="text-align:right"':''))+'>'+esc(r[1])+'</td></tr>'; });
+  h+='</tbody></table></section>';
+  return h;
+};
+
+
 /* Router: #<category-slug> opens that category; any other hash is an anchor on the home view */
 function route(scroll){
   var h=decodeURIComponent(location.hash.slice(1));
@@ -694,9 +797,9 @@ function route(scroll){
       body.innerHTML='<div class="products"></div>';
       var pg=body.firstChild;
       list.forEach(function(p){
-        var a=document.createElement('a'); a.className='tile'; a.href='#'+p.slug;
-        a.innerHTML='<div class="pic" style="overflow:hidden; aspect-ratio:4/3; flex:none">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:58% 62%">':cicon(info.icon))+'</div><div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-inline:4px"><h4 style="padding:0"></h4>'+ARROW+'</div><div class="tag"></div>';
-        a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.sub?(t[p.sub]||''):''; pg.appendChild(a);
+        var a=document.createElement('a'); a.className='tile'+(p.fit?' white':''); a.href='#'+p.slug;
+        a.innerHTML='<div class="pic" style="overflow:hidden; aspect-ratio:4/3; flex:none">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:'+(p.fit||'cover')+';object-position:'+(p.fit?'50% 50%':'58% 62%')+'">':cicon(info.icon))+'</div><div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-inline:4px"><h4 style="padding:0"></h4>'+ARROW+'</div><div class="tag"></div>';
+        a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.air?airTag(p.air,LANG):(p.sub?(t[p.sub]||''):''); pg.appendChild(a);
       });
     }
     var oc=document.getElementById('otherCats'); oc.innerHTML='';
