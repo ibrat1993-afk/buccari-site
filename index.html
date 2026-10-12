@@ -254,6 +254,9 @@ html[lang="ar"] .btn,html[lang="zh"] .btn{letter-spacing:0; font-size:15px}
 .air-ticks li:first-child{border-top:0}
 .air-ticks svg{flex-shrink:0; color:var(--accent); margin-top:2px}
 @media (max-width:760px){.air-hero{grid-template-columns:minmax(0,1fr); gap:24px; padding:20px}.air-feat{grid-template-columns:minmax(0,1fr)}.air-hero .stats{gap:10px}}
+.mix-photo{border-radius:var(--r); overflow:hidden; aspect-ratio:16/9; max-width:100%}
+.mix-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 45%; display:block}
+@media (max-width:640px){.mix-photo{aspect-ratio:4/3}}
 .pv-sec{padding-top:72px}
 .pv-sec .head{display:flex; flex-direction:column; gap:10px; margin-bottom:28px}
 .pv-sec h2{font-weight:300; font-size:clamp(26px,3.4vw,38px); line-height:1.15}
@@ -679,22 +682,22 @@ var PAGES = {
   }
 };
 
-/* ===== BUCCARI air purifiers (BA series). Values as published by the factory; empty = not stated, row hidden. ===== */
+/* ===== BUCCARI air purifiers (AIR series). Values as published by the factory; empty = not stated, row hidden. ===== */
 var AIR = [
-  {n:"BA-01", cadr:15,   area:5,   w:"5 W",  v:"5 V DC",  db:50, size:"73 × 73 × 202 mm",   kg:"235 g",  filt:2200, timer:"",                modes:["mid","high","auto"],               f:["aq","uv","anion","aroma"]},
-  {n:"BA-02", cadr:95,   area:12,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 404 mm", kg:"2.12 kg", filt:0,   timer:"",                modes:[],                                  f:["speeds3","dust","aq","anion","ball","filterrem"]},
-  {n:"BA-03", cadr:105,  area:13,  w:"23 W", v:"24 V DC", db:55, size:"225 × 225 × 459 mm", kg:"2.5 kg", filt:2200, timer:"2 / 4 / 8 h",     modes:[],                                  f:["stepless","aq","faces","ball","wifi"]},
-  {n:"BA-04", cadr:120,  area:15,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 431 mm", kg:"2.3 kg", filt:0,    timer:"",                modes:[],                                  f:["stepless","dust","aq","faces","ball","wifi","filterrem"]},
-  {n:"BA-05", cadr:200,  area:25,  w:"23 W", v:"24 V DC", db:0,  size:"195 × 195 × 388 mm", kg:"2.06 kg", filt:2200, timer:"2 / 4 / 8 h",    modes:["high","mid","sleep"],              f:["dust","wifi","remote","uv","anion","childlock","lightctl"]},
-  {n:"BA-06", cadr:290,  area:35,  w:"45 W", v:"24 V DC", db:60, size:"244 × 244 × 544 mm", kg:"3.7 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","faces","ball","wifi","anion"]},
-  {n:"BA-07", cadr:300,  area:36,  w:"45 W", v:"24 V DC", db:0,  size:"316 × 159 × 396 mm", kg:"",       filt:2200, timer:"",                modes:["auto","high","mid","low","sleep"], f:["dust","wifi","childlock","timerf"]},
-  {n:"BA-08", cadr:300,  area:36,  w:"",     v:"24 V DC", db:0,  size:"260 × 260 × 475 mm", kg:"",       filt:2200, timer:"2 / 4 / 8 h",     modes:["auto","high","mid","sleep"],       f:["dust","aq","wifi","uv","anion","childlock"]},
-  {n:"BA-09", cadr:305,  area:38,  w:"45 W", v:"24 V DC", db:59, size:"",                   kg:"3.5 kg", filt:2200, timer:"2 / 4 / 6 / 8 h", modes:["auto","sleep","mid","high"],       f:["laser","pm25","aq","touch"]},
-  {n:"BA-10", cadr:350,  area:42,  w:"25 W", v:"24 V DC", db:61, size:"205 × 200 × 585 mm", kg:"5.3 kg", filt:0,    timer:"2 / 4 / 8 h",     modes:["high","mid","auto"],               f:["nocons","touch","night","childlock"]},
-  {n:"BA-11", cadr:375,  area:45,  w:"45 W", v:"24 V DC", db:61, size:"270 × 270 × 580 mm", kg:"4.5 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","anion","wifi"]},
-  {n:"BA-12", cadr:600,  area:72,  w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 790 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","aq","childlock"]},
-  {n:"BA-13", cadr:600,  area:72,  w:"60 W", v:"100–240 V ~ 50/60 Hz", db:55, size:"318 × 318 × 700 mm", kg:"8.3 kg", filt:2200, timer:"", tank:"5.5 L", humid:true, modes:["sleep","mid","high","auto"], f:["humid","laser","pm25","oled","aq","uv","anion"]},
-  {n:"BA-14", cadr:1000, area:120, w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 960 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","hd","aq","childlock"]}
+  {n:"AIR-01", cadr:15,   area:5,   w:"5 W",  v:"5 V DC",  db:50, size:"73 × 73 × 202 mm",   kg:"235 g",  filt:2200, timer:"",                modes:["mid","high","auto"],               f:["aq","uv","anion","aroma"]},
+  {n:"AIR-02", cadr:95,   area:12,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 404 mm", kg:"2.12 kg", filt:0,   timer:"",                modes:[],                                  f:["speeds3","dust","aq","anion","ball","filterrem"]},
+  {n:"AIR-03", cadr:105,  area:13,  w:"23 W", v:"24 V DC", db:55, size:"225 × 225 × 459 mm", kg:"2.5 kg", filt:2200, timer:"2 / 4 / 8 h",     modes:[],                                  f:["stepless","aq","faces","ball","wifi"]},
+  {n:"AIR-04", cadr:120,  area:15,  w:"23 W", v:"24 V DC", db:55, size:"200 × 200 × 431 mm", kg:"2.3 kg", filt:0,    timer:"",                modes:[],                                  f:["stepless","dust","aq","faces","ball","wifi","filterrem"]},
+  {n:"AIR-05", cadr:200,  area:25,  w:"23 W", v:"24 V DC", db:0,  size:"195 × 195 × 388 mm", kg:"2.06 kg", filt:2200, timer:"2 / 4 / 8 h",    modes:["high","mid","sleep"],              f:["dust","wifi","remote","uv","anion","childlock","lightctl"]},
+  {n:"AIR-06", cadr:290,  area:35,  w:"45 W", v:"24 V DC", db:60, size:"244 × 244 × 544 mm", kg:"3.7 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","faces","ball","wifi","anion"]},
+  {n:"AIR-07", cadr:300,  area:36,  w:"45 W", v:"24 V DC", db:0,  size:"316 × 159 × 396 mm", kg:"",       filt:2200, timer:"",                modes:["auto","high","mid","low","sleep"], f:["dust","wifi","childlock","timerf"]},
+  {n:"AIR-08", cadr:300,  area:36,  w:"",     v:"24 V DC", db:0,  size:"260 × 260 × 475 mm", kg:"",       filt:2200, timer:"2 / 4 / 8 h",     modes:["auto","high","mid","sleep"],       f:["dust","aq","wifi","uv","anion","childlock"]},
+  {n:"AIR-09", cadr:305,  area:38,  w:"45 W", v:"24 V DC", db:59, size:"",                   kg:"3.5 kg", filt:2200, timer:"2 / 4 / 6 / 8 h", modes:["auto","sleep","mid","high"],       f:["laser","pm25","aq","touch"]},
+  {n:"AIR-10", cadr:350,  area:42,  w:"25 W", v:"24 V DC", db:61, size:"205 × 200 × 585 mm", kg:"5.3 kg", filt:0,    timer:"2 / 4 / 8 h",     modes:["high","mid","auto"],               f:["nocons","touch","night","childlock"]},
+  {n:"AIR-11", cadr:375,  area:45,  w:"45 W", v:"24 V DC", db:61, size:"270 × 270 × 580 mm", kg:"4.5 kg", filt:2200, timer:"",                modes:["high","sleep","auto"],             f:["ir","aq","anion","wifi"]},
+  {n:"AIR-12", cadr:600,  area:72,  w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 790 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","aq","childlock"]},
+  {n:"AIR-13", cadr:600,  area:72,  w:"60 W", v:"100–240 V ~ 50/60 Hz", db:55, size:"318 × 318 × 700 mm", kg:"8.3 kg", filt:2200, timer:"", tank:"5.5 L", humid:true, modes:["sleep","mid","high","auto"], f:["humid","laser","pm25","oled","aq","uv","anion"]},
+  {n:"AIR-14", cadr:1000, area:120, w:"80 W", v:"220–240 V ~ 50/60 Hz", db:0, size:"367 × 370 × 960 mm", kg:"", filt:7500, timer:"2 / 4 / 8 h", modes:[],                            f:["speeds7","laser","tvoc","th","hd","aq","childlock"]}
 ];
 PRODUCTS.climate = AIR.map(function(a){
   var s=a.n.toLowerCase();
@@ -763,6 +766,48 @@ PAGES.air=function(p,t,lang){
   return h;
 };
 
+/* ===== BUCCARI stand mixers (MIX series) ===== */
+PRODUCTS.kitchen = [{slug:"mix-01", name:"MIX-01", img:"img/kitchen/mix-01.webp", img2:"img/kitchen/mix-01-2.webp", img3:"img/kitchen/mix-01-3.webp", listed:true, page:"mix", fit:"contain"}];
+var MT = {
+en:{kind:"Stand mixer", tag:"5 L bowl · 6 speeds", lead:"Planetary mixer with a die-cast aluminium body and a 5 L stainless steel bowl, for dough, batter and cream.",
+  s:[["5","L","bowl"],["6","","speeds"],["700","W","power"]],
+  feat:["3D planetary mixing: the beater turns and travels around the bowl","Die-cast aluminium body","5 L bowl in 304 stainless steel","6 speeds","Touch control with built-in timer","Hall sensor: the motor stops automatically","3 attachments included","Noise up to 69 dB"],
+  r:{model:"Model",power:"Power",max:"Maximum power",supply:"Power supply",bowl:"Bowl",speeds:"Speeds",body:"Body",noise:"Noise",size:"Dimensions (L × W × H)",nw:"Net weight",gw:"Gross weight"},
+  bowlV:"5 L, stainless steel 304", bodyV:"Die-cast aluminium"},
+ru:{kind:"Планетарный миксер", tag:"Чаша 5 L · 6 скоростей", lead:"Планетарный миксер с литым алюминиевым корпусом и чашей 5 L из нержавеющей стали — для теста, кремов и взбитых сливок.",
+  s:[["5","L","чаша"],["6","","скоростей"],["700","W","мощность"]],
+  feat:["3D-планетарное смешивание: насадка вращается и обходит всю чашу","Литой алюминиевый корпус","Чаша 5 L из нержавеющей стали 304","6 скоростей","Сенсорное управление со встроенным таймером","Датчик Холла: мотор останавливается автоматически","3 насадки в комплекте","Уровень шума до 69 dB"],
+  r:{model:"Модель",power:"Мощность",max:"Максимальная мощность",supply:"Питание",bowl:"Чаша",speeds:"Скорости",body:"Корпус",noise:"Уровень шума",size:"Габариты (Д × Ш × В)",nw:"Вес нетто",gw:"Вес брутто"},
+  bowlV:"5 L, нержавеющая сталь 304", bodyV:"Литой алюминий"},
+ar:{kind:"خلاط كهربائي ثابت", tag:"وعاء 5 L · 6 سرعات", lead:"خلاط كوكبي بهيكل من الألمنيوم المصبوب ووعاء من الفولاذ المقاوم للصدأ سعة 5 L، للعجين والخليط والكريمة.",
+  s:[["5","L","الوعاء"],["6","","سرعات"],["700","W","القدرة"]],
+  feat:["خلط كوكبي ثلاثي الأبعاد: تدور الأداة وتتحرك حول الوعاء بالكامل","هيكل من الألمنيوم المصبوب","وعاء سعة 5 L من الفولاذ المقاوم للصدأ 304","6 سرعات","تحكم باللمس مع مؤقت مدمج","مستشعر هول: يتوقف المحرك تلقائيًا","3 ملحقات مرفقة","مستوى ضوضاء حتى 69 dB"],
+  r:{model:"الطراز",power:"القدرة",max:"القدرة القصوى",supply:"مصدر الطاقة",bowl:"الوعاء",speeds:"السرعات",body:"الهيكل",noise:"مستوى الضوضاء",size:"الأبعاد (الطول × العرض × الارتفاع)",nw:"الوزن الصافي",gw:"الوزن الإجمالي"},
+  bowlV:"5 L، فولاذ مقاوم للصدأ 304", bodyV:"ألمنيوم مصبوب"},
+zh:{kind:"厨师机", tag:"5 L 搅拌碗 · 6 档速度", lead:"压铸铝机身、5 L 不锈钢搅拌碗的行星式厨师机，可揉面、打面糊和打发奶油。",
+  s:[["5","L","搅拌碗"],["6","","档速度"],["700","W","功率"]],
+  feat:["3D 行星式搅拌：搅拌头自转并绕碗公转","压铸铝机身","5 L 304 不锈钢搅拌碗","6 档速度","触控操作，内置定时","霍尔传感器：电机自动停止","附带 3 件配件","噪音不超过 69 dB"],
+  r:{model:"型号",power:"功率",max:"最大功率",supply:"电源",bowl:"搅拌碗",speeds:"速度档位",body:"机身",noise:"噪音",size:"尺寸（长 × 宽 × 高）",nw:"净重",gw:"毛重"},
+  bowlV:"5 L，304 不锈钢", bodyV:"压铸铝"}
+};
+var AIR_SPEC = {en:["Specifications","{n} in numbers","Features","What it does","Ask a question"],ru:["Характеристики","{n} в цифрах","Возможности","Что он умеет","Задать вопрос"],ar:["المواصفات","{n} بالأرقام","المزايا","ما الذي يقدّمه","اطرح سؤالًا"],zh:["技术参数","{n} 参数一览","功能","产品功能","咨询我们"]};
+PAGES.mix=function(p,t,lang){
+  var x=MT[lang]||MT.en, w=AIR_SPEC[lang]||AIR_SPEC.en, h='', name='BUCCARI '+p.name;
+  h+='<header class="air-hero"><div class="plate"><img src="'+p.img+'" alt="'+esc(name)+'" width="800" height="800"></div><div class="txt">'+
+     '<div class="eyebrow">'+esc(x.kind)+'</div><h1><bdi dir="ltr">'+esc(name)+'</bdi></h1><p class="lead">'+esc(x.lead)+'</p>'+
+     '<div class="stats">'+x.s.map(function(s){return '<div class="stat"><b dir="ltr">'+s[0]+(s[1]?'<small> '+s[1]+'</small>':'')+'</b><span>'+esc(s[2])+'</span></div>';}).join('')+'</div>'+
+     '<div class="cta"><a class="btn" href="#support">'+esc(w[4])+'</a></div></div></header>';
+  h+='<section class="pv-sec"><div class="mix-photo"><img src="'+p.img3+'" alt="" loading="lazy" width="800" height="800"></div></section>';
+  h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(w[2])+'</div><h2>'+esc(w[3])+'</h2></div><div class="air-feat"><ul class="air-ticks">'+
+     x.feat.map(function(f){return '<li>'+TICK+'<span>'+esc(f)+'</span></li>';}).join('')+'</ul><div class="plate"><img src="'+p.img2+'" alt="" loading="lazy" width="800" height="800"></div></div></section>';
+  var rows=[[x.r.model,p.name],[x.r.power,'700 W'],[x.r.max,'1500 W'],[x.r.supply,'220–240 V ~ 50/60 Hz'],[x.r.bowl,x.bowlV,1],[x.r.speeds,'6'],[x.r.body,x.bodyV,1],[x.r.noise,'≤ 69 dB'],[x.r.size,'416 × 224 × 304 mm'],[x.r.nw,'8.8 kg'],[x.r.gw,'10.6 kg']];
+  h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(w[0])+'</div><h2>'+esc(w[1].replace('{n}',p.name))+'</h2></div><table class="specs"><tbody>';
+  rows.forEach(function(r){ h+='<tr><th scope="row">'+esc(r[0])+'</th><td'+(r[2]?'':' dir="ltr"'+(lang==='ar'?' style="text-align:right"':''))+'>'+esc(r[1])+'</td></tr>'; });
+  h+='</tbody></table></section>';
+  return h;
+};
+function prodTag(p,lang){ if(p.air) return airTag(p.air,lang); if(p.page==='mix') return (MT[lang]||MT.en).tag; return ''; }
+
 
 /* Router: #<category-slug> opens that category; any other hash is an anchor on the home view */
 function route(scroll){
@@ -799,7 +844,7 @@ function route(scroll){
       list.forEach(function(p){
         var a=document.createElement('a'); a.className='tile'+(p.fit?' white':''); a.href='#'+p.slug;
         a.innerHTML='<div class="pic" style="overflow:hidden; aspect-ratio:4/3; flex:none">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:'+(p.fit||'cover')+';object-position:'+(p.fit?'50% 50%':'58% 62%')+'">':cicon(info.icon))+'</div><div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-inline:4px"><h4 style="padding:0"></h4>'+ARROW+'</div><div class="tag"></div>';
-        a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.air?airTag(p.air,LANG):(p.sub?(t[p.sub]||''):''); pg.appendChild(a);
+        a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.sub?(t[p.sub]||''):prodTag(p,LANG); pg.appendChild(a);
       });
     }
     var oc=document.getElementById('otherCats'); oc.innerHTML='';
