@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="canonical" href="https://buccari.tech/qr">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <title>BUCCARI BC-05 Care</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap">
@@ -51,6 +52,16 @@ a.btn small{display:block; color:var(--muted); font-size:12px}
 .contact .v{user-select:all; font-variant-numeric:tabular-nums; min-width:0; overflow-wrap:anywhere}
 .contact .k{color:var(--muted); font-size:12px}
 .copy{font:inherit; font-size:13px; padding:8px 12px; min-height:40px; background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:2px; cursor:pointer; flex-shrink:0}
+.mrow{display:flex; gap:8px}
+.mrow a.btn{flex:1; min-width:0}
+a.pdf{display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:76px; padding:8px 12px; background:var(--card); color:var(--ink); text-decoration:none; border:1px solid var(--rule); border-radius:2px; font-size:13px; letter-spacing:1px; line-height:1.2}
+a.pdf small{color:var(--muted); font-size:11px; letter-spacing:0; margin-top:2px}
+a.pdf:hover{border-color:var(--line)}
+.specs{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; background:var(--card); box-shadow:0 0 0 1px var(--rule); border-radius:2px; font-size:14px}
+.specs th,.specs td{padding:11px 14px; border-bottom:1px solid var(--rule); text-align:start; vertical-align:top}
+.specs tr:last-child th,.specs tr:last-child td{border-bottom:0}
+.specs th{font-weight:400; color:var(--muted); width:52%}
+.specs td{font-weight:500}
 footer{text-align:center; color:var(--muted); font-size:12px; letter-spacing:1px; padding-top:8px}
 footer a{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -85,7 +96,7 @@ footer a{color:var(--muted)}
   </nav>
 
   <header>
-    <img src="img/logo.svg" alt="BUCCARI">
+    <img src="/img/logo.svg" alt="BUCCARI">
     <div class="model">BC-05</div>
     <h1 data-t="title">Thank you for choosing BUCCARI</h1>
     <p class="sub" data-t="sub">Everything for your BC-05 in one place.</p>
@@ -94,7 +105,12 @@ footer a{color:var(--muted)}
   <section aria-labelledby="h-manual">
     <h2 id="h-manual" data-t="manual">User manual</h2>
     <p class="note" data-t="manualNote">Open the manual in your language.</p>
-    <div class="grid" id="manuals"></div>
+    <div class="row" id="manuals"></div>
+  </section>
+
+  <section aria-labelledby="h-spec">
+    <h2 id="h-spec" data-t="spec">Specifications</h2>
+    <table class="specs"><tbody id="specs"></tbody></table>
   </section>
 
   <section aria-labelledby="h-ask">
@@ -118,10 +134,11 @@ footer a{color:var(--muted)}
 /* ===== Fill these in. Leave "" for anything not ready yet: the button shows as "coming soon". ===== */
 var CONFIG = {
   manuals: { en: "manual-en.html", ru: "manual-ru.html", ar: "manual-ar.html", zh: "manual-zh.html" },
+  pdfs: { en: ["manuals/bc-05-en.pdf", "198 KB"], ru: ["manuals/bc-05-ru.pdf", "238 KB"], ar: ["manuals/bc-05-ar.pdf", "117 KB"], zh: ["manuals/bc-05-zh.pdf", "899 KB"] },
   whatsapp: "",   // e.g. "https://wa.me/971500000000"
   telegram: "",   // e.g. "https://t.me/buccari_support"
   phone: "",      // shown as text, e.g. "+971 50 000 0000"
-  email: "",      // shown as text, e.g. "support@buccari.com"
+  email: "support@buccari.tech",
   facebook: "",
   instagram: "",
   x: "",            // e.g. "https://x.com/buccari"
@@ -130,10 +147,10 @@ var CONFIG = {
 };
 
 var T = {
-  en:{title:"Thank you for choosing BUCCARI", sub:"Everything for your BC-05 in one place.", manual:"User manual", manualNote:"Open the manual in your language.", ask:"Ask us", askNote:"Questions about setup or care? Message us.", follow:"Follow BUCCARI", soon:"Link coming soon", phone:"Phone", email:"Email", copy:"Copy", copied:"Copied", wa:"Chat on WhatsApp", tg:"Write in Telegram"},
-  ru:{title:"Спасибо, что выбрали BUCCARI", sub:"Всё для вашей BC-05 в одном месте.", manual:"Инструкция", manualNote:"Откройте инструкцию на вашем языке.", ask:"Задать вопрос", askNote:"Вопросы по настройке или уходу? Напишите нам.", follow:"BUCCARI в соцсетях", soon:"Ссылка скоро появится", phone:"Телефон", email:"Почта", copy:"Копировать", copied:"Скопировано", wa:"Написать в WhatsApp", tg:"Написать в Telegram"},
-  ar:{title:"شكرًا لاختياركم BUCCARI", sub:"كل ما تحتاجه لآلة BC-05 في مكان واحد.", manual:"دليل المستخدم", manualNote:"افتح الدليل بلغتك.", ask:"تواصل معنا", askNote:"لديك سؤال عن الإعداد أو العناية؟ راسلنا.", follow:"تابع BUCCARI", soon:"الرابط قريبًا", phone:"الهاتف", email:"البريد الإلكتروني", copy:"نسخ", copied:"تم النسخ", wa:"راسلنا عبر واتساب", tg:"راسلنا عبر تيليجرام"},
-  zh:{title:"感谢您选择 BUCCARI", sub:"BC-05 所需的一切，尽在此处。", manual:"使用说明书", manualNote:"打开您所需语言的说明书。", ask:"联系我们", askNote:"关于安装或保养有疑问？请给我们留言。", follow:"关注 BUCCARI", soon:"链接即将上线", phone:"电话", email:"邮箱", copy:"复制", copied:"已复制", wa:"WhatsApp 咨询", tg:"Telegram 咨询"}
+  en:{title:"Thank you for choosing BUCCARI", sub:"Everything for your BC-05 in one place.", manual:"User manual", manualNote:"Open the manual in your language.", ask:"Ask us", askNote:"Questions about setup or care? Message us.", follow:"Follow BUCCARI", soon:"Link coming soon", phone:"Phone", email:"Email", copy:"Copy", copied:"Copied", wa:"Chat on WhatsApp", tg:"Write in Telegram", spec:"Specifications", online:"Read online", S:{"p_s1": "Model", "p_s2": "Power", "p_s3": "Voltage", "p_s4": "Water tank", "p_s8": "Milk container", "p_s5": "Bean container", "p_s6": "Grounds container", "p_s6v": "10 servings", "p_s7": "Dimensions (L × W × H)", "p_s9": "Net weight", "p_s10": "Gross weight"}},
+  ru:{title:"Спасибо, что выбрали BUCCARI", sub:"Всё для вашей BC-05 в одном месте.", manual:"Инструкция", manualNote:"Откройте инструкцию на вашем языке.", ask:"Задать вопрос", askNote:"Вопросы по настройке или уходу? Напишите нам.", follow:"BUCCARI в соцсетях", soon:"Ссылка скоро появится", phone:"Телефон", email:"Почта", copy:"Копировать", copied:"Скопировано", wa:"Написать в WhatsApp", tg:"Написать в Telegram", spec:"Характеристики", online:"Читать онлайн", S:{"p_s1": "Модель", "p_s2": "Мощность", "p_s3": "Напряжение", "p_s4": "Резервуар для воды", "p_s8": "Контейнер для молока", "p_s5": "Контейнер для зёрен", "p_s6": "Контейнер для жмыха", "p_s6v": "10 порций", "p_s7": "Габариты (Д × Ш × В)", "p_s9": "Вес нетто", "p_s10": "Вес брутто"}},
+  ar:{title:"شكرًا لاختياركم BUCCARI", sub:"كل ما تحتاجه لآلة BC-05 في مكان واحد.", manual:"دليل المستخدم", manualNote:"افتح الدليل بلغتك.", ask:"تواصل معنا", askNote:"لديك سؤال عن الإعداد أو العناية؟ راسلنا.", follow:"تابع BUCCARI", soon:"الرابط قريبًا", phone:"الهاتف", email:"البريد الإلكتروني", copy:"نسخ", copied:"تم النسخ", wa:"راسلنا عبر واتساب", tg:"راسلنا عبر تيليجرام", spec:"المواصفات", online:"اقرأ على الإنترنت", S:{"p_s1": "الطراز", "p_s2": "القدرة", "p_s3": "الجهد", "p_s4": "خزان الماء", "p_s8": "حاوية الحليب", "p_s5": "حاوية الحبوب", "p_s6": "حاوية التفل", "p_s6v": "10 حصص", "p_s7": "الأبعاد (ط × ع × ا)", "p_s9": "الوزن الصافي", "p_s10": "الوزن الإجمالي"}},
+  zh:{title:"感谢您选择 BUCCARI", sub:"BC-05 所需的一切，尽在此处。", manual:"使用说明书", manualNote:"打开您所需语言的说明书。", ask:"联系我们", askNote:"关于安装或保养有疑问？请给我们留言。", follow:"关注 BUCCARI", soon:"链接即将上线", phone:"电话", email:"邮箱", copy:"复制", copied:"已复制", wa:"WhatsApp 咨询", tg:"Telegram 咨询", spec:"技术参数", online:"在线阅读", S:{"p_s1": "型号", "p_s2": "功率", "p_s3": "电压", "p_s4": "水箱容量", "p_s8": "奶罐", "p_s5": "豆仓容量", "p_s6": "渣盒容量", "p_s6v": "10 份", "p_s7": "尺寸（长 × 宽 × 高）", "p_s9": "净重", "p_s10": "毛重"}}
 };
 var MANUAL_NAMES = {en:"English", ru:"Русский", ar:"العربية", zh:"中文"};
 
@@ -151,7 +168,7 @@ var ARROW='<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="n
 function btn(href, icon, label, t){
   var a=document.createElement('a'); a.className='btn';
   var ok = !!href;
-  if(ok){a.href=href; if(/^https?:/.test(href)){a.target='_blank'; a.rel='noopener';}} else {a.className+=' pending'; a.setAttribute('aria-disabled','true');}
+  if(ok){a.href=href; if(/^https?:/.test(href)){a.target='_blank'; a.rel='noopener noreferrer';}} else {a.className+=' pending'; a.setAttribute('aria-disabled','true');}
   a.innerHTML='<span class="t">'+svg(icon)+'<span>'+label+(ok?'':'<small>'+t.soon+'</small>')+'</span></span>'+(ok?ARROW:'');
   return a;
 }
@@ -178,7 +195,17 @@ function render(lang){
 
   var m=document.getElementById('manuals'); m.innerHTML='';
   var order=[lang].concat(['en','ru','ar','zh'].filter(function(l){return l!==lang;}));
-  order.forEach(function(l){ m.appendChild(btn(CONFIG.manuals[l], ICON.doc, MANUAL_NAMES[l], t)); });
+  order.forEach(function(l){
+    var r=document.createElement('div'); r.className='mrow';
+    var b=btn(CONFIG.manuals[l], ICON.doc, MANUAL_NAMES[l], t);
+    b.querySelector('.t > span').insertAdjacentHTML('beforeend','<small>'+t.online+'</small>');
+    r.appendChild(b);
+    var p=CONFIG.pdfs[l]; if(p){ var a=document.createElement('a'); a.className='pdf'; a.href=p[0]; a.setAttribute('download',''); a.innerHTML='PDF<small dir="ltr">'+p[1]+'</small>'; r.appendChild(a); }
+    m.appendChild(r);
+  });
+  var S=t.S, rows=[[S.p_s1,'BC-05'],[S.p_s2,'1350 W'],[S.p_s3,'220–240 V ~ 50/60 Hz'],[S.p_s4,'1.2 L'],[S.p_s8,'600 ml'],[S.p_s5,'250 g'],[S.p_s6,S.p_s6v],[S.p_s7,'425 × 181 × 377 mm'],[S.p_s9,'8.5 kg'],[S.p_s10,'10 kg']];
+  var sp=document.getElementById('specs'); sp.innerHTML='';
+  rows.forEach(function(r){ var tr=document.createElement('tr'); var th=document.createElement('th'); th.textContent=r[0]; var td=document.createElement('td'); td.textContent=r[1]; if(/[0-9]/.test(r[1])) td.dir='ltr'; tr.appendChild(th); tr.appendChild(td); sp.appendChild(tr); });
 
   var ms=document.getElementById('messengers'); ms.innerHTML='';
   ms.appendChild(btn(CONFIG.whatsapp, ICON.wa, t.wa, t));

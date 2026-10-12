@@ -401,11 +401,10 @@ footer{margin-top:72px; border-top:1px solid var(--rule); padding-block:48px 32p
 <script>
 /* ===== Fill these in. Leave "" for anything not ready yet: the button shows as "coming soon". ===== */
 var CONFIG = {
-  manuals: { en: "manual-en.html", ru: "manual-ru.html", ar: "manual-ar.html", zh: "manual-zh.html" },
   whatsapp: "",   // e.g. "https://wa.me/971500000000"
   telegram: "",   // e.g. "https://t.me/buccari_support"
   phone: "",      // shown as text, e.g. "+971 50 000 0000"
-  email: "",      // shown as text, e.g. "support@buccari.com"
+  email: "support@buccari.tech",
   instagram: "",
   facebook: "",
   x: ""
@@ -414,11 +413,9 @@ var CONFIG = {
 /* ===== Products per category. Empty list = the category shows "coming soon".
    To add one later: { name:"BC-05", img:"img/....jpg", href:"bc-05.html" } ===== */
 var PRODUCTS = {
-  /* listed:false keeps the product off the category page (not on sale yet) while its page and manuals work by direct link: index.html#bc-05 */
+  /* listed:false keeps the product off the category page (not on sale yet) while its page works by direct link: index.html#bc-05 */
   "coffee": [
-    { slug:"bc-05", name:"BC-05", img:"img/hero.jpg", listed:true, page:"bc05", sub:"p_heroEyebrow",
-      manuals:{ en:{pdf:"manuals/bc-05-en.pdf", html:"manual-en.html", size:"198 KB"}, ru:{pdf:"manuals/bc-05-ru.pdf", html:"manual-ru.html", size:"238 KB"},
-                ar:{pdf:"manuals/bc-05-ar.pdf", html:"manual-ar.html", size:"117 KB"}, zh:{pdf:"manuals/bc-05-zh.pdf", html:"manual-zh.html", size:"899 KB"} } }
+    { slug:"bc-05", name:"BC-05", img:"img/hero.jpg", listed:true, page:"bc05", sub:"p_heroEyebrow" }
   ],
   "climate": [],
   "kitchen": []
@@ -675,7 +672,7 @@ function route(scroll){
     home.hidden=true; view.hidden=true; pv.hidden=false;
     var pl=document.getElementById('pvCatLink'); pl.href='#'+pi.cat; pl.textContent=c[pi.cat][0];
     document.getElementById('pvCrumb').textContent=pi.p.name;
-    document.getElementById('pvBody').innerHTML=PAGES[pi.p.page](pi.p,t,LANG)+manualBox(pi.p,t,LANG);
+    document.getElementById('pvBody').innerHTML=PAGES[pi.p.page](pi.p,t,LANG);
     document.title='BUCCARI '+pi.p.name;
     if(scroll) window.scrollTo(0,0);
   } else if(info){
