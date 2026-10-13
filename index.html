@@ -22,12 +22,12 @@
 <style>
 /* Layout: boutique-style home — centred logo with a category bar beneath, then rounded tiles in a 3-column bento per collection (one large photo/colour tile + category cards), a brand statement band, service tiles, support and a column footer. Warm espresso tones at night, warm paper by day. */
 :root{
-  --paper:#F4F2EF; --card:#FBFAF8; --card2:#ECE9E4; --ink:#141414; --muted:#6B6862; --rule:#D8D3CA; --line:#8E8981; --accent:#8A6A4A;
+  --paper:#F4F2EF; --card:#FBFAF8; --card2:#ECE9E4; --ink:#141414; --muted:#6B6862; --rule:#D8D3CA; --line:#8E8981; --accent:#8A6A4A; --crema:linear-gradient(90deg,#8A6A4A,#B98455 50%,#8A6A4A);
   --tile-a:#4A4642; --tile-b:#1C1B1A;
   --f-body:'Jost','Noto Sans SC','Noto Sans Arabic',system-ui,sans-serif;
   --logo-filter:none; --r:16px; color-scheme:light;
 }
-:root[data-mode="dark"]{--paper:#161514; --card:#1E1D1B; --card2:#24221F; --ink:#EEEAE4; --muted:#A39E96; --rule:#34312D; --line:#6E6961; --accent:#C9A27C; --tile-a:#3A3734; --tile-b:#1E1D1B; --logo-filter:invert(1); color-scheme:dark}
+:root[data-mode="dark"]{--paper:#161514; --card:#1E1D1B; --card2:#24221F; --ink:#EEEAE4; --muted:#A39E96; --rule:#34312D; --line:#6E6961; --accent:#C9A27C; --crema:linear-gradient(90deg,#B98455,#E2BC8C 50%,#B98455); --tile-a:#3A3734; --tile-b:#1E1D1B; --logo-filter:invert(1); color-scheme:dark}
 html[lang="ar"]{--f-body:'Noto Sans Arabic','Jost',system-ui,sans-serif}
 html[lang="zh"]{--f-body:'Noto Sans SC','Jost',system-ui,sans-serif}
 *{box-sizing:border-box}
@@ -41,6 +41,12 @@ a{color:inherit}
 .wrap{max-width:1200px; margin:0 auto; padding-inline:max(24px,env(safe-area-inset-left)) max(24px,env(safe-area-inset-right))}
 @media (max-width:520px){.wrap{padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}}
 .eyebrow{font-weight:500; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
+/* Copper "crema" accent, same gradient as the BC-05 gift box: eyebrow labels, the header hairline and a strip at the very bottom */
+.eyebrow{display:inline-block; background:var(--crema); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+.big .cap,.cat-hero,.pv-hero{--crema:linear-gradient(90deg,#B98455,#E2BC8C 50%,#B98455);}
+.big.light .cap,.cat-hero.light{--crema:linear-gradient(90deg,#8A6A4A,#B98455 50%,#8A6A4A);}
+:root[data-mode="dark"] .big.light .cap,:root[data-mode="dark"] .cat-hero.light{--crema:linear-gradient(90deg,#B98455,#E2BC8C 50%,#B98455);}
+body::after{content:""; display:block; height:4px; background:var(--crema)}
 html[lang="ar"] .eyebrow,html[lang="zh"] .eyebrow{letter-spacing:0; font-size:13px}
 h1,h2,h3,h4{text-wrap:balance; margin:0; font-weight:400}
 p{margin:0}
@@ -50,7 +56,7 @@ html[lang="ar"] .up,html[lang="zh"] .up{letter-spacing:0; text-transform:none}
 
 /* header */
 .top{position:sticky; top:0; z-index:5; background:var(--paper); padding-top:env(safe-area-inset-top,0px); transition:background .3s}
-.bar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; min-height:64px; border-bottom:1px solid var(--rule)}
+.bar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; min-height:64px; border-bottom:1px solid var(--rule); border-image:var(--crema) 1}
 .bar .side{display:flex; align-items:center; gap:6px; min-width:0}
 .bar .side.end{justify-content:flex-end}
 .brand img{width:150px; height:auto; display:block; filter:var(--logo-filter)}
@@ -69,7 +75,7 @@ html[lang="ar"] .up,html[lang="zh"] .up{letter-spacing:0; text-transform:none}
 .catbar a:first-child{margin-inline-start:auto}
 .catbar a:last-child{margin-inline-end:auto}
 .catbar a{flex-shrink:0; text-decoration:none; font-size:11.5px; font-weight:500; letter-spacing:.8px; text-transform:uppercase; padding-block:12px; color:var(--ink); white-space:nowrap; border-bottom:1px solid transparent}
-.catbar a:hover,.catbar a[aria-current="page"]{border-bottom-color:var(--ink)}
+.catbar a:hover,.catbar a[aria-current="page"]{border-bottom-color:var(--accent)}
 html[lang="ar"] .catbar a,html[lang="zh"] .catbar a{letter-spacing:0; font-size:14px}
 
 @media (max-width:640px){
@@ -668,7 +674,7 @@ var PAGES = {
     h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(p.name)+'</div><h2>'+esc(t.p_drinksTitle)+'</h2><p class="lead">'+esc(t.p_drinksLead)+'</p></div><div class="drinks">';
     DRINKS.forEach(function(d){ h+='<div class="drink">'+(d[0]==='water'?'<div class="plate water" aria-hidden="true"><span></span></div>':'<div class="plate"><img src="img/'+d[0]+'.jpg" alt="" loading="lazy" width="360" height="360"></div>')+'<div class="name">'+esc(d[li])+'</div></div>'; });
     h+='</div></section>';
-    h+='<section class="pv-sec"><div class="split"><img src="img/screen.png" alt="'+esc(t.p_screenAlt)+'" loading="lazy"><div><div class="head" style="margin-bottom:0"><div class="eyebrow">'+esc(t.p_screenEyebrow)+'</div><h2>'+esc(t.p_screenTitle)+'</h2><p class="lead">'+esc(t.p_screenLead)+'</p></div><ul class="ticks"><li>'+esc(t.p_tick1)+'</li><li>'+esc(t.p_tick2)+'</li><li>'+esc(t.p_tick3)+'</li></ul></div></div></section>';
+    h+='<section class="pv-sec"><div class="split"><img src="img/screen.webp" alt="'+esc(t.p_screenAlt)+'" loading="lazy"><div><div class="head" style="margin-bottom:0"><div class="eyebrow">'+esc(t.p_screenEyebrow)+'</div><h2>'+esc(t.p_screenTitle)+'</h2><p class="lead">'+esc(t.p_screenLead)+'</p></div><ul class="ticks"><li>'+esc(t.p_tick1)+'</li><li>'+esc(t.p_tick2)+'</li><li>'+esc(t.p_tick3)+'</li></ul></div></div></section>';
     var FI={f1:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/>',f2:'<path d="M8 2h8M9 2v3l-2 3v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8l-2-3V2"/><path d="M7 12h10"/>',f3:'<path d="M6 3h12v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M6 9c2 1 4-1 6 0s4 1 6 0"/>',f4:'<ellipse cx="12" cy="12" rx="6" ry="9" transform="rotate(30 12 12)"/><path d="M9 5c3 3 3 11 6 14"/>',f5:'<path d="M12 3v4M8 5l2 3M16 5l-2 3"/><path d="M5 12h14l-1.5 8h-11z"/>',f6:'<path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M9 15h6"/>'};
     h+='<section class="pv-sec"><div class="head"><div class="eyebrow">'+esc(t.p_featEyebrow)+'</div><h2>'+esc(t.p_featTitle)+'</h2></div><div class="features">';
     ['f1','f2','f3','f4','f5','f6'].forEach(function(f){ h+='<div class="feature">'+svg(FI[f],28)+'<h3>'+esc(t['p_'+f+'t'])+'</h3><p>'+esc(t['p_'+f+'d'])+'</p></div>'; });
