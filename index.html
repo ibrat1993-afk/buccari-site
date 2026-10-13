@@ -243,8 +243,10 @@ html[lang="ar"] .btn,html[lang="zh"] .btn{letter-spacing:0; font-size:15px}
 .pv-hero .btn.solid{background:#fff; color:#141414}
 @media (max-width:640px){.pv-hero{padding:24px; min-height:440px}}
 .tile.white .pic{background:#fff}
+/* Climate products are cut out and sit on the BC-05 box graphite, not on white */
+.tile.graph .pic{background:radial-gradient(90% 80% at 50% 42%,#3A3531,#242220 60%,#1C1B19)}
 .air-hero{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center; background:var(--card); border:1px solid var(--rule); border-radius:var(--r); padding:32px}
-.air-hero .plate,.air-feat .plate{background:#fff; border-radius:12px; overflow:hidden; aspect-ratio:1; max-width:100%}
+.air-hero .plate,.air-feat .plate{background:radial-gradient(90% 80% at 50% 42%,#3A3531,#242220 60%,#1C1B19); border-radius:12px; overflow:hidden; aspect-ratio:1; max-width:100%}
 .air-hero .plate img,.air-feat .plate img{width:100%; height:100%; object-fit:contain; display:block}
 .air-hero .txt{display:flex; flex-direction:column; gap:10px; min-width:0}
 .air-hero h1{font-weight:300; font-size:clamp(34px,5vw,58px); line-height:1.05}
@@ -847,7 +849,7 @@ function route(scroll){
       body.innerHTML='<div class="products"></div>';
       var pg=body.firstChild;
       list.forEach(function(p){
-        var a=document.createElement('a'); a.className='tile'+(p.fit?' white':''); a.href='#'+p.slug;
+        var a=document.createElement('a'); a.className='tile'+(p.fit?' white':'')+(p.page==='air'?' graph':''); a.href='#'+p.slug;
         a.innerHTML='<div class="pic" style="overflow:hidden; aspect-ratio:4/3; flex:none">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:'+(p.fit||'cover')+';object-position:'+(p.fit?'50% 50%':'58% 62%')+'">':cicon(info.icon))+'</div><div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-inline:4px"><h4 style="padding:0"></h4>'+ARROW+'</div><div class="tag"></div>';
         a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.sub?(t[p.sub]||''):prodTag(p,LANG); pg.appendChild(a);
       });
