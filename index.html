@@ -3,20 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F4F2EF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#161514" media="(prefers-color-scheme: dark)">
-<meta name="description" content="BUCCARI — home appliances: coffee, climate and kitchen.">
+<base href="/">
+<title>BUCCARI — Home appliances for coffee, the kitchen and clean air</title>
+<meta name="description" content="BUCCARI home appliances: the BC-05 espresso machine, AIR air purifiers and the MIX-01 stand mixer. Photos, specifications and support.">
 <link rel="canonical" href="https://buccari.tech/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BUCCARI">
-<meta property="og:title" content="BUCCARI">
-<meta property="og:description" content="Home appliances: coffee, climate and kitchen.">
+<meta property="og:title" content="BUCCARI — Home appliances for coffee, the kitchen and clean air">
+<meta property="og:description" content="BUCCARI home appliances: the BC-05 espresso machine, AIR air purifiers and the MIX-01 stand mixer. Photos, specifications and support.">
 <meta property="og:url" content="https://buccari.tech/">
 <meta property="og:image" content="https://buccari.tech/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://buccari.tech/#org", "name": "BUCCARI", "url": "https://buccari.tech/", "logo": "https://buccari.tech/img/icon-512.png", "email": "support@buccari.tech"}, {"@type": "WebSite", "name": "BUCCARI", "url": "https://buccari.tech/", "publisher": {"@id": "https://buccari.tech/#org"}, "inLanguage": ["en", "ru", "ar", "zh"]}]}</script>
+
+
+<meta name="theme-color" content="#F4F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161514" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<title>BUCCARI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap">
 <style>
@@ -604,7 +608,7 @@ function listed(slug){ return (PRODUCTS[slug]||[]).filter(function(p){return p.l
 function prodInfo(slug){ for(var k in PRODUCTS){ var L=PRODUCTS[k]; for(var i=0;i<L.length;i++) if(L[i].slug===slug) return {p:L[i], cat:k}; } return null; }
 function tile(slug, icon, t, c){
   var n;
-  var a=document.createElement('a'); a.className='tile'; a.href='#'+slug; n=listed(slug).length;
+  var a=document.createElement('a'); a.className='tile'; a.href=slug+'/'; n=listed(slug).length;
   a.innerHTML='<div class="pic">'+cicon(icon,76)+'</div>'+PLUS+'<h4></h4><div class="tag"></div>';
   a.querySelector('h4').textContent=c[slug][0];
   a.querySelector('.tag').textContent = n ? (n+' '+t.products) : t.soon;
@@ -625,8 +629,8 @@ function render(lang){
   var cb=document.getElementById('catbar'); cb.innerHTML='';
   var fc=document.getElementById('fCats'); fc.innerHTML='';
   CATS.forEach(function(k){
-    var a=document.createElement('a'); a.href='#'+k.slug; a.textContent=c[k.slug][0]; cb.appendChild(a);
-    var li=document.createElement('li'); li.innerHTML='<a></a>'; li.firstChild.href='#'+k.slug; li.firstChild.textContent=c[k.slug][0]; fc.appendChild(li);
+    var a=document.createElement('a'); a.href=k.slug+'/'; a.textContent=c[k.slug][0]; cb.appendChild(a);
+    var li=document.createElement('li'); li.innerHTML='<a></a>'; li.firstChild.href=k.slug+'/'; li.firstChild.textContent=c[k.slug][0]; fc.appendChild(li);
   });
 
   var cl=document.getElementById('colls'); cl.innerHTML='';
@@ -636,7 +640,7 @@ function render(lang){
   var grid=sec.querySelector('.bento');
   CATS.forEach(function(k,i){
     var n=listed(k.slug).length;
-    var a=document.createElement('a'); a.className='big'+(k.img?'':' color')+(i>0?' small':'')+(k.light?' light':'')+(k.cut?' cut':''); a.href='#'+k.slug;
+    var a=document.createElement('a'); a.className='big'+(k.img?'':' color')+(i>0?' small':'')+(k.light?' light':'')+(k.cut?' cut':''); a.href=k.slug+'/';
     a.innerHTML=(k.img?'<img class="l" src="'+k.img+'" alt="" loading="eager">'+(k.imgDark?'<img class="d" src="'+k.imgDark+'" alt="" loading="eager">':''):(k.cut?'<img class="cutimg" src="'+k.cut+'" alt="" loading="eager">':'<div class="art">'+cicon(k.icon,150)+'</div>'))+'<div class="cap"><span class="eyebrow"></span><h3></h3><p></p></div>';
     a.querySelector('.eyebrow').textContent = n ? plural(n,LANG) : t.soon;
     a.querySelector('h3').textContent=c[k.slug][0];
@@ -817,18 +821,25 @@ function prodTag(p,lang){ if(p.air) return airTag(p.air,lang); if(p.page==='mix'
 
 
 /* Router: #<category-slug> opens that category; any other hash is an anchor on the home view */
-function route(scroll){
+function routeKey(){
   var h=decodeURIComponent(location.hash.slice(1));
+  if(catInfo(h)||prodInfo(h)){ try{ history.replaceState(null,'','/'+h+'/'); }catch(e){} return h; }
+  var p=decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g,''));
+  return (catInfo(p)||prodInfo(p)) ? p : h;
+}
+function prodKind(p,lang){ if(p.air) return (AT[lang]||AT.en)[p.air.humid?'kindH':'kind']; if(p.page==='mix') return (MT[lang]||MT.en).kind; var t=T[lang]||T.en; return t.p_heroEyebrow||''; }
+function route(scroll){
+  var h=routeKey();
   var info=catInfo(h), home=document.getElementById('home'), view=document.getElementById('catview'), pv=document.getElementById('prodview'), pi=prodInfo(h);
   pv.hidden=true;
   var t=T[LANG]||T.en, c=CAT[LANG]||CAT.en;
-  document.querySelectorAll('#catbar a').forEach(function(a){ if(a.getAttribute('href')==='#'+h) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  document.querySelectorAll('#catbar a').forEach(function(a){ if(a.getAttribute('href')===h+'/') a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
   if(pi){
     home.hidden=true; view.hidden=true; pv.hidden=false;
-    var pl=document.getElementById('pvCatLink'); pl.href='#'+pi.cat; pl.textContent=c[pi.cat][0];
+    var pl=document.getElementById('pvCatLink'); pl.href=pi.cat+'/'; pl.textContent=c[pi.cat][0];
     document.getElementById('pvCrumb').textContent=pi.p.name;
     document.getElementById('pvBody').innerHTML=PAGES[pi.p.page](pi.p,t,LANG);
-    document.title='BUCCARI '+pi.p.name;
+    document.title='BUCCARI '+pi.p.name+' — '+prodKind(pi.p,LANG);
     if(scroll) window.scrollTo(0,0);
   } else if(info){
     home.hidden=true; view.hidden=false;
@@ -849,19 +860,19 @@ function route(scroll){
       body.innerHTML='<div class="products"></div>';
       var pg=body.firstChild;
       list.forEach(function(p){
-        var a=document.createElement('a'); a.className='tile'+(p.fit?' white':'')+(p.page==='air'?' graph':''); a.href='#'+p.slug;
+        var a=document.createElement('a'); a.className='tile'+(p.fit?' white':'')+(p.page==='air'?' graph':''); a.href=p.slug+'/';
         a.innerHTML='<div class="pic" style="overflow:hidden; aspect-ratio:4/3; flex:none">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:'+(p.fit||'cover')+';object-position:'+(p.fit?'50% 50%':'58% 62%')+'">':cicon(info.icon))+'</div><div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-inline:4px"><h4 style="padding:0"></h4>'+ARROW+'</div><div class="tag"></div>';
         a.querySelector('h4').textContent='BUCCARI '+p.name; a.querySelector('.tag').textContent=p.sub?(t[p.sub]||''):prodTag(p,LANG); pg.appendChild(a);
       });
     }
     var oc=document.getElementById('otherCats'); oc.innerHTML='';
-    CATS.forEach(function(k){ if(k.slug===h) return; var a=document.createElement('a'); a.href='#'+k.slug; a.textContent=c[k.slug][0]; oc.appendChild(a); });
-    document.title=c[h][0]+' — BUCCARI';
+    CATS.forEach(function(k){ if(k.slug===h) return; var a=document.createElement('a'); a.href=k.slug+'/'; a.textContent=c[k.slug][0]; oc.appendChild(a); });
+    document.title=c[h][2]+' — BUCCARI';
     if(scroll) window.scrollTo(0,0);
   } else {
     var wasHidden=home.hidden;
     home.hidden=false; view.hidden=true;
-    document.title='BUCCARI';
+    document.title='BUCCARI — '+String(t.fAbout||'').replace(/\.$/,'');
     if(scroll && wasHidden){
       var el=h && document.getElementById(h);
       if(el) el.scrollIntoView(); else window.scrollTo(0,0);
@@ -869,6 +880,17 @@ function route(scroll){
   }
 }
 window.addEventListener('hashchange',function(){ route(true); });
+window.addEventListener('popstate',function(){ route(true); });
+/* In-site links change the address without reloading the page */
+document.addEventListener('click',function(e){
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+  var a=e.target.closest&&e.target.closest('a[href]'); if(!a||a.target||a.hasAttribute('download')) return;
+  var u; try{ u=new URL(a.href); }catch(x){ return; }
+  if(u.origin!==location.origin||u.pathname===location.pathname) return;
+  var p=decodeURIComponent(u.pathname.replace(/^\/+|\/+$/g,''));
+  if(p!=='' && !catInfo(p) && !prodInfo(p)) return;
+  e.preventDefault(); history.pushState(null,'',u.pathname+u.hash); route(true);
+});
 
 /* ===== Language: the visitor's own choice wins; otherwise by country (Cloudflare /cdn-cgi/trace), with the device time zone as the instant first guess.
    CIS → Russian, Arab countries → Arabic, China/HK/Macau/Taiwan → Chinese, everyone else (Europe, Americas…) → English. ===== */
@@ -903,7 +925,7 @@ if(!userLang() && !cached && /^https?:/.test(location.protocol)){
       var l=langFromCC(m[1]); if(!userLang() && l!==LANG){ render(l); if(window.__onMode) window.__onMode(); } })
     .catch(function(){});
 }
-(function(){ var h=decodeURIComponent(location.hash.slice(1)); if(catInfo(h)||prodInfo(h)) window.scrollTo(0,0); else if(h){ var el=document.getElementById(h); if(el) el.scrollIntoView(); } })();
+(function(){ var h=routeKey(); if(catInfo(h)||prodInfo(h)) window.scrollTo(0,0); else if(h){ var el=document.getElementById(h); if(el) el.scrollIntoView(); } })();
 
 (function(){
   var mb=document.getElementById('modeBtn'); if(!mb) return;
