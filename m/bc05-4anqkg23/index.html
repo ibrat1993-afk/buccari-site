@@ -89,6 +89,9 @@ footer a{color:var(--muted)}
 <div class="wrap">
   <nav class="langs" aria-label="Language">
     <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-lang="de" aria-pressed="false">DE</button>
+    <button type="button" data-lang="it" aria-pressed="false">IT</button>
+    <button type="button" data-lang="fr" aria-pressed="false">FR</button>
     <button type="button" data-lang="ru" aria-pressed="false">RU</button>
     <button type="button" data-lang="ar" aria-pressed="false">عربي</button>
     <button type="button" data-lang="zh" aria-pressed="false">中文</button>
@@ -133,8 +136,8 @@ footer a{color:var(--muted)}
 <script>
 /* ===== Fill these in. Leave "" for anything not ready yet: the button shows as "coming soon". ===== */
 var CONFIG = {
-  manuals: { en: "manual-en.html", ru: "manual-ru.html", ar: "manual-ar.html", zh: "manual-zh.html" },
-  pdfs: { en: ["manuals/bc-05-en.pdf", "198 KB"], ru: ["manuals/bc-05-ru.pdf", "238 KB"], ar: ["manuals/bc-05-ar.pdf", "117 KB"], zh: ["manuals/bc-05-zh.pdf", "899 KB"] },
+  manuals: { en: "manual-en.html", de: "manual-de.html", it: "manual-it.html", fr: "manual-fr.html", ru: "manual-ru.html", ar: "manual-ar.html", zh: "manual-zh.html" },
+  pdfs: { en: ["manuals/bc-05-en.pdf", "11 MB"], de: ["manuals/bc-05-de.pdf", "11 MB"], it: ["manuals/bc-05-it.pdf", "11 MB"], fr: ["manuals/bc-05-fr.pdf", "11 MB"], ru: ["manuals/bc-05-ru.pdf", "11 MB"], ar: ["manuals/bc-05-ar.pdf", "11 MB"], zh: ["manuals/bc-05-zh.pdf", "13 MB"] },
   whatsapp: "",   // e.g. "https://wa.me/971500000000"
   telegram: "",   // e.g. "https://t.me/buccari_support"
   phone: "",      // shown as text, e.g. "+971 50 000 0000"
@@ -148,11 +151,14 @@ var CONFIG = {
 
 var T = {
   en:{title:"Thank you for choosing BUCCARI", sub:"Everything for your BC-05 in one place.", manual:"User manual", manualNote:"Open the manual in your language.", ask:"Ask us", askNote:"Questions about setup or care? Message us.", follow:"Follow BUCCARI", soon:"Link coming soon", phone:"Phone", email:"Email", copy:"Copy", copied:"Copied", wa:"Chat on WhatsApp", tg:"Write in Telegram", spec:"Specifications", online:"Read online", S:{"p_s1": "Model", "p_s2": "Power", "p_s3": "Voltage", "p_s4": "Water tank", "p_s8": "Milk container", "p_s5": "Bean container", "p_s6": "Grounds container", "p_s6v": "10 servings", "p_s7": "Dimensions (L × W × H)", "p_s9": "Net weight", "p_s10": "Gross weight"}},
+  de:{title:"Vielen Dank, dass Sie BUCCARI gewählt haben", sub:"Alles für Ihren BC-05 an einem Ort.", manual:"Bedienungsanleitung", manualNote:"Öffnen Sie die Anleitung in Ihrer Sprache.", ask:"Fragen Sie uns", askNote:"Fragen zur Einrichtung oder Pflege? Schreiben Sie uns.", follow:"BUCCARI folgen", soon:"Link folgt in Kürze", phone:"Telefon", email:"E-Mail", copy:"Kopieren", copied:"Kopiert", wa:"Chat auf WhatsApp", tg:"Auf Telegram schreiben", spec:"Technische Daten", online:"Online lesen", S:{"p_s1": "Modell", "p_s2": "Leistung", "p_s3": "Spannung", "p_s4": "Wassertank", "p_s8": "Milchbehälter", "p_s5": "Bohnenbehälter", "p_s6": "Tresterbehälter", "p_s6v": "10 Portionen", "p_s7": "Abmessungen (L × B × H)", "p_s9": "Nettogewicht", "p_s10": "Bruttogewicht"}},
+  it:{title:"Grazie per aver scelto BUCCARI", sub:"Tutto per la tua BC-05 in un unico posto.", manual:"Manuale d'uso", manualNote:"Apri il manuale nella tua lingua.", ask:"Contattaci", askNote:"Domande su installazione o manutenzione? Scrivici.", follow:"Segui BUCCARI", soon:"Link in arrivo", phone:"Telefono", email:"E-mail", copy:"Copia", copied:"Copiato", wa:"Chatta su WhatsApp", tg:"Scrivi su Telegram", spec:"Specifiche", online:"Leggi online", S:{"p_s1": "Modello", "p_s2": "Potenza", "p_s3": "Tensione", "p_s4": "Serbatoio acqua", "p_s8": "Contenitore latte", "p_s5": "Contenitore chicchi", "p_s6": "Contenitore fondi", "p_s6v": "10 porzioni", "p_s7": "Dimensioni (L × P × A)", "p_s9": "Peso netto", "p_s10": "Peso lordo"}},
+  fr:{title:"Merci d'avoir choisi BUCCARI", sub:"Tout pour votre BC-05 au même endroit.", manual:"Mode d'emploi", manualNote:"Ouvrez le mode d'emploi dans votre langue.", ask:"Contactez-nous", askNote:"Une question sur l'installation ou l'entretien ? Écrivez-nous.", follow:"Suivre BUCCARI", soon:"Lien bientôt disponible", phone:"Téléphone", email:"E-mail", copy:"Copier", copied:"Copié", wa:"Discuter sur WhatsApp", tg:"Écrire sur Telegram", spec:"Caractéristiques", online:"Lire en ligne", S:{"p_s1": "Modèle", "p_s2": "Puissance", "p_s3": "Tension", "p_s4": "Réservoir d'eau", "p_s8": "Réservoir à lait", "p_s5": "Réservoir à grains", "p_s6": "Bac à marc", "p_s6v": "10 portions", "p_s7": "Dimensions (L × l × H)", "p_s9": "Poids net", "p_s10": "Poids brut"}},
   ru:{title:"Спасибо, что выбрали BUCCARI", sub:"Всё для вашей BC-05 в одном месте.", manual:"Инструкция", manualNote:"Откройте инструкцию на вашем языке.", ask:"Задать вопрос", askNote:"Вопросы по настройке или уходу? Напишите нам.", follow:"BUCCARI в соцсетях", soon:"Ссылка скоро появится", phone:"Телефон", email:"Почта", copy:"Копировать", copied:"Скопировано", wa:"Написать в WhatsApp", tg:"Написать в Telegram", spec:"Характеристики", online:"Читать онлайн", S:{"p_s1": "Модель", "p_s2": "Мощность", "p_s3": "Напряжение", "p_s4": "Резервуар для воды", "p_s8": "Контейнер для молока", "p_s5": "Контейнер для зёрен", "p_s6": "Контейнер для жмыха", "p_s6v": "10 порций", "p_s7": "Габариты (Д × Ш × В)", "p_s9": "Вес нетто", "p_s10": "Вес брутто"}},
   ar:{title:"شكرًا لاختياركم BUCCARI", sub:"كل ما تحتاجه لآلة BC-05 في مكان واحد.", manual:"دليل المستخدم", manualNote:"افتح الدليل بلغتك.", ask:"تواصل معنا", askNote:"لديك سؤال عن الإعداد أو العناية؟ راسلنا.", follow:"تابع BUCCARI", soon:"الرابط قريبًا", phone:"الهاتف", email:"البريد الإلكتروني", copy:"نسخ", copied:"تم النسخ", wa:"راسلنا عبر واتساب", tg:"راسلنا عبر تيليجرام", spec:"المواصفات", online:"اقرأ على الإنترنت", S:{"p_s1": "الطراز", "p_s2": "القدرة", "p_s3": "الجهد", "p_s4": "خزان الماء", "p_s8": "حاوية الحليب", "p_s5": "حاوية الحبوب", "p_s6": "حاوية التفل", "p_s6v": "10 حصص", "p_s7": "الأبعاد (ط × ع × ا)", "p_s9": "الوزن الصافي", "p_s10": "الوزن الإجمالي"}},
   zh:{title:"感谢您选择 BUCCARI", sub:"BC-05 所需的一切，尽在此处。", manual:"使用说明书", manualNote:"打开您所需语言的说明书。", ask:"联系我们", askNote:"关于安装或保养有疑问？请给我们留言。", follow:"关注 BUCCARI", soon:"链接即将上线", phone:"电话", email:"邮箱", copy:"复制", copied:"已复制", wa:"WhatsApp 咨询", tg:"Telegram 咨询", spec:"技术参数", online:"在线阅读", S:{"p_s1": "型号", "p_s2": "功率", "p_s3": "电压", "p_s4": "水箱容量", "p_s8": "奶罐", "p_s5": "豆仓容量", "p_s6": "渣盒容量", "p_s6v": "10 份", "p_s7": "尺寸（长 × 宽 × 高）", "p_s9": "净重", "p_s10": "毛重"}}
 };
-var MANUAL_NAMES = {en:"English", ru:"Русский", ar:"العربية", zh:"中文"};
+var MANUAL_NAMES = {en:"English", de:"Deutsch", it:"Italiano", fr:"Français", ru:"Русский", ar:"العربية", zh:"中文"};
 
 var ICON = {
   doc:'<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/>',
@@ -194,7 +200,7 @@ function render(lang){
   document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.lang===lang?'true':'false');});
 
   var m=document.getElementById('manuals'); m.innerHTML='';
-  var order=[lang].concat(['en','ru','ar','zh'].filter(function(l){return l!==lang;}));
+  var order=[lang].concat(['en','de','it','fr','ru','ar','zh'].filter(function(l){return l!==lang;}));
   order.forEach(function(l){
     var r=document.createElement('div'); r.className='mrow';
     var b=btn(CONFIG.manuals[l], ICON.doc, MANUAL_NAMES[l], t);
@@ -223,13 +229,19 @@ function render(lang){
   var site=document.getElementById('site'); if(CONFIG.website){site.href=CONFIG.website; site.textContent=CONFIG.websiteLabel||CONFIG.website; site.hidden=false;} else {site.hidden=true;}
 }
 
-/* Language: own choice → country (Cloudflare) → device time zone. CIS → ru, Arab countries → ar, China/HK/Macau/Taiwan → zh, others → en. */
+/* Language: own choice → country (Cloudflare) → device time zone. Germany/Austria → de, Italy → it, France/Belgium/Luxembourg/Monaco → fr, CIS → ru, Arab countries → ar, China/HK/Macau/Taiwan → zh, others → en. */
 var CC_LANG = {
+  de:['DE','AT','LI'],
+  it:['IT','SM','VA'],
+  fr:['FR','MC','LU','BE'],
   ru:['RU','BY','KZ','KG','UZ','TJ','TM','AM','AZ','MD'],
   ar:['AE','SA','QA','KW','BH','OM','YE','IQ','JO','LB','SY','PS','EG','LY','TN','DZ','MA','SD','MR','SO','DJ','KM'],
   zh:['CN','HK','MO','TW']
 };
 var TZ_LANG = {
+  de:/^(Europe\/(Berlin|Vienna|Vaduz|Busingen))$/,
+  it:/^(Europe\/(Rome|San_Marino|Vatican))$/,
+  fr:/^(Europe\/(Paris|Monaco|Luxembourg|Brussels))$/,
   ru:/^(Europe\/(Moscow|Minsk|Kaliningrad|Samara|Volgograd|Saratov|Ulyanovsk|Astrakhan|Kirov|Chisinau)|Asia\/(Yekaterinburg|Omsk|Novosibirsk|Barnaul|Tomsk|Novokuznetsk|Krasnoyarsk|Irkutsk|Chita|Yakutsk|Khandyga|Vladivostok|Ust-Nera|Magadan|Sakhalin|Srednekolymsk|Kamchatka|Anadyr|Almaty|Qostanay|Qyzylorda|Aqtobe|Aqtau|Atyrau|Oral|Tashkent|Samarkand|Bishkek|Dushanbe|Ashgabat|Yerevan|Baku))$/,
   ar:/^(Asia\/(Dubai|Riyadh|Qatar|Kuwait|Bahrain|Muscat|Aden|Baghdad|Amman|Beirut|Damascus|Gaza|Hebron)|Africa\/(Cairo|Tripoli|Tunis|Algiers|Casablanca|El_Aaiun|Khartoum|Nouakchott|Mogadishu|Djibouti)|Indian\/Comoro)$/,
   zh:/^(Asia\/(Shanghai|Urumqi|Hong_Kong|Macau|Taipei|Chongqing|Chungking|Harbin)|PRC|ROC)$/
