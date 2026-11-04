@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161514" media="(prefers-color-scheme: dark)">
+<title>BUCCARI BC-05 — Manuale d'uso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+/* Layout: reading column with a sticky contents list beside it on wide screens, stacked above on phones — same paper, ink and hairlines as the BUCCARI site */
+:root{
+  --paper:#F4F2EF; --card:#FBFAF8; --ink:#141414; --muted:#6B6862; --rule:#D8D3CA; --line:#8E8981; --accent:#8A6A4A;
+  --f-body:'Jost','Noto Sans SC','Noto Sans Arabic',system-ui,sans-serif;
+  --logo-filter:none; color-scheme:light;
+}
+:root[data-mode="dark"]{--paper:#161514; --card:#1E1D1B; --ink:#EEEAE4; --muted:#A39E96; --rule:#34312D; --line:#6E6961; --accent:#C9A27C; --logo-filter:invert(1); color-scheme:dark}
+html[lang="ar"]{--f-body:'Noto Sans Arabic','Jost',system-ui,sans-serif}
+html[lang="zh"]{--f-body:'Noto Sans SC','Jost',system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.65; padding-top:env(safe-area-inset-top,0px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.top{position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule)}
+.bar{max-width:1120px; margin:0 auto; padding-inline:24px; min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-block:8px}
+.brand img{width:130px; height:auto; display:block; filter:var(--logo-filter)}
+.tools{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.langs{display:flex; gap:2px; flex-wrap:wrap}
+.langs a{font-size:13px; padding:6px 9px; min-height:36px; display:inline-flex; align-items:center; text-decoration:none; color:var(--muted); border:1px solid transparent; border-radius:2px}
+.langs a[aria-current="page"]{color:var(--ink); border-color:var(--line)}
+.mode{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background:transparent; color:var(--ink); border:1px solid var(--rule); border-radius:50%; cursor:pointer}
+.mode .sun{display:none}
+:root[data-mode="dark"] .mode .sun{display:block}
+:root[data-mode="dark"] .mode .moon{display:none}
+.doc{max-width:1120px; margin:0 auto; padding-inline:24px; padding-block:40px 64px}
+.back{display:inline-block; font-size:14px; color:var(--muted); text-decoration:none; margin-bottom:28px}
+.back::before{content:"← "}
+html[dir="rtl"] .back::before{content:"→ "}
+.eyebrow{font-weight:500; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
+html[lang="ar"] .eyebrow,html[lang="zh"] .eyebrow{letter-spacing:0; font-size:13px}
+.layout{display:grid; grid-template-columns:220px minmax(0,1fr); gap:56px; margin-top:16px}
+.toc{position:sticky; top:96px; align-self:start; max-height:calc(100vh - 120px); overflow:auto}
+.toc ol{list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column}
+.toc a{display:block; padding:7px 0; font-size:14px; line-height:1.35; color:var(--muted); text-decoration:none; border-top:1px solid var(--rule)}
+.toc a:hover{color:var(--ink)}
+.toc summary{list-style:none; cursor:default}
+.toc summary::-webkit-details-marker{display:none}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr; gap:24px}
+  .toc{position:static; max-height:none; border:1px solid var(--rule); border-radius:2px; background:var(--card)}
+  .toc summary{cursor:pointer; padding:14px 16px; min-height:48px; display:flex; align-items:center; justify-content:space-between}
+  .toc summary::after{content:"+"; font-size:18px; letter-spacing:0; color:var(--ink)}
+  .toc details[open] summary::after{content:"–"}
+  .toc ol{margin:0; padding:0 16px 8px}
+}
+.bar,.doc{padding-left:max(24px,env(safe-area-inset-left)); padding-right:max(24px,env(safe-area-inset-right))}
+@media (max-width:520px){.bar,.doc{padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right))} body{font-size:16px}}
+
+article{max-width:70ch; min-width:0}
+article h1{font-weight:300; font-size:clamp(28px,4vw,40px); line-height:1.15; margin:0 0 12px; text-wrap:balance}
+article h2{font-weight:400; font-size:24px; line-height:1.25; margin:48px 0 12px; padding-top:20px; border-top:1px solid var(--rule)}
+article h3{font-weight:500; font-size:18px; margin:28px 0 8px}
+article p{margin:0 0 12px}
+article ol,article ul{padding-inline-start:1.4em; margin:0 0 16px}
+article li{margin-bottom:6px}
+article li > p{margin:0 0 8px}
+article strong{font-weight:500}
+.tbl{overflow-x:auto; margin:8px 0 20px; border-top:1px solid var(--rule)}
+.tbl table{width:100%; border-collapse:collapse; font-size:15px; font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{text-align:start; vertical-align:top; padding:10px 12px 10px 0; border-bottom:1px solid var(--rule)}
+html[dir="rtl"] .tbl th,html[dir="rtl"] .tbl td{padding:10px 0 10px 12px}
+.tbl th{font-weight:500; color:var(--muted)}
+footer{border-top:1px solid var(--rule); padding-block:36px; display:flex; justify-content:center}
+footer img{width:110px; height:auto; filter:var(--logo-filter)}
+
+/* Figures: redrawn illustrations sit on a light card in both themes; screen drawings carry their own dark bezel */
+.fig{margin:20px 0 24px}
+.fig img{display:block; width:100%; height:auto; background:#F4F2EF; border:1px solid var(--rule); border-radius:4px}
+.fig.scr img{background:transparent; border:0; border-radius:0}
+.fig figcaption{font-size:14px; line-height:1.45; color:var(--muted); margin-top:8px}
+.figs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0 24px}
+.figs .fig{margin:0}
+.figs.steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+.figs.steps img{aspect-ratio:3/4; object-fit:cover}
+.fig > img{width:auto; max-width:100%; max-height:380px}
+.fig.scr > img{width:100%; max-width:560px; max-height:none}
+.fig.wide > img{width:100%; max-height:none}
+.figs .fig > img{width:100%; max-height:none; max-width:none}
+@media (max-width:520px){.figs{grid-template-columns:1fr}.figs.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ol.parts{columns:2; column-gap:32px; font-size:15px}
+ol.parts li{break-inside:avoid}
+@media (max-width:520px){ol.parts{columns:1}}
+@media print{
+  .toc,.back,footer,.tools{display:none!important}
+  .top{position:static; border:0}
+  .bar{padding:0}
+  body{background:#fff; color:#141414; font-size:11pt}
+  .doc{padding:0; max-width:none}
+  .layout{display:block}
+  article{max-width:none}
+  .fig,.figs{break-inside:avoid}
+  .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .figs.steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+  ol.parts{columns:2}
+  .fig > img{max-height:85mm}
+  .fig.scr > img{max-width:120mm}
+  .fig.wide > img{max-height:120mm; width:auto; max-width:100%}
+  .figs .fig > img{max-height:70mm; width:100%}
+  article h2,article h3{break-after:avoid; break-inside:avoid}
+  article h2::after,article h3::after{content:""; display:block; height:28mm; margin-bottom:-28mm}
+}
+.cover{display:none}
+@media print{
+  .top,.eyebrow{display:none!important}
+  .cover{display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:255mm; text-align:center; break-after:page}
+  .cover-logo{width:90mm; height:auto; margin-top:6mm}
+  .cover-photo{width:89mm; max-height:85mm; object-fit:contain}
+  .cover-head{display:flex; flex-direction:column; align-items:center; gap:5mm}
+.cover-doc{font-weight:300; font-size:15pt; letter-spacing:2px; color:#4A4743}
+.cover-title{font-weight:300; font-size:30pt; letter-spacing:4px; line-height:1}
+.cover-product{font-weight:300; font-size:14pt; letter-spacing:1px; color:#4A4743; margin-top:4mm}
+  .cover-site{font-size:10pt; letter-spacing:3px; color:#6B6862; margin-bottom:4mm}
+}
+</style>
+<script>
+/* Theme by the visitor's local time: light 07:00-18:59, dark otherwise. A manual switch lasts for the visit. */
+(function(){
+  var DAY_START=7, NIGHT_START=19;
+  function auto(){var h=new Date().getHours(); return (h>=DAY_START && h<NIGHT_START)?'light':'dark';}
+  function manual(){try{return sessionStorage.getItem('buccari-mode');}catch(e){return null;}}
+  window.__setMode=function(m){document.documentElement.setAttribute('data-mode',m); if(window.__onMode) window.__onMode(m);};
+  window.__setMode(manual()||auto());
+  setInterval(function(){ if(!manual()) window.__setMode(auto()); },5*60*1000);
+})();
+</script>
+
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="./"><img src="/img/logo.svg" alt="BUCCARI"></a>
+    <div class="tools">
+      <nav class="langs" aria-label="Language"><a href="manual-en.html" hreflang="en">English</a><a href="manual-de.html" hreflang="de">Deutsch</a><a href="manual-it.html" aria-current="page" hreflang="it">Italiano</a><a href="manual-fr.html" hreflang="fr">Français</a><a href="manual-ru.html" hreflang="ru">Русский</a><a href="manual-ar.html" hreflang="ar">العربية</a><a href="manual-zh.html" hreflang="zh">中文</a></nav>
+      <button type="button" class="mode" id="modeBtn" aria-label="Modalità scura" data-dark="Modalità scura" data-light="Modalità chiara"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+  </div>
+</header>
+<main class="doc">
+<section class="cover" aria-hidden="true"><div class="cover-head"><img class="cover-logo" src="/img/logo.svg" alt=""><div class="cover-doc">Manuale d'uso</div></div><img class="cover-photo" src="img/f00-cover.webp" alt=""><div class="cover-model"><div class="cover-title">BC-05</div><div class="cover-product">Macchina da caffè automatica</div></div><div class="cover-site">buccari.tech</div></section>
+
+  <a class="back" href="./">Torna a BUCCARI</a>
+  <div class="eyebrow">BC-05 · Manuale d'uso</div>
+  <div class="layout">
+    <nav class="toc" aria-label="Indice"><details id="tocBox" open><summary class="eyebrow">Indice</summary><ol><li><a href="#s1">1. Introduzione</a></li><li><a href="#s2">2. Istruzioni di sicurezza</a></li><li><a href="#s3">3. Descrizione del prodotto</a></li><li><a href="#s4">4. Installazione e primo utilizzo</a></li><li><a href="#s5">5. Preparazione delle bevande</a></li><li><a href="#s6">6. Impostazioni</a></li><li><a href="#s7">7. Pulizia e manutenzione</a></li><li><a href="#s8">8. Trasporto e smaltimento</a></li><li><a href="#s9">9. Risoluzione dei problemi</a></li><li><a href="#s10">10. Responsabilità e garanzia</a></li></ol></details></nav>
+    <article>
+<h1>BUCCARI BC-05 Macchina da caffè automatica. Manuale d'uso</h1>
+<p>Leggere attentamente questo manuale prima dell'uso e conservarlo per consultazioni future.</p>
+<h2 id="s1">1. Introduzione</h2>
+<ol>
+<li>Grazie per aver scelto BUCCARI BC-05, l'ultima generazione delle nostre macchine da caffè completamente automatiche, basata sulle tecnologie chiave del marchio.</li>
+<li>Questo manuale spiega come utilizzare e pulire la macchina da caffè. Il produttore non è responsabile per danni causati da un utilizzo non conforme a questo manuale.</li>
+<li>Un funzionamento affidabile dipende da un uso e una manutenzione corretti. Leggere attentamente questo manuale prima del primo utilizzo e tenerlo a portata di mano. Buon caffè!</li>
+<li>Ogni macchina viene collaudata completamente in fabbrica, quindi una piccola quantità di caffè macinato all'interno è normale. Garantiamo che l'apparecchio è nuovo.</li>
+</ol>
+<h2 id="s2">2. Istruzioni di sicurezza</h2>
+<p>La sicurezza è una delle caratteristiche più importanti della BC-05. I dispositivi di sicurezza sono efficaci solo se si seguono le istruzioni riportate di seguito per prevenire lesioni e rischi per la salute.</p>
+<h3 id="s2-1">2.1 Rischi per l'utente</h3>
+<p><strong>Attenzione.</strong> Un uso scorretto della macchina da caffè può causare lesioni lievi. Rispettare rigorosamente queste regole:</p>
+<ol>
+<li>Leggere attentamente questo manuale prima dell'uso.</li>
+<li>Non utilizzare la macchina da caffè se è guasta o danneggiata.</li>
+<li>Non modificare i dispositivi di sicurezza integrati.</li>
+<li>Non toccare le parti calde della macchina.</li>
+<li>I bambini a partire dagli 8 anni e le persone con ridotte capacità fisiche, sensoriali o mentali o prive di esperienza possono utilizzare l'apparecchio solo sotto sorveglianza, oppure dopo essere stati istruiti sull'uso sicuro da una persona responsabile e aver compreso pienamente i rischi connessi.</li>
+<li>Non lasciare che i bambini giochino con l'apparecchio o nelle sue vicinanze. I bambini sotto i 15 anni possono usarlo solo sotto la sorveglianza di un adulto.</li>
+<li>Tenere l'apparecchio e il cavo di alimentazione fuori dalla portata dei bambini sotto gli 8 anni.</li>
+<li>Installare la macchina da caffè in un punto in cui sia facile ispezionarla e sottoporla a manutenzione regolare.</li>
+<li>Mettere nel contenitore dei chicchi solo caffè in grani. Non usare mai caffè macinato.</li>
+</ol>
+<p><strong>Rischio di scossa elettrica.</strong> Un uso scorretto della macchina da caffè può causare lesioni gravi. Osservare sempre quanto segue:</p>
+<ol>
+<li>Rispettare le direttive sulla bassa tensione e le norme di sicurezza nazionali e locali.</li>
+<li>Assicurarsi che la macchina sia collegata correttamente a terra.</li>
+<li>La tensione di rete deve corrispondere a quella indicata sulla targhetta dell'apparecchio.</li>
+<li>Non toccare parti sotto tensione.</li>
+<li>Spegnere l'interruttore principale e scollegare la spina prima di qualsiasi intervento di manutenzione.</li>
+<li>Il cavo di alimentazione può essere sostituito solo da personale di assistenza qualificato.</li>
+</ol>
+<p><strong>Rischio di ustioni.</strong> Un uso scorretto della macchina da caffè può causare lesioni lievi.</p>
+<ol>
+<li>Nei punti di erogazione di bevande, acqua calda e vapore c'è rischio di ustioni. Tenere le mani lontane dall'erogatore del caffè durante il funzionamento e la pulizia.</li>
+<li>L'erogatore del caffè e il gruppo infusore diventano molto caldi. Afferrare solo le apposite maniglie. Pulire il gruppo infusore solo dopo che la macchina si è completamente raffreddata.</li>
+</ol>
+<h3 id="s2-2">2.2 Rischi per l'apparecchio</h3>
+<p><strong>Attenzione.</strong> Ignorare queste avvertenze può causare una scossa elettrica potenzialmente mortale. Osservare sempre quanto segue:</p>
+<ol>
+<li>Non accendere la macchina con il serbatoio dell'acqua vuoto.</li>
+<li>Dopo un lungo periodo di inutilizzo (ad esempio una vacanza), pulire accuratamente la macchina da caffè prima di riutilizzarla.</li>
+<li>Proteggere i chicchi di caffè da condizioni sfavorevoli, come gelo e umidità.</li>
+<li>I guasti devono essere riparati solo da tecnici qualificati.</li>
+<li>Utilizzare solo accessori originali del produttore.</li>
+<li>In caso di danni esterni visibili o di perdite di liquido, contattare immediatamente l'assistenza clienti per la riparazione o la sostituzione.</li>
+<li>Non sciacquare l'apparecchio sotto l'acqua corrente e non pulirlo con un pulitore a vapore.</li>
+<li>Non posizionare l'apparecchio su superfici sensibili agli schizzi d'acqua.</li>
+<li>Mettere nel contenitore dei chicchi solo caffè in grani. Non usare mai caffè macinato.</li>
+<li>Se la macchina da caffè e gli accessori sono stati trasportati a temperature inferiori a 10 °C, lasciarli a temperatura ambiente per 3 ore prima di collegarli e accenderli.</li>
+</ol>
+<h3 id="s2-3">2.3 Igiene: acqua</h3>
+<p><strong>Attenzione.</strong> L'uso di acqua non idonea può nuocere alla salute. Osservare sempre quanto segue:</p>
+<ol>
+<li>Usare solo acqua pulita e non contaminata.</li>
+<li>Non riempire la macchina da caffè con acqua corrosiva.</li>
+<li>La durezza carbonatica non deve superare 5–6 °dKH o 8,9–10,7 °fH.</li>
+<li>Contenuto di cloro: massimo 100 mg/l.</li>
+<li>Valore pH: 6,5–7 (neutro).</li>
+</ol>
+<h2 id="s3">3. Descrizione del prodotto</h2>
+<h3 id="s3-1">3.1 Panoramica della macchina</h3>
+<figure class="fig wide"><img src="img/f01-overview.webp" width="1200" height="904" alt="Panoramica BC-05" loading="lazy" decoding="async"><figcaption>Panoramica BC-05</figcaption></figure>
+<ol class="parts"><li>Coperchio del contenitore dei chicchi</li><li>Coperchio del serbatoio dell'acqua</li><li>Pannello laterale sinistro</li><li>Pannello laterale destro</li><li>Display touch TFT</li><li>Sportello laterale</li><li>Montalatte</li><li>Copertura dell'erogatore</li><li>Erogatore del caffè</li><li>Contenitore del latte (opzionale)</li><li>Galleggiante della vaschetta acqua di scarico</li><li>Griglia raccogligocce</li><li>Coperchio della vaschetta acqua di scarico</li></ol>
+<figure class="fig"><img src="img/f02-rear.webp" width="900" height="682" alt="Vista posteriore" loading="lazy" decoding="async"><figcaption>Vista posteriore</figcaption></figure>
+<ol class="parts" start="14"><li>serbatoio dell'acqua</li><li>interruttore di alimentazione</li><li>presa di alimentazione</li></ol>
+<h3 id="s3-2">3.2 Specifiche tecniche</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Voce</th>
+<th>Valore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modello</td>
+<td>BC-05</td>
+</tr>
+<tr>
+<td>Tensione nominale / frequenza</td>
+<td>220–240 V, 50/60 Hz</td>
+</tr>
+<tr>
+<td>Potenza</td>
+<td>1350 W</td>
+</tr>
+<tr>
+<td>Capacità serbatoio acqua</td>
+<td>1,2 l</td>
+</tr>
+<tr>
+<td>Capacità contenitore chicchi</td>
+<td>250 g</td>
+</tr>
+<tr>
+<td>Capacità contenitore fondi</td>
+<td>10 porzioni</td>
+</tr>
+<tr>
+<td>Dimensioni (L × P × A)</td>
+<td>425 × 181 × 377 mm</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="s3-3">3.3 Contenuto della confezione</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Accessorio</th>
+<th>Q.tà</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cavo di alimentazione</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Manuale d'uso</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Spazzolino di pulizia</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Ago di pulizia</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Spazzolino per il tubo vapore</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Contenitore del latte (opzionale)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s4">4. Installazione e primo utilizzo</h2>
+<h3 id="s4-1">4.1 Posizionamento</h3>
+<p><strong>Luogo.</strong> La macchina può danneggiarsi se queste condizioni non sono rispettate:</p>
+<ol>
+<li>Lasciare spazio sufficiente sopra la macchina per aggiungere chicchi e acqua.</li>
+<li>Mantenere almeno 8 cm tra il retro della macchina e la parete per la ventilazione.</li>
+</ol>
+<p><strong>Clima.</strong> La macchina può danneggiarsi se queste condizioni non sono rispettate:</p>
+<ol>
+<li>Temperatura ambiente da +10 °C a +40 °C.</li>
+<li>Umidità relativa non superiore all'80%.</li>
+<li>La macchina da caffè è destinata esclusivamente all'uso in ambienti interni. Non utilizzarla all'aperto; proteggerla da pioggia, neve e gelo.</li>
+</ol>
+<p><strong>Alimentazione elettrica.</strong> Il collegamento elettrico deve essere conforme alle norme del paese di utilizzo. La tensione di rete deve corrispondere a quella indicata sulla targhetta.</p>
+<p><strong>Pericolo!</strong> Osservare sempre quanto segue:</p>
+<ol>
+<li>Non utilizzare la macchina con il cavo di alimentazione danneggiato. Un cavo danneggiato deve essere sostituito immediatamente da personale di assistenza qualificato.</li>
+<li>Le prolunghe sono sconsigliate. Se una prolunga è indispensabile, la sezione del conduttore deve essere di almeno 1 mm².</li>
+<li>Posizionare il cavo in modo che nessuno possa inciamparvi. Non deve passare su spigoli vivi, pendere liberamente, essere schiacciato o appoggiare su oggetti caldi; tenerlo lontano da olio e detergenti aggressivi.</li>
+<li>Non sollevare né tirare l'apparecchio per il cavo. Non scollegare la spina tirando il cavo. Non toccare il cavo o la spina con le mani bagnate e non inserire una spina bagnata nella presa.</li>
+</ol>
+<h3 id="s4-2">4.2 Collegamento all'alimentazione</h3>
+<p>Inserire un'estremità del cavo di alimentazione nella presa sul retro della macchina e l'altra in una presa a muro.</p>
+<figure class="fig"><img src="img/f03-power.webp" width="900" height="430" alt="Inserire il cavo di alimentazione nella presa sul retro" loading="lazy" decoding="async"><figcaption>Inserire il cavo di alimentazione nella presa sul retro</figcaption></figure>
+<h3 id="s4-3">4.3 Aggiunta di acqua e chicchi</h3>
+<p><strong>Riempimento del serbatoio dell'acqua.</strong> Sollevare il coperchio, estrarre il serbatoio, riempirlo d'acqua (non oltre il segno MAX) e rimetterlo in sede.</p>
+<p><strong>Aggiunta dei chicchi.</strong> Aprire il coperchio del contenitore dei chicchi, versare il caffè in grani e chiudere il coperchio.</p>
+<h3 id="s4-4">4.4 Prima accensione</h3>
+<ol>
+<li>Accendere la macchina con l'interruttore di alimentazione sul retro. Appare la schermata di avvio e la macchina esegue automaticamente: autotest → riscaldamento → risciacquo → ripristino.</li>
+<li>Durante l'autotest la macchina controlla il livello dell'acqua, il gruppo infusore, lo sportello laterale e la vaschetta dell'acqua di scarico. Se rileva un problema, compare un avviso; seguire le istruzioni sullo schermo.</li>
+</ol>
+<figure class="fig scr"><img src="img/s01-startup-it.webp" width="1000" height="468" alt="Avvio: autotest → riscaldamento → risciacquo → ripristino" loading="lazy" decoding="async"><figcaption>Avvio: autotest → riscaldamento → risciacquo → ripristino</figcaption></figure>
+<h2 id="s5">5. Preparazione delle bevande</h2>
+<p>Il menu delle bevande ha due pagine. Passare dall'una all'altra con le frecce ‹ e ›.</p>
+<div class="figs"><figure class="fig scr"><img src="img/s02-menu-1-it.webp" width="1000" height="615" alt="Menu bevande, pagina 1" loading="lazy" decoding="async"><figcaption>Menu bevande, pagina 1</figcaption></figure><figure class="fig scr"><img src="img/s02-menu-2-it.webp" width="1000" height="616" alt="Menu bevande, pagina 2" loading="lazy" decoding="async"><figcaption>Menu bevande, pagina 2</figcaption></figure></div>
+<h3 id="s5-1">5.1 Caffè nero (Espresso, Lungo, Americano)</h3>
+<ol>
+<li>Nella schermata principale, toccare una bevanda per aprirne le impostazioni. Per l'espresso, ad esempio, si possono regolare intensità, temperatura di estrazione, tempo di pre-infusione e quantità. Toccare «Avvia»; le impostazioni vengono salvate automaticamente.</li>
+<li>La macchina prepara la bevanda e mostra l'avanzamento in percentuale. Al 100% compare la finestra «Enjoy your coffee» e la bevanda è pronta. Per interrompere l'erogazione, toccare l'icona Annulla.</li>
+</ol>
+<div class="figs"><figure class="fig scr"><img src="img/s03-espresso-it.webp" width="1000" height="612" alt="Impostazioni espresso" loading="lazy" decoding="async"><figcaption>Impostazioni espresso</figcaption></figure><figure class="fig scr"><img src="img/s04-espresso-progress-it.webp" width="1000" height="611" alt="Erogazione: avanzamento in % e pulsante Annulla" loading="lazy" decoding="async"><figcaption>Erogazione: avanzamento in % e pulsante Annulla</figcaption></figure></div>
+<h3 id="s5-2">5.2 Caffè con latte (Cappuccino, Caffè latte, Latte macchiato, Macchiato, Flat White)</h3>
+<ol>
+<li>Versare il latte nel contenitore del latte (oppure inserire il tubo del latte direttamente sul fondo di un cartone di latte). Assicurarsi che il tubo sia collegato saldamente al montalatte. Si consiglia latte freddo a 4–8 °C. Controllare la manopola del montalatte: «Froth milk» produce schiuma di latte calda, «Warm milk» produce latte caldo.</li>
+<li>Nella schermata principale, toccare una bevanda per aprirne le impostazioni. Per il caffè latte, ad esempio, si possono regolare intensità, temperatura di estrazione, tempo di pre-infusione, quantità di caffè e tempo di montatura del latte. Toccare «Avvia»; le impostazioni vengono salvate automaticamente.</li>
+<li>L'avanzamento è mostrato in percentuale. Al 100% un messaggio conferma che la bevanda è pronta. È possibile interrompere in qualsiasi momento con l'icona Annulla.</li>
+<li>Dopo una bevanda a base di latte, la macchina chiede se eseguire la pulizia profonda del montalatte. Se si prepara subito un'altra bevanda con latte, toccare «Annulla». Altrimenti toccare «Pulisci». Vedere 7.1.3 «Pulizia profonda del montalatte».</li>
+</ol>
+<div class="figs"><figure class="fig"><img src="img/f04-frother-knob.webp" width="800" height="726" alt="Manopola del montalatte: Froth milk per la schiuma, Warm milk per il latte caldo" loading="lazy" decoding="async"><figcaption>Manopola del montalatte: Froth milk per la schiuma, Warm milk per il latte caldo</figcaption></figure><figure class="fig"><img src="img/f05-milk-container.webp" width="900" height="783" alt="Tubo del contenitore del latte collegato al montalatte" loading="lazy" decoding="async"><figcaption>Tubo del contenitore del latte collegato al montalatte</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s05-latte-it.webp" width="1000" height="611" alt="Impostazioni caffè latte" loading="lazy" decoding="async"><figcaption>Impostazioni caffè latte</figcaption></figure><figure class="fig scr"><img src="img/s06-latte-progress-it.webp" width="1000" height="608" alt="Preparazione di un caffè latte" loading="lazy" decoding="async"><figcaption>Preparazione di un caffè latte</figcaption></figure></div>
+<figure class="fig scr"><img src="img/s07-deepclean-ask-it.webp" width="1000" height="617" alt="Richiesta di pulizia profonda del montalatte" loading="lazy" decoding="async"><figcaption>Richiesta di pulizia profonda del montalatte</figcaption></figure>
+<h3 id="s5-3">5.3 Latte caldo e schiuma di latte</h3>
+<ol>
+<li>Versare il latte nel contenitore (oppure inserire il tubo sul fondo di un cartone di latte) e collegare il tubo al montalatte. Si consiglia latte freddo a 4–8 °C. Ruotare la manopola del montalatte su «Froth milk» (schiuma calda) o «Warm milk» (latte caldo).</li>
+<li>Toccare l'icona del latte nella schermata principale e impostare il tempo. Toccare «Avvia»; le impostazioni vengono salvate automaticamente.</li>
+<li>L'avanzamento è mostrato in percentuale; al 100% un messaggio conferma che la bevanda è pronta. È possibile interrompere in qualsiasi momento con l'icona Annulla.</li>
+<li>Al termine la macchina chiede se eseguire la pulizia profonda del montalatte; procedere come dopo un caffè con latte.</li>
+</ol>
+<div class="figs"><figure class="fig scr"><img src="img/s08-milk-it.webp" width="1000" height="616" alt="Impostazioni latte caldo" loading="lazy" decoding="async"><figcaption>Impostazioni latte caldo</figcaption></figure><figure class="fig scr"><img src="img/s09-milk-progress-it.webp" width="1000" height="614" alt="Preparazione del latte caldo" loading="lazy" decoding="async"><figcaption>Preparazione del latte caldo</figcaption></figure></div>
+<h3 id="s5-4">5.4 Acqua calda</h3>
+<ol>
+<li>Toccare l'icona dell'acqua calda nella schermata principale e impostare temperatura e quantità. Toccare «Avvia»; le impostazioni vengono salvate automaticamente.</li>
+<li>La macchina eroga acqua calda e mostra l'avanzamento in percentuale. Al 100% un messaggio conferma il termine. È possibile interrompere in qualsiasi momento con l'icona Annulla.</li>
+</ol>
+<div class="figs"><figure class="fig scr"><img src="img/s10-water-it.webp" width="1000" height="607" alt="Impostazioni acqua calda" loading="lazy" decoding="async"><figcaption>Impostazioni acqua calda</figcaption></figure><figure class="fig scr"><img src="img/s11-water-progress-it.webp" width="1000" height="608" alt="Erogazione di acqua calda" loading="lazy" decoding="async"><figcaption>Erogazione di acqua calda</figcaption></figure></div>
+<h3 id="s5-5">5.5 Profili utente</h3>
+<p>Toccare l'icona dell'avatar in alto a sinistra e scegliere l'utente 1, 2, 3 o 4. Ogni utente può impostare e salvare le proprie impostazioni delle bevande.</p>
+<figure class="fig scr"><img src="img/s12-users-it.webp" width="1000" height="607" alt="Scelta di un profilo utente" loading="lazy" decoding="async"><figcaption>Scelta di un profilo utente</figcaption></figure>
+<h3 id="s5-6">5.6 Regolazione della macinatura</h3>
+<p>La macinatura è impostata in fabbrica al livello ottimale, quindi è possibile preparare subito il caffè. Se il caffè risulta debole e con poca crema, oppure dopo alcune tazze scende molto lentamente, a gocce, regolare la macinatura:</p>
+<ol>
+<li>Aprire il coperchio del contenitore dei chicchi.</li>
+<li>Avviare la preparazione di un caffè. Quando si sente il macinino, ruotare la manopola di regolazione della macinatura sulla posizione desiderata (1 è la più fine, 5 la più grossa).</li>
+<li>Osservare la velocità con cui scende il caffè. Se scende troppo lentamente o non scende affatto, ruotare la manopola verso 5. Per un caffè corposo con crema densa, ruotarla di uno scatto verso 1. Cambiare un solo scatto alla volta per non danneggiare la macchina.</li>
+</ol>
+<figure class="fig"><img src="img/f06-grind-knob.webp" width="700" height="700" alt="Manopola della macinatura: 1 la più fine, 5 la più grossa" loading="lazy" decoding="async"><figcaption>Manopola della macinatura: 1 la più fine, 5 la più grossa</figcaption></figure>
+<p><strong>Attenzione.</strong> Una nuova impostazione della macinatura ha effetto solo dopo almeno due tazze. Se il risultato non è ancora quello desiderato, ruotare la manopola di un altro scatto. Anche la consistenza dei fondi di caffè nel contenitore fondi può aiutare a orientarsi.</p>
+<h2 id="s6">6. Impostazioni</h2>
+<p>Toccare l'icona delle impostazioni in basso sullo schermo per aprire il menu delle impostazioni.</p>
+<p><strong>Lingua.</strong> La macchina supporta diverse lingue dell'interfaccia; scegliere quella desiderata.</p>
+<p><strong>Impostazioni bevande.</strong> Qui si modificano tutte le impostazioni delle bevande per l'utente attuale; le modifiche vengono salvate automaticamente nel suo profilo.</p>
+<figure class="fig scr"><img src="img/s13-settings-bev-it.webp" width="1000" height="616" alt="Impostazioni bevande: scelta di una bevanda" loading="lazy" decoding="async"><figcaption>Impostazioni bevande: scelta di una bevanda</figcaption></figure>
+<p><strong>Spegnimento automatico.</strong> Imposta il tempo per lo spegnimento automatico. Trascorso questo tempo in standby, la macchina e lo schermo si spengono; toccare lo schermo per riattivarla.</p>
+<p><strong>Retroilluminazione in standby.</strong> Luminosità dello schermo in standby: piena, metà o spenta.</p>
+<p><strong>Regolazione durante l'erogazione.</strong> Se attiva, le impostazioni delle bevande possono essere modificate durante l'erogazione (tranne la temperatura di estrazione). Se disattiva, le impostazioni sono bloccate durante l'erogazione.</p>
+<p><strong>Suono.</strong> Attiva o disattiva i segnali acustici.</p>
+<p><strong>Livello di decalcificazione.</strong> Cinque livelli; con OFF il promemoria è disattivato. Quando il consumo totale d'acqua raggiunge il volume impostato, compare un promemoria di decalcificazione. Volume per livello: 1 — 80 l, 2 — 60 l, 3 — 40 l, 4 — 20 l, 5 — 10 l.</p>
+<figure class="fig scr"><img src="img/s14-settings-descale-it.webp" width="1000" height="607" alt="Livello di decalcificazione: 1–5 o OFF" loading="lazy" decoding="async"><figcaption>Livello di decalcificazione: 1–5 o OFF</figcaption></figure>
+<p><strong>Impostazioni assistenza.</strong> Solo per l'assistenza del produttore.</p>
+<p><strong>Ripristino impostazioni di fabbrica.</strong> Riporta tutte le impostazioni ai valori di fabbrica: impostazioni del caffè, lingua, bevande, spegnimento automatico, luminosità, regolazione durante l'erogazione, suono e livello di decalcificazione.</p>
+<p><strong>Contatore bevande.</strong> Numero totale di bevande preparate e numero per ciascuna bevanda.</p>
+<p><strong>Numero decalcificazioni.</strong> Quante volte è stata completata la decalcificazione.</p>
+<h2 id="s7">7. Pulizia e manutenzione</h2>
+<h3 id="s7-1">7.1 Pulizia automatica</h3>
+<figure class="fig scr"><img src="img/s15-cleaning-it.webp" width="1000" height="613" alt="Menu pulizia" loading="lazy" decoding="async"><figcaption>Menu pulizia</figcaption></figure>
+<p><strong>7.1.1 Risciacquo rapido del gruppo infusore.</strong> La caldaia si riscalda e la pompa fa passare acqua attraverso il gruppo infusore. Durante il risciacquo l'acqua di scarico esce dall'erogatore del caffè.</p>
+<figure class="fig scr"><img src="img/s16-rinse-it.webp" width="1000" height="612" alt="Risciacquo rapido: tempo e conto alla rovescia" loading="lazy" decoding="async"><figcaption>Risciacquo rapido: tempo e conto alla rovescia</figcaption></figure>
+<p><strong>7.1.2 Risciacquo rapido del montalatte.</strong> La caldaia si riscalda e la pompa risciacqua il montalatte. L'acqua di scarico esce dall'erogatore del caffè.</p>
+<p><strong>7.1.3 Pulizia profonda del montalatte.</strong> Seguendo le indicazioni sullo schermo, lavare accuratamente il contenitore del latte, riempirlo di acqua pulita e toccare l'icona di pulizia. La macchina pulisce a fondo il montalatte automaticamente; la durata della pulizia è regolabile. L'acqua di scarico esce dall'erogatore del caffè.</p>
+<figure class="fig scr"><img src="img/s17-frother-deep-it.webp" width="1000" height="619" alt="Pulizia profonda montalatte: riempire d'acqua il contenitore del latte" loading="lazy" decoding="async"><figcaption>Pulizia profonda montalatte: riempire d'acqua il contenitore del latte</figcaption></figure>
+<p><strong>7.1.4 Manutenzione della macchina.</strong> Comprende la pulizia profonda del gruppo infusore (con pastiglia), la pulizia profonda del circuito del latte (con pastiglia) e la decalcificazione.</p>
+<ol>
+<li><strong>Pulizia profonda del gruppo infusore (pastiglia).</strong> Avviare il programma, inserire una pastiglia detergente nel gruppo infusore quando richiesto e toccare «Avanti». Durante la pulizia l'acqua di scarico esce dall'erogatore del caffè.</li>
+<li><strong>Pulizia profonda del circuito del latte (pastiglia).</strong> Avviare il programma, mettere nel contenitore del latte una pastiglia detergente per il circuito del latte e acqua pulita quando richiesto, poi toccare «Avanti». L'acqua di scarico esce dall'erogatore del caffè. Al termine lavare il contenitore, riempirlo di nuovo con acqua pulita ed eseguire di nuovo la pulizia per eliminare i residui di detergente.</li>
+<li><strong>Decalcificazione.</strong> Toccare «Decalcifica ora». Quando richiesto, versare nel serbatoio dell'acqua un decalcificante per macchine da caffè e acqua pulita fino a MAX. Posizionare un contenitore grande sotto l'erogatore del caffè e toccare «Avanti». Controllare il contenitore perché non trabocchi. Al termine lavare il serbatoio, riempirlo con acqua pulita ed eseguire un risciacquo per eliminare i residui di decalcificante.</li>
+</ol>
+<div class="figs"><figure class="fig scr"><img src="img/s18-maintenance-it.webp" width="1000" height="622" alt="Menu manutenzione" loading="lazy" decoding="async"><figcaption>Menu manutenzione</figcaption></figure><figure class="fig scr"><img src="img/s19-brewer-tablet-it.webp" width="1000" height="614" alt="Gruppo infusore: inserire una pastiglia detergente" loading="lazy" decoding="async"><figcaption>Gruppo infusore: inserire una pastiglia detergente</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s20-milk-tablet-it.webp" width="1000" height="613" alt="Circuito del latte: pastiglia e acqua" loading="lazy" decoding="async"><figcaption>Circuito del latte: pastiglia e acqua</figcaption></figure><figure class="fig scr"><img src="img/s20b-milk-rinse-it.webp" width="1000" height="606" alt="Circuito del latte: risciacquo con acqua pulita" loading="lazy" decoding="async"><figcaption>Circuito del latte: risciacquo con acqua pulita</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s21-descale-it.webp" width="1000" height="613" alt="Decalcificazione: decalcificante e acqua fino a MAX" loading="lazy" decoding="async"><figcaption>Decalcificazione: decalcificante e acqua fino a MAX</figcaption></figure><figure class="fig scr"><img src="img/s21b-descale-rinse-it.webp" width="1000" height="614" alt="Decalcificazione: risciacquo con acqua pulita" loading="lazy" decoding="async"><figcaption>Decalcificazione: risciacquo con acqua pulita</figcaption></figure></div>
+<h3 id="s7-2">7.2 Pulizia manuale</h3>
+<p>Pulire regolarmente queste parti:</p>
+<ol>
+<li><strong>Contenitore fondi</strong> — dopo ogni svuotamento.</li>
+<li><strong>Gruppo vaschetta acqua di scarico</strong> (vaschetta, coperchio, griglia raccogligocce) — svuotare e lavare tutte le parti quando il galleggiante si alza.</li>
+<li><strong>Serbatoio dell'acqua</strong> — lavare regolarmente con un panno morbido e un detergente delicato (consigliato una volta al mese).</li>
+<li><strong>Erogatore del caffè</strong> — pulire regolarmente con una spugna o un panno; liberare le ostruzioni con uno stuzzicadenti.</li>
+<li><strong>Contenitore dei chicchi</strong> — pulire di tanto in tanto con un panno asciutto (consigliato una volta al mese).</li>
+<li>
+<p><strong>Condotto del caffè macinato</strong> (una volta al mese o in caso di ostruzione).</p>
+<p><strong>Nota.</strong> Eseguire solo con la macchina spenta e la spina scollegata.</p>
+<p>① Aprire lo sportello laterale. ② Pulire il condotto con lo spazzolino. ③ Rimuovere i fondi di caffè visibili all'interno della macchina, se necessario con un aspirapolvere. ④ Rimuovere fondi e sporco dalla vaschetta dell'acqua di scarico.</p>
+<figure class="fig"><img src="img/f07-powder-channel.webp" width="800" height="723" alt="Condotto del caffè macinato dietro lo sportello laterale" loading="lazy" decoding="async"><figcaption>Condotto del caffè macinato dietro lo sportello laterale</figcaption></figure>
+</li>
+<li>
+<p><strong>Pulizia manuale del montalatte</strong> (consigliata una volta al mese).</p>
+<p>① Spegnere la macchina. ② Scollegare il tubo del latte dal montalatte. ③ Premere verso l'interno i fermi sinistro e destro e tirare verso il basso per rimuovere l'intero montalatte. ④ Smontare il montalatte e sciacquare tutte le parti sotto l'acqua corrente; se necessario, lasciarle prima in ammollo per 10 minuti in un detergente per circuiti del latte.</p>
+<div class="figs"><figure class="fig"><img src="img/f08-frother-remove.webp" width="800" height="767" alt="Gruppo montalatte" loading="lazy" decoding="async"><figcaption>Gruppo montalatte</figcaption></figure><figure class="fig"><img src="img/f09-frother-parts.webp" width="1000" height="484" alt="Smontaggio del montalatte" loading="lazy" decoding="async"><figcaption>Smontaggio del montalatte</figcaption></figure></div>
+<p><strong>Nota.</strong> Sciacquare accuratamente la fessura dell'aria sulla manopola di regolazione dell'aria senza danneggiarla, altrimenti la montatura del latte non funzionerà correttamente.</p>
+<figure class="fig"><img src="img/f10-air-slot.webp" width="600" height="1013" alt="Fessura dell'aria sulla manopola di regolazione dell'aria" loading="lazy" decoding="async"><figcaption>Fessura dell'aria sulla manopola di regolazione dell'aria</figcaption></figure>
+<p>⑤ Rimontare tutte le parti in ordine inverso e verificare che la manopola di regolazione dell'aria sia inserita correttamente. Ha 5 posizioni: fine per una schiuma densa e vellutata, grossa per bolle più grandi. Regolarla secondo la schiuma preferita.</p>
+<figure class="fig"><img src="img/f11-frother-assemble.webp" width="1000" height="633" alt="Rimontaggio e manopola di regolazione dell'aria" loading="lazy" decoding="async"><figcaption>Rimontaggio e manopola di regolazione dell'aria</figcaption></figure>
+</li>
+<li>
+<p><strong>Pulizia manuale del gruppo infusore</strong> (consigliata ogni due settimane).</p>
+<p>① Spegnere la macchina e aprire lo sportello laterale. ② Premere i due pulsanti arancioni ai lati del gruppo infusore in direzione PUSH ed estrarre il gruppo. ③ Lasciare il gruppo in acqua pulita per 5 minuti, poi sciacquarlo sotto il rubinetto. Non metterlo in lavastoviglie e non usare detergenti. ④ Con lo sportello aperto, rimuovere con lo spazzolino i fondi di caffè visibili all'interno della macchina. ⑤ Premere fino in fondo la testa di infusione del gruppo pulito, reinserire il gruppo e premere sul segno PUSH finché non scatta in posizione.</p>
+<figure class="fig"><img src="img/f12-brew-group.webp" width="474" height="668" alt="Gruppo infusore: premere entrambi i pulsanti PUSH" loading="lazy" decoding="async"><figcaption>Gruppo infusore: premere entrambi i pulsanti PUSH</figcaption></figure>
+<p><strong>Nota.</strong> Assicurarsi che entrambi i pulsanti arancioni siano tornati nella posizione originale, altrimenti la macchina potrebbe danneggiarsi.</p>
+</li>
+</ol>
+<h3 id="s7-3">7.3 Rimozione, rimontaggio e pulizia delle macine</h3>
+<p>Se non esce caffè macinato, il condotto è ostruito, un corpo estraneo è bloccato nel macinino oppure le macine sono montate in modo errato:</p>
+<ol>
+<li>Spegnere la macchina e rimuovere tutti i chicchi dal contenitore.</li>
+<li>Ruotare il coperchio del macinino in senso antiorario finché il segno di sblocco non è allineato alla nervatura del contenitore dei chicchi, quindi sollevare il coperchio.</li>
+<li>Ruotare la manopola di regolazione della macinatura su 5, sollevarla e ruotarla in senso orario nella posizione di sblocco per liberare le macine.</li>
+<li>Tirare verso l'alto la maniglia della macina per estrarre il gruppo macine.</li>
+<li>Rimuovere tutti i residui di caffè macinato e di chicchi dalla camera di macinatura; aiutano un aspirapolvere e un piccolo cacciavite a taglio. Pulire accuratamente, altrimenti le macine non si posizioneranno correttamente.</li>
+<li>Rimontare il gruppo macine. Ruotare la manopola di regolazione della macinatura in senso antiorario su 5, sollevarla e continuare a ruotare in senso antiorario fino a 3 o a un altro livello adatto, quindi tirare di nuovo la maniglia della macina. Se il manicotto della macina non esce, è bloccato correttamente. Se esce, non è bloccato completamente: ruotare la manopola in senso orario per sbloccare, premere con decisione la macina in sede e ruotare la manopola in senso antiorario fino a 3 o a un altro livello adatto.</li>
+<li>Rimontare il coperchio del macinino e ruotarlo in senso orario finché il segno di blocco non è allineato alla nervatura del contenitore dei chicchi.</li>
+</ol>
+<div class="figs steps"><figure class="fig"><img src="img/g2.webp" width="673" height="920" alt="Passo 2" loading="lazy" decoding="async"><figcaption>Passo 2</figcaption></figure><figure class="fig"><img src="img/g3a.webp" width="704" height="882" alt="Passo 3" loading="lazy" decoding="async"><figcaption>Passo 3</figcaption></figure><figure class="fig"><img src="img/g3b.webp" width="704" height="902" alt="Passo 3" loading="lazy" decoding="async"><figcaption>Passo 3</figcaption></figure><figure class="fig"><img src="img/g4.webp" width="693" height="911" alt="Passo 4" loading="lazy" decoding="async"><figcaption>Passo 4</figcaption></figure><figure class="fig"><img src="img/g5.webp" width="946" height="686" alt="Passo 5" loading="lazy" decoding="async"><figcaption>Passo 5</figcaption></figure><figure class="fig"><img src="img/g6a.webp" width="671" height="858" alt="Passo 6" loading="lazy" decoding="async"><figcaption>Passo 6</figcaption></figure><figure class="fig"><img src="img/g6b.webp" width="515" height="744" alt="Passo 6" loading="lazy" decoding="async"><figcaption>Passo 6</figcaption></figure><figure class="fig"><img src="img/g7.webp" width="673" height="920" alt="Passo 7" loading="lazy" decoding="async"><figcaption>Passo 7</figcaption></figure></div>
+<h2 id="s8">8. Trasporto e smaltimento</h2>
+<h3 id="s8-1">8.1 Trasporto</h3>
+<ol>
+<li>Conservare l'imballaggio originale per eventuali trasporti futuri.</li>
+<li>Prima del trasporto scaricare tutta l'acqua residua dalla macchina da caffè per evitare danni.</li>
+<li>Svuotare il serbatoio dell'acqua e la vaschetta dell'acqua di scarico e pulire la macchina dentro e fuori.</li>
+</ol>
+<h3 id="s8-2">8.2 Residui di caffè</h3>
+<p>I residui di caffè sono completamente organici e possono essere smaltiti con i rifiuti domestici.</p>
+<h3 id="s8-3">8.3 Acqua di scarico</h3>
+<p>L'acqua di scarico della preparazione e della pulizia è conforme agli standard per le acque reflue domestiche e può essere versata in un normale scarico.</p>
+<h3 id="s8-4">8.4 Smaltimento dell'apparecchio</h3>
+<ol>
+<li>L'apparecchio è realizzato con materiali riciclabili di alta qualità.</li>
+<li>Non smaltire l'apparecchio con i rifiuti domestici. Seguire le norme locali sullo smaltimento dei rifiuti.</li>
+</ol>
+<h2 id="s9">9. Risoluzione dei problemi</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Causa</th>
+<th>Soluzione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La macchina non si accende</td>
+<td>Assenza di corrente o interruttore principale su OFF</td>
+<td>Collegare il cavo di alimentazione e portare l'interruttore su ON</td>
+</tr>
+<tr>
+<td>Codice di errore sullo schermo o pulsanti che non rispondono</td>
+<td>Guasto del software o dell'elettronica</td>
+<td>Spegnere, scollegare la spina, attendere 30 secondi e riaccendere. Se il problema persiste, contattare il produttore o il rivenditore</td>
+</tr>
+<tr>
+<td>Rumore insolito durante la macinatura</td>
+<td>Corpo estraneo nel macinino</td>
+<td>Contattare il produttore o il rivenditore</td>
+</tr>
+<tr>
+<td>Il caffè scende lentamente o non scende</td>
+<td>Macinatura troppo fine</td>
+<td>Ruotare la manopola della macinatura verso una macinatura più grossa (uno scatto alla volta). La modifica ha effetto dopo almeno due tazze</td>
+</tr>
+<tr>
+<td>Il caffè scende lentamente o non scende</td>
+<td>Circuito dell'acqua non riempito</td>
+<td>Tenere premuto il pulsante di accensione per eseguire il risciacquo automatico allo spegnimento, poi preparare di nuovo il caffè</td>
+</tr>
+<tr>
+<td>Il caffè scende lentamente o non scende</td>
+<td>Gruppo infusore sporco</td>
+<td>Pulire accuratamente il gruppo infusore</td>
+</tr>
+<tr>
+<td>Il caffè scende troppo velocemente ed è debole</td>
+<td>Macinatura troppo grossa</td>
+<td>Ruotare la manopola della macinatura verso una macinatura più fine (uno scatto alla volta). La modifica ha effetto dopo almeno due tazze</td>
+</tr>
+<tr>
+<td>Il gruppo infusore non si estrae</td>
+<td>Gruppo infusore non in posizione iniziale</td>
+<td>Riavviare la macchina ed eliminare tutti gli avvisi; il gruppo torna automaticamente in posizione iniziale</td>
+</tr>
+<tr>
+<td>Esce acqua limpida invece del caffè</td>
+<td>I chicchi non vengono macinati; i chicchi sono umidi</td>
+<td>Impostare prima una macinatura più grossa; se non basta, contattare l'assistenza</td>
+</tr>
+<tr>
+<td>«Gruppo infusore non installato» dopo averlo inserito</td>
+<td>Gruppo infusore non bloccato</td>
+<td>Inserire il gruppo e premere sul segno PUSH finché non scatta</td>
+</tr>
+<tr>
+<td>Troppo poco caffè</td>
+<td>Perdita nei tubi interni</td>
+<td>Contattare il produttore o il rivenditore</td>
+</tr>
+<tr>
+<td>Troppo poco caffè</td>
+<td>Circuito dell'acqua ostruito dal calcare</td>
+<td>Eseguire il programma completo di decalcificazione</td>
+</tr>
+<tr>
+<td>Il latte non viene aspirato</td>
+<td>Infiltrazione d'aria nel montalatte; troppa aria; tubo del latte ostruito</td>
+<td>Controllare e rimontare tutte le parti del montalatte; ridurre la regolazione dell'aria; pulire il tubo del latte e i raccordi</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="s10">10. Responsabilità e garanzia</h2>
+<p>Il produttore non accetta richieste di garanzia né si assume responsabilità per lesioni o danni materiali nei seguenti casi:</p>
+<ol>
+<li>Uso dell'apparecchio non conforme alla destinazione d'uso o in violazione delle regole.</li>
+<li>Installazione, messa in funzione, utilizzo, pulizia o manutenzione non corretti.</li>
+<li>Mancato rispetto delle istruzioni di questo manuale.</li>
+<li>Funzionamento della macchina da caffè in condizioni anomale.</li>
+<li>Uso di ricambi non originali.</li>
+<li>Danni causati da corpi estranei, incidenti, atti dolosi o cause di forza maggiore.</li>
+</ol>
+    </article>
+  </div>
+</main>
+<footer><img src="/img/logo.svg" alt="BUCCARI"></footer>
+<script>
+(function(){
+  var mb=document.getElementById('modeBtn');
+  function upd(){var d=document.documentElement.getAttribute('data-mode')==='dark'; mb.setAttribute('aria-label', d?mb.dataset.light:mb.dataset.dark); mb.title=mb.getAttribute('aria-label');}
+  window.__onMode=upd;
+  mb.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-mode')==='dark'?'light':'dark'; try{sessionStorage.setItem('buccari-mode',n);}catch(e){} window.__setMode(n);});
+  upd();
+  var tb=document.getElementById('tocBox'), mq=matchMedia('(max-width:860px)');
+  function tocMode(){ if(mq.matches) tb.removeAttribute('open'); else tb.setAttribute('open',''); }
+  tocMode(); if(mq.addEventListener) mq.addEventListener('change',tocMode);
+  tb.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches) tb.removeAttribute('open'); }); });
+})();
+</script>
+</body>
+</html>
