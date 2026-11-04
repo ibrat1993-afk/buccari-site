@@ -120,7 +120,9 @@ ol.parts li{break-inside:avoid}
   .cover{display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:255mm; text-align:center; break-after:page}
   .cover-logo{width:90mm; height:auto; margin-top:6mm}
   .cover-photo{width:89mm; max-height:85mm; object-fit:contain}
-  .cover-title{font-weight:300; font-size:22pt; line-height:1.25; max-width:150mm}
+  .cover-head{display:flex; flex-direction:column; align-items:center; gap:5mm}
+.cover-doc{font-weight:300; font-size:15pt; letter-spacing:2px; color:#4A4743}
+.cover-title{font-weight:300; font-size:30pt; letter-spacing:4px; line-height:1}
   .cover-site{font-size:10pt; letter-spacing:3px; color:#6B6862; margin-bottom:4mm}
 }
 </style>
@@ -148,7 +150,7 @@ ol.parts li{break-inside:avoid}
   </div>
 </header>
 <main class="doc">
-<section class="cover" aria-hidden="true"><img class="cover-logo" src="/img/logo.svg" alt=""><img class="cover-photo" src="img/f00-cover.webp" alt=""><div class="cover-title">BUCCARI BC-05 Automatic Coffee Machine. User Manual</div><div class="cover-site">buccari.tech</div></section>
+<section class="cover" aria-hidden="true"><div class="cover-head"><img class="cover-logo" src="/img/logo.svg" alt=""><div class="cover-doc">User Manual</div></div><img class="cover-photo" src="img/f00-cover.webp" alt=""><div class="cover-title">BC-05</div><div class="cover-site">buccari.tech</div></section>
 
   <a class="back" href="./">Back to BUCCARI</a>
   <div class="eyebrow">BC-05 · User manual</div>
