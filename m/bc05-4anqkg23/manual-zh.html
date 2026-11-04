@@ -78,6 +78,41 @@ html[dir="rtl"] .tbl th,html[dir="rtl"] .tbl td{padding:10px 0 10px 12px}
 footer{border-top:1px solid var(--rule); padding-block:36px; display:flex; justify-content:center}
 footer img{width:110px; height:auto; filter:var(--logo-filter)}
 
+/* Figures: redrawn illustrations sit on a light card in both themes; screen drawings carry their own dark bezel */
+.fig{margin:20px 0 24px}
+.fig img{display:block; width:100%; height:auto; background:#F4F2EF; border:1px solid var(--rule); border-radius:4px}
+.fig.scr img{background:transparent; border:0; border-radius:0}
+.fig figcaption{font-size:14px; line-height:1.45; color:var(--muted); margin-top:8px}
+.figs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0 24px}
+.figs .fig{margin:0}
+.figs.steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+.figs.steps img{aspect-ratio:3/4; object-fit:cover}
+.fig > img{width:auto; max-width:100%; max-height:380px}
+.fig.scr > img{width:100%; max-width:560px; max-height:none}
+.fig.wide > img{width:100%; max-height:none}
+.figs .fig > img{width:100%; max-height:none; max-width:none}
+@media (max-width:520px){.figs{grid-template-columns:1fr}.figs.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ol.parts{columns:2; column-gap:32px; font-size:15px}
+ol.parts li{break-inside:avoid}
+@media (max-width:520px){ol.parts{columns:1}}
+@media print{
+  .toc,.back,footer,.tools{display:none!important}
+  .top{position:static; border:0}
+  .bar{padding:0}
+  body{background:#fff; color:#141414; font-size:11pt}
+  .doc{padding:0; max-width:none}
+  .layout{display:block}
+  article{max-width:none}
+  .fig,.figs{break-inside:avoid}
+  .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .figs.steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+  ol.parts{columns:2}
+  .fig > img{max-height:85mm}
+  .fig.scr > img{max-width:120mm}
+  .fig.wide > img{max-height:120mm; width:auto; max-width:100%}
+  .figs .fig > img{max-height:70mm; width:100%}
+  article h2{break-after:avoid} article h3{break-after:avoid}
+}
 </style>
 <script>
 /* Theme by the visitor's local time: light 07:00-18:59, dark otherwise. A manual switch lasts for the visit. */
@@ -171,8 +206,10 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 </ol>
 <h2 id="s3">3. 产品说明</h2>
 <h3 id="s3-1">3.1 产品结构</h3>
-<p>豆仓盖 · 水箱盖 · 左侧板 · 右侧板 · TFT 触摸显示屏 · 侧门 · 奶泡器 · 出口装饰盖 · 咖啡出口 · 奶罐（选配）· 废水箱浮标 · 接水盘 · 废水箱装饰件。</p>
-<p>背面：水箱 · 电源开关 · 电源插座。</p>
+<figure class="fig wide"><img src="img/f01-overview.webp" width="1200" height="904" alt="BC-05 结构" loading="lazy" decoding="async"><figcaption>BC-05 结构</figcaption></figure>
+<ol class="parts"><li>豆仓盖</li><li>水箱盖</li><li>左侧板</li><li>右侧板</li><li>TFT 触摸显示屏</li><li>侧门</li><li>奶泡器</li><li>出口装饰盖</li><li>咖啡出口</li><li>奶罐（选配）</li><li>废水箱浮标</li><li>接水盘</li><li>废水箱装饰件</li></ol>
+<figure class="fig"><img src="img/f02-rear.webp" width="900" height="682" alt="背面" loading="lazy" decoding="async"><figcaption>背面</figcaption></figure>
+<ol class="parts" start="14"><li>水箱</li><li>电源开关</li><li>电源插座</li></ol>
 <h3 id="s3-2">3.2 技术参数</h3>
 <div class="tbl"><table>
 <thead>
@@ -270,6 +307,7 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 </ol>
 <h3 id="s4-2">4.2 连接电源</h3>
 <p>将电源线一端插入咖啡机背面的插座，另一端插入电源插座。</p>
+<figure class="fig"><img src="img/f03-power.webp" width="900" height="430" alt="将电源线插入机器背面的插座" loading="lazy" decoding="async"><figcaption>将电源线插入机器背面的插座</figcaption></figure>
 <h3 id="s4-3">4.3 加水和加咖啡豆</h3>
 <p><strong>水箱加水：</strong> 先掀起水箱盖，取出水箱，加水（注意不要超过 MAX 线），然后将水箱装回。</p>
 <p><strong>添加咖啡豆：</strong> 打开豆仓盖，加入咖啡豆，然后盖好盖子。</p>
@@ -278,13 +316,16 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <li>按下机器背面的电源开关开机。机器进入开机界面，并自动依次执行：开机自检 → 加热 → 清洗 → 复位。</li>
 <li>开机自检时，机器会自动检测水箱水位、冲泡器是否到位、侧门是否关闭以及废水箱是否到位。如发现异常，将弹出相应的警告提示，请按屏幕提示处理。</li>
 </ol>
+<figure class="fig scr"><img src="img/s01-startup.webp" width="1000" height="613" alt="开机：自检 → 加热 → 冲洗 → 复位" loading="lazy" decoding="async"><figcaption>开机：自检 → 加热 → 冲洗 → 复位</figcaption></figure>
 <h2 id="s5">5. 饮品制作</h2>
 <p>本机共有两页饮品菜单，可点击 ‹ 或 › 切换页面。</p>
+<div class="figs"><figure class="fig scr"><img src="img/s02-menu-1.webp" width="1000" height="613" alt="饮品菜单 第 1 页" loading="lazy" decoding="async"><figcaption>饮品菜单 第 1 页</figcaption></figure><figure class="fig scr"><img src="img/s02-menu-2.webp" width="1000" height="613" alt="饮品菜单 第 2 页" loading="lazy" decoding="async"><figcaption>饮品菜单 第 2 页</figcaption></figure></div>
 <h3 id="s5-1">5.1 黑咖啡（意式浓缩、意式大杯、美式咖啡）</h3>
 <ol>
 <li>在主界面选择所需饮品，点击进入参数设置页面。以意式浓缩为例，可调节咖啡浓度、萃取温度、预浸泡时间和咖啡容量。调整后点击“开始制作”，设置的参数将自动保存。</li>
 <li>机器进入制作界面并开始制作饮品，制作进度以百分比显示。达到 100% 时弹出“请享用”窗口，表示饮品已制作完成。制作过程中可点击取消图标停止当前流程。</li>
 </ol>
+<div class="figs"><figure class="fig scr"><img src="img/s03-espresso.webp" width="1000" height="613" alt="意式浓缩参数设置" loading="lazy" decoding="async"><figcaption>意式浓缩参数设置</figcaption></figure><figure class="fig scr"><img src="img/s04-espresso-progress.webp" width="1000" height="613" alt="制作中：显示百分比进度，可点击取消" loading="lazy" decoding="async"><figcaption>制作中：显示百分比进度，可点击取消</figcaption></figure></div>
 <h3 id="s5-2">5.2 奶咖（卡布奇诺、拿铁咖啡、拿铁玛琪雅朵、玛琪雅朵、馥芮白）</h3>
 <ol>
 <li>将牛奶倒入奶罐（也可不使用奶罐，直接将吸奶管插入奶盒底部）。确保奶管接头与奶泡器连接良好。建议使用 4–8 ℃ 的冷藏牛奶。同时确认奶泡器旋钮位于 “Froth milk” 档（“Froth milk” 为热奶泡，“Warm milk” 为热牛奶）。</li>
@@ -292,6 +333,9 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <li>机器进入制作界面并开始制作，进度以百分比显示。达到 100% 时弹出完成提示。可随时点击取消图标停止制作。</li>
 <li>奶咖制作完成后，会弹出是否进行奶泡器深度清洗的提示。如需立即制作另一杯含奶饮品，请点击“取消”关闭提示；如短时间内不再制作奶饮，请点击“清洗”开始奶泡器深度清洗。详细步骤请参阅第 7.1.3 节“奶泡器深度清洗”。</li>
 </ol>
+<div class="figs"><figure class="fig"><img src="img/f04-frother-knob.webp" width="800" height="800" alt="奶泡器旋钮：Froth milk 出奶泡，Warm milk 出热奶" loading="lazy" decoding="async"><figcaption>奶泡器旋钮：Froth milk 出奶泡，Warm milk 出热奶</figcaption></figure><figure class="fig"><img src="img/f05-milk-container.webp" width="590" height="534" alt="奶罐吸管已连接奶泡器" loading="lazy" decoding="async"><figcaption>奶罐吸管已连接奶泡器</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s05-latte.webp" width="1000" height="613" alt="拿铁参数设置" loading="lazy" decoding="async"><figcaption>拿铁参数设置</figcaption></figure><figure class="fig scr"><img src="img/s06-latte-progress.webp" width="1000" height="613" alt="拿铁制作中" loading="lazy" decoding="async"><figcaption>拿铁制作中</figcaption></figure></div>
+<figure class="fig scr"><img src="img/s07-deepclean-ask.webp" width="1000" height="613" alt="奶泡器深度清洁提示" loading="lazy" decoding="async"><figcaption>奶泡器深度清洁提示</figcaption></figure>
 <h3 id="s5-3">5.3 热牛奶 / 热奶泡</h3>
 <ol>
 <li>将牛奶倒入奶罐（也可直接将吸奶管插入奶盒底部），确保奶管接头与奶泡器连接良好。建议使用 4–8 ℃ 的冷藏牛奶。确认奶泡调节旋钮位于 “Froth milk”（热奶泡）或 “Warm milk”（热牛奶）档。</li>
@@ -299,13 +343,16 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <li>机器进入制作进度界面，进度条显示完成百分比。达到 100% 时弹出饮品已完成的提示。操作过程中可随时点击取消图标停止制作。</li>
 <li>制作完成后，会弹出是否进行奶泡器深度清洗的提示，操作方法与奶咖制作后的深度清洗相同。</li>
 </ol>
+<div class="figs"><figure class="fig scr"><img src="img/s08-milk.webp" width="1000" height="613" alt="热奶设置" loading="lazy" decoding="async"><figcaption>热奶设置</figcaption></figure><figure class="fig scr"><img src="img/s09-milk-progress.webp" width="1000" height="613" alt="热奶制作中" loading="lazy" decoding="async"><figcaption>热奶制作中</figcaption></figure></div>
 <h3 id="s5-4">5.4 热水</h3>
 <ol>
 <li>在主界面点击热水图标进入参数设置页面，可调节热水温度和出水量。设置后点击“开始”，修改的参数将自动保存。</li>
 <li>机器切换到工作界面并开始出热水，进度条实时显示完成百分比。达到 100% 时弹出完成提示。可随时点击取消图标终止当前操作。</li>
 </ol>
+<div class="figs"><figure class="fig scr"><img src="img/s10-water.webp" width="1000" height="613" alt="热水设置" loading="lazy" decoding="async"><figcaption>热水设置</figcaption></figure><figure class="fig scr"><img src="img/s11-water-progress.webp" width="1000" height="613" alt="热水出水中" loading="lazy" decoding="async"><figcaption>热水出水中</figcaption></figure></div>
 <h3 id="s5-5">5.5 用户偏好模式</h3>
 <p>点击左上角头像图标，可选择用户 1、用户 2、用户 3 或用户 4。可根据个人喜好设置独立的饮品参数，每位用户的参数分别保存。</p>
+<figure class="fig scr"><img src="img/s12-users.webp" width="1000" height="613" alt="选择用户" loading="lazy" decoding="async"><figcaption>选择用户</figcaption></figure>
 <h3 id="s5-6">5.6 研磨粗细调节</h3>
 <p>咖啡研磨细度出厂前已调至最佳档位，无需调节即可直接制作咖啡。如制作的咖啡口味偏淡、油脂（克丽玛）不足，或连续制作几杯后咖啡流速极慢、呈滴状流出，请按以下步骤调节：</p>
 <ol>
@@ -313,31 +360,40 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <li>开始制作咖啡，听到磨豆声时，将研磨调节旋钮转到合适位置（1 档最细，5 档最粗）。</li>
 <li>观察咖啡流出速度。如流速过慢或不出咖啡，请将旋钮向 5 档方向调节；如需制作油脂丰富浓厚的咖啡，请将旋钮向 1 档方向调一格。建议每次只调节一档，以免损坏设备。</li>
 </ol>
+<figure class="fig"><img src="img/f06-grind-knob.webp" width="450" height="450" alt="研磨调节旋钮：1 最细，5 最粗" loading="lazy" decoding="async"><figcaption>研磨调节旋钮：1 最细，5 最粗</figcaption></figure>
 <p><strong>注意：</strong> 调整后的研磨粗细至少需要制作两杯咖啡后才能生效。如调整后仍未达到理想效果，可再调一档。必要时也可查看渣盒中咖啡渣的状态辅助调节。</p>
 <h2 id="s6">6. 设置</h2>
 <p>点击屏幕底部的设置图标进入设置界面。</p>
 <p><strong>语言设置：</strong> 本机支持多种语言，可根据需要选择。</p>
 <p><strong>饮品设置：</strong> 点击相应选项进入饮品设置界面。可在此修改当前用户的所有饮品参数，调整后将自动保存到当前用户档案。</p>
+<figure class="fig scr"><img src="img/s13-settings-bev.webp" width="1000" height="613" alt="饮品设置：选择饮品" loading="lazy" decoding="async"><figcaption>饮品设置：选择饮品</figcaption></figure>
 <p><strong>定时关机：</strong> 可设置自动关机时间。待机状态下到达预设时间后，机器自动关机并关闭屏幕，触摸屏幕即可重新唤醒。</p>
 <p><strong>待机背光设置：</strong> 调节机器显示屏亮度，共三档：全亮、半亮、关闭。</p>
 <p><strong>制作中实时调参：</strong> 开启后，用户可在制作过程中调节饮品参数（萃取温度不可调）。关闭后，制作过程中所有咖啡参数栏将变灰，无法修改。</p>
 <p><strong>声音设置：</strong> 可自由开启或关闭设备声音。</p>
 <p><strong>除垢等级：</strong> 共分 5 级；设为 OFF 时，除垢提醒功能关闭。当累计用水量达到预设值时，将弹出除垢提醒窗口。各级预设水量：1 级 80 L，2 级 60 L，3 级 40 L，4 级 20 L，5 级 10 L。</p>
+<figure class="fig scr"><img src="img/s14-settings-descale.webp" width="1000" height="613" alt="除垢等级：1–5 或 OFF" loading="lazy" decoding="async"><figcaption>除垢等级：1–5 或 OFF</figcaption></figure>
 <p><strong>工程师设置：</strong> 本功能仅供制造商售后维护使用。</p>
 <p><strong>恢复出厂设置：</strong> 点击恢复出厂设置图标，可将所有设置恢复为出厂默认值，包括咖啡参数、语言选择、饮品设置、定时关机、亮度调节、制作中实时调参、声音设置和除垢等级。</p>
 <p><strong>饮品杯数统计：</strong> 记录所有已制作饮品的总数，进入该页面可分别查看每种饮品的制作数量。</p>
 <p><strong>除垢次数：</strong> 显示已完成除垢操作的累计次数。</p>
 <h2 id="s7">7. 清洁与保养</h2>
 <h3 id="s7-1">7.1 自动清洗</h3>
+<figure class="fig scr"><img src="img/s15-cleaning.webp" width="1000" height="613" alt="清洁菜单" loading="lazy" decoding="async"><figcaption>清洁菜单</figcaption></figure>
 <p><strong>7.1.1 冲泡器简易清洗：</strong> 启动此功能后，锅炉加热，水泵送水，对冲泡器进行快速清洗。清洗过程中废水从咖啡出口流出。</p>
+<figure class="fig scr"><img src="img/s16-rinse.webp" width="1000" height="613" alt="简易清洗：时间与倒计时" loading="lazy" decoding="async"><figcaption>简易清洗：时间与倒计时</figcaption></figure>
 <p><strong>7.1.2 奶泡器简易清洗：</strong> 启动此功能后，锅炉加热，水泵送水，对奶泡器进行简易清洗。整个过程中废水从咖啡出口排出。</p>
 <p><strong>7.1.3 奶泡器深度清洗：</strong> 选择后，按屏幕提示彻底清洁奶罐并加入清水，然后点击清洗图标。机器将自动对奶泡器进行深度清洗，清洗时间可调。所有废水从咖啡出口流出。</p>
+<figure class="fig scr"><img src="img/s17-frother-deep.webp" width="1000" height="613" alt="奶泡器深度清洁：向奶罐加入清水" loading="lazy" decoding="async"><figcaption>奶泡器深度清洁：向奶罐加入清水</figcaption></figure>
 <p><strong>7.1.4 机器维护：</strong> 机器维护功能包括冲泡器深度清洁（加药片）、奶泡管路深度清洁（加药片）和除垢。</p>
 <ol>
 <li><strong>冲泡器深度清洁（加药片）：</strong> 启动清洁程序后，按屏幕提示将专用冲泡器清洁片放入冲泡器，然后点击“下一步”。机器将开始对冲泡器进行深度清洁，过程中废水从咖啡出口排出。</li>
 <li><strong>奶泡管路深度清洁（加药片）：</strong> 启动清洁功能，按提示向奶罐中加入专用奶路清洁片和清水，然后点击“下一步”开始管路深度清洁。废水从咖啡出口流出。完成后，彻底清洗奶罐，重新加入清水，再次启动清洗，以冲净系统内残留的清洁剂。</li>
 <li><strong>除垢：</strong> 点击“立即除垢”。按提示向水箱中加入咖啡机专用除垢剂和清水至 MAX 刻度。在咖啡出口下方放置大容器收集废水，然后点击“下一步”开始除垢。操作过程中请注意观察容器，防止溢水。除垢完成后，彻底清洗水箱，按提示重新加入清水并运行冲洗程序，以冲净机内残留的除垢液。</li>
 </ol>
+<div class="figs"><figure class="fig scr"><img src="img/s18-maintenance.webp" width="1000" height="613" alt="机器维护菜单" loading="lazy" decoding="async"><figcaption>机器维护菜单</figcaption></figure><figure class="fig scr"><img src="img/s19-brewer-tablet.webp" width="1000" height="613" alt="冲泡器：放入清洁片" loading="lazy" decoding="async"><figcaption>冲泡器：放入清洁片</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s20-milk-tablet.webp" width="1000" height="613" alt="奶路：加入药片和清水" loading="lazy" decoding="async"><figcaption>奶路：加入药片和清水</figcaption></figure><figure class="fig scr"><img src="img/s20b-milk-rinse.webp" width="1000" height="613" alt="奶路：清水冲洗" loading="lazy" decoding="async"><figcaption>奶路：清水冲洗</figcaption></figure></div>
+<div class="figs"><figure class="fig scr"><img src="img/s21-descale.webp" width="1000" height="613" alt="除垢：加入除垢剂和清水至 MAX" loading="lazy" decoding="async"><figcaption>除垢：加入除垢剂和清水至 MAX</figcaption></figure><figure class="fig scr"><img src="img/s21b-descale-rinse.webp" width="1000" height="613" alt="除垢：清水冲洗" loading="lazy" decoding="async"><figcaption>除垢：清水冲洗</figcaption></figure></div>
 <h3 id="s7-2">7.2 手动清洁</h3>
 <p>以下配件需定期清洁：</p>
 <ol>
@@ -350,16 +406,21 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <p><strong>落粉通道清洁</strong>（建议每月一次或堵塞时）。</p>
 <p><strong>注意：</strong> 请在关机并断开电源后再进行此操作。</p>
 <p>① 打开侧门。② 用清洁刷清理落粉通道。③ 清除机内可见的咖啡粉，必要时使用吸尘器。④ 清除废水盘内的咖啡粉和污物。</p>
+<figure class="fig"><img src="img/f07-powder-channel.webp" width="700" height="635" alt="侧门内的落粉通道" loading="lazy" decoding="async"><figcaption>侧门内的落粉通道</figcaption></figure>
 </li>
 <li>
 <p><strong>奶泡器手动清洁</strong>（建议每月一次）。</p>
 <p>① 关闭电源开关。② 先从奶泡器上拔下吸奶管。③ 向内按压左右卡扣并向下拉，取下整个奶泡器组件。④ 按顺序拆开奶泡器所有部件，用流水冲洗；必要时先在奶垢清洁剂中浸泡十分钟再清洗。</p>
+<div class="figs"><figure class="fig"><img src="img/f08-frother-remove.webp" width="634" height="602" alt="奶泡器组件" loading="lazy" decoding="async"><figcaption>奶泡器组件</figcaption></figure><figure class="fig"><img src="img/f09-frother-parts.webp" width="700" height="302" alt="拆卸奶泡器" loading="lazy" decoding="async"><figcaption>拆卸奶泡器</figcaption></figure></div>
 <p><strong>注意：</strong> 清洁时请彻底清洗进气调节旋钮上的进气槽，切勿损坏该槽，否则会影响打奶泡功能。</p>
+<figure class="fig"><img src="img/f10-air-slot.webp" width="460" height="676" alt="进气调节旋钮上的进气槽" loading="lazy" decoding="async"><figcaption>进气调节旋钮上的进气槽</figcaption></figure>
 <p>⑤ 清洁后按顺序重新组装所有部件，并检查进气调节旋钮是否安装正确。旋钮设有 5 个调节档位：细档用于制作细腻绵密的奶泡，粗档用于制作较大的奶泡。可根据所需奶泡质地进行微调。</p>
+<figure class="fig"><img src="img/f11-frother-assemble.webp" width="700" height="382" alt="重新组装与进气调节旋钮" loading="lazy" decoding="async"><figcaption>重新组装与进气调节旋钮</figcaption></figure>
 </li>
 <li>
 <p><strong>冲泡器手动清洁</strong>（建议每两周一次）。</p>
 <p>① 在关机状态下打开侧门。② 沿 PUSH 方向按压冲泡器两侧的两个橙色按钮，然后取出冲泡器。③ 将冲泡器在清水中浸泡 5 分钟，再用自来水冲洗。请勿放入洗碗机清洗，也不要使用任何洗涤剂。④ 侧门打开时，用清洁刷清除机内可见的咖啡渣。⑤ 手持清洁好的冲泡器，将冲泡头完全按到底，然后将冲泡器装回原位。沿 PUSH 标记推入，直到听到“咔嗒”声，表示安装到位。</p>
+<figure class="fig"><img src="img/f12-brew-group.webp" width="388" height="420" alt="冲泡器：按压两侧 PUSH 按钮" loading="lazy" decoding="async"><figcaption>冲泡器：按压两侧 PUSH 按钮</figcaption></figure>
 <p><strong>注意：</strong> 安装后请确保两个橙色按钮均弹回原位，否则可能损坏机器。</p>
 </li>
 </ol>
@@ -374,6 +435,7 @@ footer img{width:110px; height:auto; filter:var(--logo-filter)}
 <li>清洁后将磨盘组件装回原位。逆时针将研磨调节旋钮转到 5 档，向上提起旋钮，继续逆时针转到 3 档或其他合适档位，然后再次提拉磨盘提手。如磨盘套无法取出，说明锁定正确；如可取出，说明未锁紧：请将旋钮顺时针转回解锁位置，重新压紧磨盘，再逆时针转到 3 档或其他合适档位。</li>
 <li>最后装上磨豆盖，顺时针旋转直至锁定标记对准豆仓定位筋，完成安装。</li>
 </ol>
+<div class="figs steps"><figure class="fig"><img src="img/g2.webp" width="700" height="949" alt="步骤 2" loading="lazy" decoding="async"><figcaption>步骤 2</figcaption></figure><figure class="fig"><img src="img/g3a.webp" width="684" height="854" alt="步骤 3" loading="lazy" decoding="async"><figcaption>步骤 3</figcaption></figure><figure class="fig"><img src="img/g3b.webp" width="650" height="846" alt="步骤 3" loading="lazy" decoding="async"><figcaption>步骤 3</figcaption></figure><figure class="fig"><img src="img/g4.webp" width="516" height="756" alt="步骤 4" loading="lazy" decoding="async"><figcaption>步骤 4</figcaption></figure><figure class="fig"><img src="img/g5.webp" width="700" height="508" alt="步骤 5" loading="lazy" decoding="async"><figcaption>步骤 5</figcaption></figure><figure class="fig"><img src="img/g6a.webp" width="696" height="884" alt="步骤 6" loading="lazy" decoding="async"><figcaption>步骤 6</figcaption></figure><figure class="fig"><img src="img/g6b.webp" width="640" height="908" alt="步骤 6" loading="lazy" decoding="async"><figcaption>步骤 6</figcaption></figure><figure class="fig"><img src="img/g7.webp" width="402" height="678" alt="步骤 7" loading="lazy" decoding="async"><figcaption>步骤 7</figcaption></figure></div>
 <h2 id="s8">8. 运输与处置</h2>
 <h3 id="s8-1">8.1 运输</h3>
 <ol>
