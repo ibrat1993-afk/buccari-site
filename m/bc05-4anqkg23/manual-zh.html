@@ -113,6 +113,15 @@ ol.parts li{break-inside:avoid}
   .figs .fig > img{max-height:70mm; width:100%}
   article h2{break-after:avoid} article h3{break-after:avoid}
 }
+.cover{display:none}
+@media print{
+  .top,.eyebrow{display:none!important}
+  .cover{display:flex; flex-direction:column; align-items:center; justify-content:space-between; height:255mm; text-align:center; break-after:page}
+  .cover-logo{width:70mm; height:auto; margin-top:6mm}
+  .cover-photo{width:100%; max-height:165mm; object-fit:contain}
+  .cover-title{font-weight:300; font-size:22pt; line-height:1.25; max-width:150mm}
+  .cover-site{font-size:10pt; letter-spacing:3px; color:#6B6862; margin-bottom:4mm}
+}
 </style>
 <script>
 /* Theme by the visitor's local time: light 07:00-18:59, dark otherwise. A manual switch lasts for the visit. */
@@ -138,6 +147,8 @@ ol.parts li{break-inside:avoid}
   </div>
 </header>
 <main class="doc">
+<section class="cover" aria-hidden="true"><img class="cover-logo" src="/img/logo.svg" alt=""><img class="cover-photo" src="img/f00-cover.webp" alt=""><div class="cover-title">BUCCARI BC-05 全自动咖啡机使用说明书</div><div class="cover-site">buccari.tech</div></section>
+
   <a class="back" href="./">返回 BUCCARI</a>
   <div class="eyebrow">BC-05 · 使用说明书</div>
   <div class="layout">
