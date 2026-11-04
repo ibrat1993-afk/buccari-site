@@ -111,7 +111,8 @@ ol.parts li{break-inside:avoid}
   .fig.scr > img{max-width:120mm}
   .fig.wide > img{max-height:120mm; width:auto; max-width:100%}
   .figs .fig > img{max-height:70mm; width:100%}
-  article h2{break-after:avoid} article h3{break-after:avoid}
+  article h2,article h3{break-after:avoid; break-inside:avoid}
+  article h2::after,article h3::after{content:""; display:block; height:28mm; margin-bottom:-28mm}
 }
 .cover{display:none}
 @media print{
